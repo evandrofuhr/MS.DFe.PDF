@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuestPDF" Version="2022.12.0" />
+    <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2022.12.15.2016" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MS.DFe.PDF\MS.DFe.PDF.csproj" />
+  </ItemGroup>
+
+</Project>
