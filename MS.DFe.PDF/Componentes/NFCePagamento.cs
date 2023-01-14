@@ -32,7 +32,7 @@ namespace MS.DFe.PDF.Componentes
 
                 foreach (var item in _pag)
                 {
-                    table.Cell().AlignLeft().Texto(item.tPag.ToString());
+                    table.Cell().AlignLeft().Texto(item.Pagamento);
                     table.Cell().AlignRight().Texto(item.vPag);
                 }
 

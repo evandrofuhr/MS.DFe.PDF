@@ -189,6 +189,54 @@
   <data name="SERIE" xml:space="preserve">
     <value>Série</value>
   </data>
+  <data name="TIPO_PAGAMENTO_1" xml:space="preserve">
+    <value>Dinheiro</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_10" xml:space="preserve">
+    <value>Vale Alimentação</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_11" xml:space="preserve">
+    <value>Vale Refeição</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_12" xml:space="preserve">
+    <value>Vale Presente</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_13" xml:space="preserve">
+    <value>Vale Combustível</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_15" xml:space="preserve">
+    <value>Boleto Bancário</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_16" xml:space="preserve">
+    <value>Depósito Bancário</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_17" xml:space="preserve">
+    <value>Pagamento Instantâneo (PIX)</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_18" xml:space="preserve">
+    <value>Transferência bancária, Carteira Digital</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_19" xml:space="preserve">
+    <value>Programa de fidelidade, Cashback, Crédito Virtual</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_2" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_3" xml:space="preserve">
+    <value>Cartão de Crédito</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_4" xml:space="preserve">
+    <value>Cartão de Débito</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_5" xml:space="preserve">
+    <value>Crédito Loja</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_90" xml:space="preserve">
+    <value>Sem pagamento</value>
+  </data>
+  <data name="TIPO_PAGAMENTO_99" xml:space="preserve">
+    <value>Outros</value>
+  </data>
   <data name="TOTAL" xml:space="preserve">
     <value>Valor Total</value>
   </data>

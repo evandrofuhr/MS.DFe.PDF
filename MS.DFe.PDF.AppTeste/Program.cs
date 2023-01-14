@@ -67,8 +67,8 @@ var _nfce = new NFCeLeiaute(
         ),
         _pags,
         new DFeDadosConsumidor(
-            _nfeProc.NFe.infNFe.dest.CNPJ,
-            _nfeProc.NFe.infNFe.dest.CPF
+            _nfeProc.NFe.infNFe.dest?.CNPJ,
+            _nfeProc.NFe.infNFe.dest?.CPF
         ),
         new DFeDadosConsulta(
             _nfeProc.NFe.infNFeSupl.urlChave,
