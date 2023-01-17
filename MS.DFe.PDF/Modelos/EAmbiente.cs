@@ -6,7 +6,7 @@ namespace MS.DFe.PDF.Modelos
 {
     public enum EAmbiente
     {
-        PRODUCAO,
-        HOMOLOGACAO
+        PRODUCAO = 1,
+        HOMOLOGACAO = 2
     }
 }
