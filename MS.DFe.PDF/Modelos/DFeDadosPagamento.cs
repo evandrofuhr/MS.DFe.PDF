@@ -8,7 +8,7 @@ namespace MS.DFe.PDF.Modelos
         public int tPag { get; }
         public decimal vPag { get; }
 
-        public string Pagamento { get => TextoResource.ResourceManager.GetString($"TIPO_PAGAMENTO_{tPag}"); }
+        public string Pagamento { get => NFCeResource.ResourceManager.GetString($"TIPO_PAGAMENTO_{tPag}"); }
 
         public DFeDadosPagamento(decimal vTroco, int tPag, decimal vPag)
         {

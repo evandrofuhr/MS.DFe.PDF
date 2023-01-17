@@ -22,14 +22,14 @@ namespace MS.DFe.PDF.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TextoResource {
+    internal class NFCeResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TextoResource() {
+        internal NFCeResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MS.DFe.PDF.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MS.DFe.PDF.Resources.TextoResource", typeof(TextoResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MS.DFe.PDF.Resources.NFCeResource", typeof(NFCeResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -196,6 +196,16 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LUCON {
+            get {
+                object obj = ResourceManager.GetObject("LUCON", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NFC-e nº.
         /// </summary>
         internal static string NFCE_NR {
@@ -273,6 +283,150 @@ namespace MS.DFe.PDF.Resources {
         internal static string SERIE {
             get {
                 return ResourceManager.GetString("SERIE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dinheiro.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_1 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vale Alimentação.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_10 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vale Refeição.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_11 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vale Presente.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_12 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vale Combustível.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_13 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boleto Bancário.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_15 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Depósito Bancário.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_16 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pagamento Instantâneo (PIX).
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_17 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transferência bancária, Carteira Digital.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_18 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Programa de fidelidade, Cashback, Crédito Virtual.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_19 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_2 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cartão de Crédito.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_3 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cartão de Débito.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_4 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crédito Loja.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_5 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sem pagamento.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_90 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_90", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outros.
+        /// </summary>
+        internal static string TIPO_PAGAMENTO_99 {
+            get {
+                return ResourceManager.GetString("TIPO_PAGAMENTO_99", resourceCulture);
             }
         }
         

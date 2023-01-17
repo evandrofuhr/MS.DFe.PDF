@@ -3,13 +3,13 @@ using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeRodape : IComponent
+    internal class Rodape : IComponent
     {
         private readonly decimal _vTotTrib;
 
-        public NFCeRodape(decimal vTotTrib)
+        public Rodape(decimal vTotTrib)
         {
             _vTotTrib = vTotTrib;
         }
@@ -20,7 +20,7 @@ namespace MS.DFe.PDF.Componentes
                 c =>
                 {
                     c.Item().BorderBottom(0.8f);
-                    c.Item().AlignCenter().Texto(TextoResource.TRIBUTOS, TextoResource.CIFRAO, _vTotTrib.Formata());
+                    c.Item().AlignCenter().Texto(NFCeResource.TRIBUTOS, NFCeResource.CIFRAO, _vTotTrib.Formata());
                 }
             );
         }

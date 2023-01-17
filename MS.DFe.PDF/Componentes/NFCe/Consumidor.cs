@@ -3,13 +3,13 @@ using MS.DFe.PDF.Modelos;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeConsumidor : IComponent
+    internal class Consumidor : IComponent
     {
         private readonly DFeDadosConsumidor _dest;
 
-        public NFCeConsumidor(DFeDadosConsumidor dest)
+        public Consumidor(DFeDadosConsumidor dest)
         {
             _dest = dest;
         }

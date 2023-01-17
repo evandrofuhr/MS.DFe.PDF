@@ -7,13 +7,13 @@ using System.Runtime.InteropServices;
 using ZXing;
 using ZXing.QrCode;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeQrCode : IComponent
+    internal class QrCode : IComponent
     {
         private readonly string _qrCode;
 
-        public NFCeQrCode(string qrCode)
+        public QrCode(string qrCode)
         {
             _qrCode = qrCode;
         }

@@ -4,13 +4,13 @@ using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeIdentificacao : IComponent
+    internal class Identificacao : IComponent
     {
         private readonly DFeDadosIdentificacao _dados;
 
-        public NFCeIdentificacao(DFeDadosIdentificacao dados)
+        public Identificacao(DFeDadosIdentificacao dados)
         {
             _dados = dados;
         }
@@ -24,13 +24,13 @@ namespace MS.DFe.PDF.Componentes
                     t.Cell()
                         .AlignCenter()
                         .Texto(
-                            TextoResource.NFCE_NR,
+                            NFCeResource.NFCE_NR,
                             _dados.Numero,
-                            TextoResource.SERIE,
+                            NFCeResource.SERIE,
                             _dados.Serie,
                             _dados.Emissao,
                             "-",
-                            TextoResource.VIA_CONSUMIDOR
+                            NFCeResource.VIA_CONSUMIDOR
                         )
                         .Bold();
 
@@ -39,7 +39,7 @@ namespace MS.DFe.PDF.Componentes
                         .Text(
                             text =>
                             {
-                                text.TextoSpan(TextoResource.PROTOCOLO).Bold();
+                                text.TextoSpan(NFCeResource.PROTOCOLO).Bold();
                                 text.TextoSpan(string.Empty, _dados.nProt);
                             }
                         );
@@ -49,7 +49,7 @@ namespace MS.DFe.PDF.Componentes
                         .Text(
                             text =>
                             {
-                                text.TextoSpan(TextoResource.DATA).Bold();
+                                text.TextoSpan(NFCeResource.DATA).Bold();
                                 text.TextoSpan(string.Empty, _dados.Recebimento);
                             }
                         );

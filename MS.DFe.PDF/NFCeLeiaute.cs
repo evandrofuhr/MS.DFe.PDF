@@ -1,4 +1,4 @@
-﻿using MS.DFe.PDF.Componentes;
+﻿using MS.DFe.PDF.Componentes.NFCe;
 using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using QuestPDF.Drawing;
@@ -16,7 +16,7 @@ namespace MS.DFe.PDF
         {
             _dados = dados;
 
-            FontManager.RegisterFont(new MemoryStream(FontResource.LUCON));
+            FontManager.RegisterFont(new MemoryStream(NFCeResource.LUCON));
         }
 
         public void Compose(IDocumentContainer container)
@@ -30,11 +30,11 @@ namespace MS.DFe.PDF
 
                         page.ContinuousSize(72.1f, Unit.Millimetre);
 
-                        page.Header().Component(new NFCeCabecalho(_dados.emit));
+                        page.Header().Component(new Cabecalho(_dados.emit));
 
                         page.Content().Element(ComposeContent);
 
-                        page.Footer().Component(new NFCeRodape(_dados.vTotTrib));
+                        page.Footer().Component(new Rodape(_dados.vTotTrib));
                     }
                 );
         }
@@ -53,23 +53,23 @@ namespace MS.DFe.PDF
                 {
                     table.ColumnsDefinition(column => column.RelativeColumn());
 
-                    table.Cell().Component(new NFCeDetalhe(_dados));
-                    table.Cell().Component(new NFCeTotal(_dados.total));
-                    table.Cell().Component(new NFCePagamento(_dados.pag));
+                    table.Cell().Component(new Detalhe(_dados));
+                    table.Cell().Component(new Total(_dados.total));
+                    table.Cell().Component(new Pagamento(_dados.pag));
 
-                    table.Cell().Component(new NFCeConsulta(_dados.consulta));
-
-                    table.Cell().Height(5);
-
-                    table.Cell().Component(new NFCeConsumidor(_dados.dest));
+                    table.Cell().Component(new Consulta(_dados.consulta));
 
                     table.Cell().Height(5);
 
-                    table.Cell().Component(new NFCeIdentificacao(_dados.identificacao));
+                    table.Cell().Component(new Consumidor(_dados.dest));
 
                     table.Cell().Height(5);
 
-                    table.Cell().Component(new NFCeQrCode(_dados.qrCode));
+                    table.Cell().Component(new Identificacao(_dados.identificacao));
+
+                    table.Cell().Height(5);
+
+                    table.Cell().Component(new QrCode(_dados.qrCode));
 
                     table.Cell().Height(5);
                 }

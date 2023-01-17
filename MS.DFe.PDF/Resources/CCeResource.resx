@@ -117,142 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CIFRAO" xml:space="preserve">
-    <value>R$</value>
+  <data name="AMBIENTE" xml:space="preserve">
+    <value>AMBIENTE</value>
+  </data>
+  <data name="AMBIENTE_HOMOLOGACAO" xml:space="preserve">
+    <value>HOMOLOGAÇÃO - SEM VALOR FISCAL</value>
+  </data>
+  <data name="AMBIENTE_PRODUCAO" xml:space="preserve">
+    <value>PRODUÇÃO</value>
+  </data>
+  <data name="CABECALHO_TABELA_CORRECAO" xml:space="preserve">
+    <value>Itens da correção</value>
+  </data>
+  <data name="CHAVE" xml:space="preserve">
+    <value>CHAVE DE ACESSO</value>
   </data>
   <data name="CNPJ" xml:space="preserve">
     <value>CNPJ</value>
   </data>
-  <data name="CODIGO" xml:space="preserve">
-    <value>Código</value>
+  <data name="CONDICOES_USO" xml:space="preserve">
+    <value>A Carta de Correção é disciplinada pelo § 1º-A do art. 7º do Convênio S/N, de 15 de dezembro de 1970 e pode ser utilizada para regularização de erro ocorrido na emissão de documento fiscal, desde que o erro não esteja relacionado com: 
+I - as variáveis que determinam o valor do imposto tais como: base de cálculo, alíquota, diferença de preço, quantidade, valor da operação ou da prestação;
+II - a correção de dados cadastrais que implique mudança do remetente ou do destinatário; III - a data de emissão ou de saída.</value>
   </data>
-  <data name="CONSULTE_CHAVE" xml:space="preserve">
-    <value>Consulte pela Chave de Acesso em</value>
+  <data name="DATA_HORA_EVENTO" xml:space="preserve">
+    <value>DATA/HORA DO EVENTO</value>
   </data>
-  <data name="CONSUMIDOR" xml:space="preserve">
-    <value>CONSUMIDOR</value>
+  <data name="DATA_HORA_REGISTRO" xml:space="preserve">
+    <value>DATA/HORA DO REGISTRO</value>
   </data>
-  <data name="CONSUMIDOR_NAO_IDENTIFICADO" xml:space="preserve">
-    <value>CONSUMIDOR NÃO IDENTIFICADO</value>
+  <data name="EMPRESA" xml:space="preserve">
+    <value>EMPRESA</value>
   </data>
-  <data name="CPF" xml:space="preserve">
-    <value>CPF</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="logo_placeholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Arquivos\logo_placeholder.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DANFE" xml:space="preserve">
-    <value>DANFE NFC-e</value>
+  <data name="MODELO" xml:space="preserve">
+    <value>MODELO</value>
   </data>
-  <data name="DATA" xml:space="preserve">
-    <value>Data de autorização</value>
-  </data>
-  <data name="DESCONTO" xml:space="preserve">
-    <value>Desconto</value>
-  </data>
-  <data name="DESCRICAO" xml:space="preserve">
-    <value>Descrição</value>
-  </data>
-  <data name="DOC_AUX" xml:space="preserve">
-    <value>Documento Auxiliar da Nota Fiscal de Consumidor Eletronica</value>
-  </data>
-  <data name="FORMATO" xml:space="preserve">
-    <value>dd/MM/yyyy HH:mm:ss</value>
-  </data>
-  <data name="FORMA_PAGAMENTO" xml:space="preserve">
-    <value>FORMA PAGAMENTO</value>
-  </data>
-  <data name="FRETE" xml:space="preserve">
-    <value>Frete</value>
-  </data>
-  <data name="NFCE_NR" xml:space="preserve">
-    <value>NFC-e nº</value>
-  </data>
-  <data name="OUTROS" xml:space="preserve">
-    <value>Outras despesas</value>
-  </data>
-  <data name="PAGAR" xml:space="preserve">
-    <value>Valor a Pagar</value>
-  </data>
-  <data name="PAGO" xml:space="preserve">
-    <value>VALOR PAGO</value>
+  <data name="NUMERO" xml:space="preserve">
+    <value>NÚMERO</value>
   </data>
   <data name="PROTOCOLO" xml:space="preserve">
-    <value>Protocolo de autorização</value>
-  </data>
-  <data name="QTDE" xml:space="preserve">
-    <value>Qtde UN</value>
-  </data>
-  <data name="QTDE_TOTAL_ITENS" xml:space="preserve">
-    <value>Qtde total de itens</value>
-  </data>
-  <data name="SEGURO" xml:space="preserve">
-    <value>Seguro</value>
+    <value>PROTOCOLO</value>
   </data>
   <data name="SERIE" xml:space="preserve">
-    <value>Série</value>
+    <value>SÉRIE</value>
   </data>
-  <data name="TIPO_PAGAMENTO_1" xml:space="preserve">
-    <value>Dinheiro</value>
+  <data name="SUBTITULO" xml:space="preserve">
+    <value>Não possui valor fiscal. Simples representação do evento indicado abaixo</value>
   </data>
-  <data name="TIPO_PAGAMENTO_10" xml:space="preserve">
-    <value>Vale Alimentação</value>
+  <data name="TITULO" xml:space="preserve">
+    <value>CARTA DE CORREÇÃO ELETRÔNICA</value>
   </data>
-  <data name="TIPO_PAGAMENTO_11" xml:space="preserve">
-    <value>Vale Refeição</value>
+  <data name="TITULO_CONSULTE" xml:space="preserve">
+    <value>CONSULTE A AUTENTICIDADE NO SITE DA SEFAZ AUTORIZADA</value>
   </data>
-  <data name="TIPO_PAGAMENTO_12" xml:space="preserve">
-    <value>Vale Presente</value>
+  <data name="TITULO_GRUPO_CARTA" xml:space="preserve">
+    <value>CARTA DE CORREÇÃO ELETRÔNICA</value>
   </data>
-  <data name="TIPO_PAGAMENTO_13" xml:space="preserve">
-    <value>Vale Combustível</value>
+  <data name="TITULO_GRUPO_CONDICOES" xml:space="preserve">
+    <value>CONDIÇÕES DE USO</value>
   </data>
-  <data name="TIPO_PAGAMENTO_15" xml:space="preserve">
-    <value>Boleto Bancário</value>
+  <data name="TITULO_GRUPO_CORRECAO" xml:space="preserve">
+    <value>CORREÇÃO</value>
   </data>
-  <data name="TIPO_PAGAMENTO_16" xml:space="preserve">
-    <value>Depósito Bancário</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_17" xml:space="preserve">
-    <value>Pagamento Instantâneo (PIX)</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_18" xml:space="preserve">
-    <value>Transferência bancária, Carteira Digital</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_19" xml:space="preserve">
-    <value>Programa de fidelidade, Cashback, Crédito Virtual</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_2" xml:space="preserve">
-    <value>Cheque</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_3" xml:space="preserve">
-    <value>Cartão de Crédito</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_4" xml:space="preserve">
-    <value>Cartão de Débito</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_5" xml:space="preserve">
-    <value>Crédito Loja</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_90" xml:space="preserve">
-    <value>Sem pagamento</value>
-  </data>
-  <data name="TIPO_PAGAMENTO_99" xml:space="preserve">
-    <value>Outros</value>
-  </data>
-  <data name="TOTAL" xml:space="preserve">
-    <value>Valor Total</value>
-  </data>
-  <data name="TRIBUTOS" xml:space="preserve">
-    <value>Tributos Totais Incidentes (Lei Federal 12.741/2012)</value>
-  </data>
-  <data name="TROCO" xml:space="preserve">
-    <value>Troco</value>
-  </data>
-  <data name="UNITARIO" xml:space="preserve">
-    <value>Vl Unit</value>
-  </data>
-  <data name="VIA_CONSUMIDOR" xml:space="preserve">
-    <value>Via Consumidor</value>
-  </data>
-  <data name="VL_TOTAL" xml:space="preserve">
-    <value>Vl Total</value>
+  <data name="TITULO_GRUPO_NOTA" xml:space="preserve">
+    <value>NOTA FISCAL ELETRÔNICA</value>
   </data>
 </root>

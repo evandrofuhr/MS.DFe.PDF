@@ -4,13 +4,13 @@ using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeDetalhe : IComponent
+    internal class Detalhe : IComponent
     {
         private readonly DFeDados _dados;
 
-        public NFCeDetalhe(DFeDados dados)
+        public Detalhe(DFeDados dados)
         {
             _dados = dados;
         }
@@ -27,8 +27,8 @@ namespace MS.DFe.PDF.Componentes
                         d.RelativeColumn(7);
                     });
 
-                    t.Cell().Texto(TextoResource.CODIGO).Bold();
-                    t.Cell().Texto(TextoResource.DESCRICAO).Bold();
+                    t.Cell().Texto(NFCeResource.CODIGO).Bold();
+                    t.Cell().Texto(NFCeResource.DESCRICAO).Bold();
                 });
 
                 c.Item().Table(t =>
@@ -40,9 +40,9 @@ namespace MS.DFe.PDF.Componentes
                         d.RelativeColumn(4);
                     });
 
-                    t.Cell().AlignRight().Texto(TextoResource.QTDE).Bold();
-                    t.Cell().AlignRight().Texto(TextoResource.UNITARIO).Bold();
-                    t.Cell().AlignRight().Texto(TextoResource.VL_TOTAL).Bold();
+                    t.Cell().AlignRight().Texto(NFCeResource.QTDE).Bold();
+                    t.Cell().AlignRight().Texto(NFCeResource.UNITARIO).Bold();
+                    t.Cell().AlignRight().Texto(NFCeResource.VL_TOTAL).Bold();
                 });
                 c.Item().Height(3);
                 c.Item().BorderBottom(0.8f);
@@ -97,7 +97,7 @@ namespace MS.DFe.PDF.Componentes
                 });
 
                 t.Cell().ColumnSpan(2).BorderBottom(0.8f);
-                t.Cell().AlignLeft().Texto(TextoResource.QTDE_TOTAL_ITENS);
+                t.Cell().AlignLeft().Texto(NFCeResource.QTDE_TOTAL_ITENS);
                 t.Cell().AlignRight().Texto(_dados.TotalItens.ToString());
             });
         }

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="QuestPDF" Version="2022.12.0" />
+    <PackageReference Include="QuestPDF" Version="2022.12.1" />
     <PackageReference Include="Zeus.Net.NFe.NFCe" Version="2022.12.15.2016" />
   </ItemGroup>
 

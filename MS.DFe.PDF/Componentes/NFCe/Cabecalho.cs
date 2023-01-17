@@ -4,19 +4,19 @@ using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCeCabecalho : IComponent
+    internal class Cabecalho : IComponent
     {
         private readonly DFeDadosEmitente _emit;
-        public NFCeCabecalho(DFeDadosEmitente emit)
+        public Cabecalho(DFeDadosEmitente emit)
         {
             _emit = emit;
         }
         private void ComporDadosEmitente(TableDescriptor table)
         {
             table.Cell().AlignCenter().Texto(_emit.xNome).Bold();
-            table.Cell().AlignCenter().Texto(TextoResource.CNPJ, _emit.CNPJ);
+            table.Cell().AlignCenter().Texto(NFCeResource.CNPJ, _emit.CNPJ);
         }
 
         private void ComporEnderecoEmitente(TableDescriptor table)
@@ -32,8 +32,8 @@ namespace MS.DFe.PDF.Componentes
 
         private void ComporTitulo(TableDescriptor table)
         {
-            table.Cell().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(TextoResource.DANFE).Bold();
-            table.Cell().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(TextoResource.DOC_AUX).Bold();
+            table.Cell().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DANFE).Bold();
+            table.Cell().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DOC_AUX).Bold();
             table.Cell().Height(3);
             table.Cell().Element(e => e.BorderBottom(0.8f));
         }

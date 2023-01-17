@@ -12,8 +12,8 @@ namespace MS.DFe.PDF.Modelos
         {
             get
             {
-                if (string.IsNullOrEmpty(CNPJ) && string.IsNullOrEmpty(CPF)) return TextoResource.CONSUMIDOR_NAO_IDENTIFICADO;
-                return $"{TextoResource.CONSUMIDOR} - {(!string.IsNullOrEmpty(CNPJ) ? TextoResource.CNPJ : TextoResource.CPF)} {(!string.IsNullOrEmpty(CNPJ) ? CNPJ : CPF)}";
+                if (string.IsNullOrEmpty(CNPJ) && string.IsNullOrEmpty(CPF)) return NFCeResource.CONSUMIDOR_NAO_IDENTIFICADO;
+                return $"{NFCeResource.CONSUMIDOR} - {(!string.IsNullOrEmpty(CNPJ) ? NFCeResource.CNPJ : NFCeResource.CPF)} {(!string.IsNullOrEmpty(CNPJ) ? CNPJ : CPF)}";
             }
         }
 

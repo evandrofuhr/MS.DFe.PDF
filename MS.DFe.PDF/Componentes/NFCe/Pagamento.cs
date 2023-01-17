@@ -6,13 +6,13 @@ using QuestPDF.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MS.DFe.PDF.Componentes
+namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class NFCePagamento : IComponent
+    internal class Pagamento : IComponent
     {
         private readonly IEnumerable<DFeDadosPagamento> _pag;
 
-        public NFCePagamento(IEnumerable<DFeDadosPagamento> pag)
+        public Pagamento(IEnumerable<DFeDadosPagamento> pag)
         {
             _pag = pag;
         }
@@ -27,8 +27,8 @@ namespace MS.DFe.PDF.Componentes
                     c.RelativeColumn();
                 });
 
-                table.Cell().AlignLeft().Texto(TextoResource.FORMA_PAGAMENTO);
-                table.Cell().AlignRight().Texto(TextoResource.PAGO, TextoResource.CIFRAO);
+                table.Cell().AlignLeft().Texto(NFCeResource.FORMA_PAGAMENTO);
+                table.Cell().AlignRight().Texto(NFCeResource.PAGO, NFCeResource.CIFRAO);
 
                 foreach (var item in _pag)
                 {
@@ -38,7 +38,7 @@ namespace MS.DFe.PDF.Componentes
 
                 var _troco = _pag.Sum(s => s.vTroco);
 
-                table.Cell().AlignLeft().Texto(TextoResource.TROCO, TextoResource.CIFRAO);
+                table.Cell().AlignLeft().Texto(NFCeResource.TROCO, NFCeResource.CIFRAO);
                 table.Cell().AlignRight().Texto(_troco);
 
                 table.Cell().ColumnSpan(2).BorderBottom(0.8f);

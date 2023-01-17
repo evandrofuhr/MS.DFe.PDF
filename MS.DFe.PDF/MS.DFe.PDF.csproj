@@ -10,4 +10,28 @@
     <PackageReference Include="ZXing.Net" Version="0.16.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\CCeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CCeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\NFCeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NFCeResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CCeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CCeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\NFCeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NFCeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
