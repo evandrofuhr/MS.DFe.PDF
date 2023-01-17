@@ -75,5 +75,10 @@ namespace MS.DFe.PDF
                 }
             );
         }
+
+        public byte[] Gerar()
+        {
+            return this.GeneratePdf();
+        }
     }
 }
