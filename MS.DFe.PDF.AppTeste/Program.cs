@@ -118,16 +118,15 @@ var _nfce = new NFCeLeiaute(
             _nfeProc.protNFe.infProt.nProt,
             _nfeProc.protNFe.infProt.dhRecbto
         ),
-        new DFeDadosComprovante
-        {
-            Textos = new string[]
+        new DFeDadosComprovante(
+            new string[]
             {
                 "Cartão de Débito: Visa",
                 "Data/Hora: 02/07/2023 20:02",
                 "Valor: R$ 120,00",
                 "NSU: 1023882"
             }
-        },
+        ),
         _nfeProc.NFe.infNFeSupl.qrCode,
         _nfeProc.NFe.infNFe.total.ICMSTot.vTotTrib
     )
