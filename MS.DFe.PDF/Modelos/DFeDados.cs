@@ -12,12 +12,24 @@ namespace MS.DFe.PDF.Modelos
         public DFeDadosConsumidor dest { get; }
         public DFeDadosConsulta consulta { get; }
         public DFeDadosIdentificacao identificacao { get; }
+        public DFeDadosComprovante comprovante { get; }
         public string qrCode { get; }
         public decimal vTotTrib { get; }
 
         public int TotalItens { get => det.Count(); }
 
-        public DFeDados(DFeDadosEmitente emit, IEnumerable<DFeDadosItem> det, DFeDadosTotal total, IEnumerable<DFeDadosPagamento> pag, DFeDadosConsumidor dest, DFeDadosConsulta consulta, DFeDadosIdentificacao identificacao, string qrCode, decimal vTotTrib)
+        public DFeDados(
+            DFeDadosEmitente emit,
+            IEnumerable<DFeDadosItem> det,
+            DFeDadosTotal total,
+            IEnumerable<DFeDadosPagamento> pag,
+            DFeDadosConsumidor dest,
+            DFeDadosConsulta consulta,
+            DFeDadosIdentificacao identificacao,
+            DFeDadosComprovante comprovante,
+            string qrCode,
+            decimal vTotTrib
+        )
         {
             this.emit = emit;
             this.det = det;
@@ -26,6 +38,7 @@ namespace MS.DFe.PDF.Modelos
             this.dest = dest;
             this.consulta = consulta;
             this.identificacao = identificacao;
+            this.comprovante = comprovante;
             this.qrCode = qrCode;
             this.vTotTrib = vTotTrib;
         }

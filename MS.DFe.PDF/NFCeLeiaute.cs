@@ -34,7 +34,7 @@ namespace MS.DFe.PDF
 
                         page.Content().Element(ComposeContent);
 
-                        page.Footer().Component(new Rodape(_dados.vTotTrib));
+                        page.Footer().Component(new Rodape(_dados.vTotTrib, _dados.comprovante, _dados.emit));
                     }
                 );
         }

@@ -1,5 +1,4 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Resources;
 using System;
 
 namespace MS.DFe.PDF.Modelos

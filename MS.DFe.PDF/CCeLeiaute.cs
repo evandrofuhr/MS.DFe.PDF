@@ -16,7 +16,7 @@ namespace MS.DFe.PDF
         {
             _logo = logo;
             _dados = dados;
-        }   
+        }
 
         public void Compose(IDocumentContainer container)
         {
@@ -27,7 +27,7 @@ namespace MS.DFe.PDF
                     page.Margin(16);
                     page.DefaultTextStyle(TextStyle.Default.FontSize(9).FontFamily("Consolas"));
 
-                    page.Header().Dynamic(new Cabecalho(_logo)); 
+                    page.Header().Dynamic(new Cabecalho(_logo));
                     page.Content().Component(new Conteudo(_dados));
                 }
             );

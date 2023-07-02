@@ -13,7 +13,7 @@ namespace MS.DFe.PDF.Componentes.CCe
         {
             if (logo == null || logo.Length == 0)
                 _logo = CCeResource.logo_placeholder;
-            else 
+            else
                 _logo = logo;
         }
 

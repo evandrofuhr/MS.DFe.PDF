@@ -6,20 +6,19 @@ using QuestPDF.Infrastructure;
 
 namespace MS.DFe.PDF.Componentes.NFCe
 {
-    internal class Cabecalho : IComponent
+    internal class Comprovante : IComponent
     {
+        private readonly DFeDadosComprovante _comprovante;
         private readonly DFeDadosEmitente _emit;
-        public Cabecalho(DFeDadosEmitente emit)
+        public Comprovante(DFeDadosComprovante comprovante, DFeDadosEmitente emit)
         {
+            _comprovante = comprovante;
             _emit = emit;
         }
 
         private void ComporTitulo(ColumnDescriptor column)
         {
-            column.Item().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DANFE).Bold();
-            column.Item().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DOC_AUX).Bold();
-            column.Item().Height(3).MinimalBox();
-            column.Item().Element(e => e.BorderBottom(0.8f));
+            column.Item().AlignCenter().Texto(NFCeResource.COMPROVANTE_POS).Bold();
         }
 
         public void Compose(IContainer container)
@@ -27,9 +26,12 @@ namespace MS.DFe.PDF.Componentes.NFCe
             container.Column(
                 c =>
                 {
+                    ComporTitulo(c);
                     c.Item().Component(new Emitente(_emit));
                     c.Item().Height(3).MinimalBox();
-                    ComporTitulo(c);
+
+                    foreach (var _texto in _comprovante.Textos)
+                        c.Item().AlignCenter().Text(_texto);
                 }
             );
         }

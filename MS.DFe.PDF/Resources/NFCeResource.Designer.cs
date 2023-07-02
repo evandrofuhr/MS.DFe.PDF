@@ -88,6 +88,15 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comprovante de pagamento POS.
+        /// </summary>
+        internal static string COMPROVANTE_POS {
+            get {
+                return ResourceManager.GetString("COMPROVANTE_POS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consulte pela Chave de Acesso em.
         /// </summary>
         internal static string CONSULTE_CHAVE {

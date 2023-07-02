@@ -44,7 +44,7 @@ namespace MS.DFe.PDF.Modelos
         /// Numero formatado
         /// Ex.: 000000001
         /// </summary>
-        public string NumeroFormatado { get => Numero.FormataNumero();  }
+        public string NumeroFormatado { get => Numero.FormataNumero(); }
         /// <summary>
         /// Serie formatada
         /// Ex.: 0001

@@ -29,11 +29,11 @@ namespace MS.DFe.PDF.Modelos
         /// Data e hora do registro
         /// </summary>
         public DateTimeOffset DataHoraRegistro { get; }
-        
+
         /// <summary>
         /// Lista de correções da CC-e
         /// </summary>
-        public IEnumerable<string> Correcoes { get; }   
+        public IEnumerable<string> Correcoes { get; }
 
         /// <summary>
         /// Texto literal PRODUÇÃO ou HOMOLOGAÇÃO

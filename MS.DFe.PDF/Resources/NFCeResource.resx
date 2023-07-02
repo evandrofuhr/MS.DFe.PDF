@@ -126,6 +126,9 @@
   <data name="CODIGO" xml:space="preserve">
     <value>Código</value>
   </data>
+  <data name="COMPROVANTE_POS" xml:space="preserve">
+    <value>Comprovante de pagamento POS</value>
+  </data>
   <data name="CONSULTE_CHAVE" xml:space="preserve">
     <value>Consulte pela Chave de Acesso em</value>
   </data>
