@@ -110,26 +110,9 @@ namespace MS.DFe.PDF.Extensoes
             return Convert.ToUInt64(value).ToString(@"00000\-000");
         }
 
-        public static string ToCnpjCpf(this string value)
-        {
-            if (value.Length == 11) return value.ToCpf();
-            else if (value.Length == 14) return value.ToCnpj();
-            return string.Empty;
-        }
-
         public static string ToNumeroNfe(this long value)
         {
             return value.ToString(@"000\.000\.000");
-        }
-
-        public static string ToCnpj(this string value)
-        {
-            return Convert.ToUInt64(value).ToString(@"00\.000\.000/0000\-00");
-        }
-
-        public static string ToCpf(this string value)
-        {
-            return Convert.ToUInt64(value).ToString(@"000\.000\.000\-00");
         }
 
         public static string ToChaveNfe(this string value)

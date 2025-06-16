@@ -3,7 +3,7 @@ using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using NFe.Classes.Protocolo;
 using System;
-using geradorPdfs;
+using MS.DFe.PDF.Componentes.Nfe;
 
 
 namespace MS.DFe.PDF
@@ -42,35 +42,14 @@ namespace MS.DFe.PDF
                 if (_protocolo == null)
                     page.Background().Element(ComposeWaterMark);
 
-                page.Header().Component(new HeaderNfe(_nfe, _protocolo));
+                page.Header().Component(new Cabecalho(_nfe, _protocolo));
 
                 page.Content().Component(new ConteudoNFe(_nfe));
 
-                page.Footer().ShowOnce().Component(new FooterNfe(_nfe.infNFe));
+                page.Footer().ShowOnce().Component(new Rodape(_nfe.infNFe));
             });
         }
 
-        public class ConteudoNFe : IComponent
-        {
-            private readonly NFe.Classes.NFe _nfe;
-
-            public ConteudoNFe(NFe.Classes.NFe nfe)
-            {
-                _nfe = nfe;
-            }
-
-            public void Compose(IContainer container)
-            {
-                container.Column(column =>
-                {
-                    column.Item().Component(new DestinatarioRemetente(_nfe.infNFe.dest, _nfe.infNFe.ide));
-                    if (_nfe.infNFe.cobr != null) column.Item().Component(new FaturaDuplicata(_nfe.infNFe.cobr));
-                    column.Item().Component(new CalculoImposto(_nfe.infNFe.total.ICMSTot));
-                    column.Item().Component(new Transportador(_nfe.infNFe.transp));
-                    column.Item().Component(new Itens(_nfe.infNFe.det, _nfe.infNFe.emit.CRT));
-                });
-            }
-        }
 
         public DocumentMetadata GetMetadata()
         {
