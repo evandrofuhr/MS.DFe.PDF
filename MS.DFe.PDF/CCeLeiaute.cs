@@ -40,5 +40,10 @@ namespace MS.DFe.PDF
         {
             return this.GeneratePdf();
         }
+
+        public DocumentSettings GetSettings()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

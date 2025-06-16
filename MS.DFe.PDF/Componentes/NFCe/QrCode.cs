@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using ZXing;
 using ZXing.QrCode;
+using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace MS.DFe.PDF.Componentes.NFCe
 {

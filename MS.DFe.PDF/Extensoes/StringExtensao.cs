@@ -1,5 +1,6 @@
 ﻿using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Destinatario;
 using System;
 using System.Text.RegularExpressions;
 
@@ -42,6 +43,98 @@ namespace MS.DFe.PDF.Extensoes
                 }
             }
             return _nova;
+        }
+
+        public static string ToEndereco(this enderDest value)
+        {
+            var _value = $"{value.xLgr}, {value.nro}";
+            if (!string.IsNullOrEmpty(value.xCpl))
+                _value += $" - {value.xCpl}";
+            return _value;
+        }
+
+
+        public static string ToString(this decimal item, int casas = 2)
+        {
+            var _formato = $"#,##0.{string.Empty.PadRight(casas, '0')}";
+            return item.ToString(_formato);
+        }
+
+        public static int QuantidadeDecimais(this decimal value)
+        {
+            var _valueStr = value.ToString("0.###############");
+
+            var _posicao = _valueStr.IndexOf(',');
+
+            if (_posicao == -1)
+                return 0;
+
+            var _decimais = 0;
+            for (var i = _valueStr.Length - 1; i > _posicao; i--)
+            {
+                if (_valueStr[i] != '0')
+                {
+                    _decimais = i - _posicao;
+                    break;
+                }
+            }
+
+            return _decimais;
+        }
+
+
+        public static string ToTelefone(this long value)
+        {
+            return value.ToString().ToTelefone();
+        }
+
+        public static string ToTelefone(this string value)
+        {
+            var _base = value?.Trim() ?? string.Empty;
+            var _value = string.Empty;
+            if (string.IsNullOrEmpty(_base))
+                return string.Empty;
+            if (_base.StartsWith("+"))
+                return _base;
+            if (_base.StartsWith("0800"))
+                _value = Convert.ToUInt64(_base).ToString(@"0000 000\-0000");
+            else if (_base.Length <= 10)
+                _value = Convert.ToUInt64(_base).ToString(@"\(00\) 0000\-0000");
+            else
+                _value = Convert.ToUInt64(_base).ToString(@"\(00\) 0 0000\-0000");
+            return _value;
+        }
+
+        public static string ToCep(this string value)
+        {
+            return Convert.ToUInt64(value).ToString(@"00000\-000");
+        }
+
+        public static string ToCnpjCpf(this string value)
+        {
+            if (value.Length == 11) return value.ToCpf();
+            else if (value.Length == 14) return value.ToCnpj();
+            return string.Empty;
+        }
+
+        public static string ToNumeroNfe(this long value)
+        {
+            return value.ToString(@"000\.000\.000");
+        }
+
+        public static string ToCnpj(this string value)
+        {
+            return Convert.ToUInt64(value).ToString(@"00\.000\.000/0000\-00");
+        }
+
+        public static string ToCpf(this string value)
+        {
+            return Convert.ToUInt64(value).ToString(@"000\.000\.000\-00");
+        }
+
+        public static string ToChaveNfe(this string value)
+        {
+            return Regex.Replace(value.SomenteNumeros(), ".{4}", "$0 ").TrimEnd();
         }
     }
 }
