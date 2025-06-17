@@ -118,17 +118,15 @@ if (_escolha == 1)
 {
     QuestPDF.Settings.License = LicenseType.Community;
 
-    try
-    {
-        _nfeProc = FuncoesXml.ArquivoXmlParaClasse<nfeProc>(_xml);
-        _nfe = _nfeProc.NFe;
-    }
-    catch
-    {
-        _nfe = FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(_xml);
-    }
+    
 
-    var pdf = new NFeLeiaute(_nfe, _nfeProc?.protNFe);
+    byte[] _logoBytes = null;
+
+    var caminho = @"D:\projetos\Testes\geradorPdfs\bruh.png";
+    if (File.Exists(caminho))
+        _logoBytes = File.ReadAllBytes(caminho);
+
+    var pdf = new NFeLeiaute(_logoBytes, _xml);
     pdf.ShowInCompanion();
 }
 

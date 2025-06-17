@@ -4,6 +4,8 @@ using QuestPDF.Infrastructure;
 using NFe.Classes.Protocolo;
 using System;
 using MS.DFe.PDF.Componentes.Nfe;
+using DFe.Utils;
+using NFe.Classes;
 
 
 namespace MS.DFe.PDF
@@ -12,19 +14,29 @@ namespace MS.DFe.PDF
     {
         private readonly NFe.Classes.NFe _nfe;
         private readonly protNFe _protocolo;
+        private readonly byte[] _logo;
 
-        public NFeLeiaute(NFe.Classes.NFe nfe, protNFe protocolo)
+        public NFeLeiaute(byte[] logo, string xml)
         {
-            _nfe = nfe;
-            _protocolo = protocolo;
-        }
+            _logo = logo;
 
-        public DocumentSettings GetSettings()
-        {
-            return new DocumentSettings
+            try
             {
-            };
+                var nfeProc = FuncoesXml.ArquivoXmlParaClasse<nfeProc>(xml);
+                _nfe = nfeProc.NFe;
+                _protocolo = nfeProc.protNFe;
+            }
+            catch
+            {
+                _nfe = FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(xml);
+                _protocolo = null;
+            }
+
+            if (_nfe == null)
+                throw new Exception("Não foi possível converter o arquivo XML.");
         }
+
+
         private void ComposeWaterMark(IContainer container)
         {
             container.AlignCenter().AlignMiddle().Text("PRÉ-VISUALIZAÇÃO").FontSize(70).Bold().FontColor(Colors.Grey.Lighten2);
@@ -42,7 +54,7 @@ namespace MS.DFe.PDF
                 if (_protocolo == null)
                     page.Background().Element(ComposeWaterMark);
 
-                page.Header().Component(new Cabecalho(_nfe, _protocolo));
+                page.Header().Component(new Cabecalho(_nfe, _protocolo, _logo));
 
                 page.Content().Component(new ConteudoNFe(_nfe));
 
@@ -50,10 +62,16 @@ namespace MS.DFe.PDF
             });
         }
 
-
         public DocumentMetadata GetMetadata()
         {
             throw new NotImplementedException();
+        }
+
+        public DocumentSettings GetSettings()
+        {
+            return new DocumentSettings
+            {
+            };
         }
     }
 

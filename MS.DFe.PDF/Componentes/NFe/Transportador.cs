@@ -7,6 +7,8 @@ using System.Linq;
 using System;
 using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Elementos;
+using MS.DFe.PDF.Helpers;
+using MS.DFe.PDF.Resources;
 
 
 namespace MS.DFe.PDF.Componentes.Nfe
@@ -21,74 +23,49 @@ namespace MS.DFe.PDF.Componentes.Nfe
         }
         public void Compose(IContainer container)
         {
-
-            var _frete = "";
-
-            switch (Convert.ToInt32(_transp.modFrete))
-            {
-                case 0:
-                    _frete = "0 - Contratação do Frete por conta do Remetente";
-                    break;
-                case 1:
-                    _frete = "1 - Contratação do Frete por conta do Destinatário";
-                    break;
-
-                case 2:
-                    _frete = "2 - Contratação do Frete por conta de Terceiros";
-                    break;
-                case 3:
-                    _frete = "3 - Transporte Próprio por conta do Remetente";
-                    break;
-                case 4:
-                    _frete = "4 - Transporte Próprio por conta do Destinatário";
-                    break;
-
-                case 9:
-                    _frete = "9 - Sem Ocorrência de Transporte";
-                    break;
-                default:
-                    _frete = "";
-                    break;
-            }
+            var _frete = ModoFreteHelper.Frete(_transp);
+           
             container.Column(
                 column =>
                 {
-                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text("TRANSPORTADOR / VOLUMES TRANSPORTADOS").SemiBold();
+                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.TRANSPORTADOR).SemiBold();
 
                     column.Item().Row(row =>
                     {
-                        row.RelativeItem(7).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("RAZÃO SOCIAL", _transp.transporta?.xNome));
-                        row.RelativeItem(6).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("FRETE", _frete));
-                        row.RelativeItem(2).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("CÓDIGO ANTT", string.Empty));
-                        row.RelativeItem(2).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("PLACA DO VEÍCULO", _transp.veicTransp?.placa));
-                        row.ConstantItem(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("UF", _transp.veicTransp?.UF));
-                        row.ConstantItem(69).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("CNPJ / CPF", _transp.transporta?.CNPJ.FormataCNPJCPF() ?? _transp.transporta?.CPF.FormataCNPJCPF()));
+                        row.RelativeItem(7).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.RAZAO_SOCIAL, _transp.transporta?.xNome));
+                        row.RelativeItem(6).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.FRETE, _frete));
+                        row.RelativeItem(2).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.CODIGO_ANTT, string.Empty));
+                        row.RelativeItem(2).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.PLACA_VEICULO, _transp.veicTransp?.placa));
+                        row.ConstantItem(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.UF, _transp.veicTransp?.UF));
+                        row.ConstantItem(69).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.CNPJ_CPF, _transp.transporta?.CNPJ.FormataCNPJCPF() ?? _transp.transporta?.CPF.FormataCNPJCPF()));
                     });
 
                     column.Item().Row(row =>
                     {
-                        row.RelativeItem(13).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("ENDEREÇO", _transp.transporta?.xEnder));
-                        row.RelativeItem(9).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("MUNICÍPIO", _transp.transporta?.xMun));
-                        row.ConstantItem(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("UF", _transp.transporta?.UF));
-                        row.ConstantItem(69).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("INSCRIÇÃO ESTADUAL", _transp.transporta?.IE));
+                        row.RelativeItem(13).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.ENDERECO, _transp.transporta?.xEnder));
+                        row.RelativeItem(9).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.MUNICIPIO, _transp.transporta?.xMun));
+                        row.ConstantItem(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.UF, _transp.transporta?.UF));
+                        row.ConstantItem(69).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.INSCRICAO_ESTADUAL, _transp.transporta?.IE));
                     });
 
                     var _volume = _transp.vol.GroupBy(g => true).Select(s => new
                     {
-                        Quantidade = s.Sum(t => t.qVol ?? 0),
-                        PesoLiquido = s.Sum(t => t.pesoL ?? 0),
-                        PesoBruto = s.Sum(t => t.pesoB ?? 0),
-                        Especie = string.Join(",", s.Where(w => !string.IsNullOrEmpty(w.esp)).Select(t => t.esp).Distinct())
+                        Quantidade = s.Sum(t => t.qVol ?? null),
+                        PesoLiquido = s.Sum(t => t.pesoL ?? null),
+                        PesoBruto = s.Sum(t => t.pesoB ?? null),
+                        Especie = string.Join(",", s.Where(w => !string.IsNullOrEmpty(w.esp)).Select(t => t.esp).Distinct()),
+                        Numeracao = string.Join(",", s.Where(w => !string.IsNullOrEmpty(w.nVol)).Select(t => t.nVol).Distinct()),
+                        Marca = string.Join(",", s.Where(w => !string.IsNullOrEmpty(w.marca)).Select(t => t.marca).Distinct())
                     }).FirstOrDefault();
 
                     column.Item().Row(row =>
                     {
-                        row.RelativeItem(5).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("QUANTIDADE", _volume?.Quantidade.ToString("F3")));
-                        row.RelativeItem(6).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("ESPÉCIE", _volume?.Especie));
-                        row.RelativeItem(5).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("MARCA", ""));
-                        row.RelativeItem(4).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("NUMERAÇÃO", ""));
-                        row.RelativeItem(8).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("PESO BRUTO", _volume?.PesoBruto.ToString()));
-                        row.ConstantItem(80).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("PESO LÍQUIDO", _volume?.PesoLiquido.ToString()));
+                        row.RelativeItem(5).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.QUANTIDADE, _volume?.Quantidade.ToString()));
+                        row.RelativeItem(6).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.ESPECIE, _volume?.Especie));
+                        row.RelativeItem(5).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.MARCA, _volume?.Marca));
+                        row.RelativeItem(4).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.NUMERACAO, _volume?.Numeracao));
+                        row.RelativeItem(8).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.PESO_BRUTO, (_volume?.PesoBruto) == 0 ? "" : _volume?.PesoBruto.ToString()));
+                        row.ConstantItem(80).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.PESO_LIQUIDO, (_volume?.PesoLiquido) == 0 ? "" : _volume?.PesoLiquido.ToString()));
                     });
                 }
             );

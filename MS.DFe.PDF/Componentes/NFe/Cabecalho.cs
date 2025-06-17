@@ -9,10 +9,12 @@ namespace MS.DFe.PDF.Componentes.Nfe
     {
         private readonly NFe.Classes.NFe _nfe;
         private readonly protNFe _protocolo;
-        public Cabecalho(NFe.Classes.NFe nfe, protNFe protocolo)
+        private readonly byte[] _logo;
+        public Cabecalho(NFe.Classes.NFe nfe, protNFe protocolo, byte[] logo)
         {
             _nfe = nfe;
             _protocolo = protocolo;
+            _logo = logo;
         }
 
         public void Compose(IContainer container)
@@ -20,7 +22,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
             container.Column(column =>
             {
                 column.Item().Component(new Canhoto(_nfe.infNFe.ide, _nfe.infNFe.emit, _nfe.infNFe.total.ICMSTot, _nfe.infNFe.dest));
-                column.Item().Component(new DadosOperacao(_nfe.infNFe.ide, _nfe.infNFe.emit, _nfe.infNFe, _protocolo));
+                column.Item().Component(new DadosOperacao(_nfe.infNFe.ide, _nfe.infNFe.emit, _nfe.infNFe, _protocolo, _logo));
                 column.Item().Component(new DadoFiscal(_nfe.infNFe.ide, _nfe.infNFe.emit, _protocolo));
             });
         }

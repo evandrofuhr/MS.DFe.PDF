@@ -5,6 +5,7 @@ using NFe.Classes.Informacoes.Identificacao;
 using NFe.Classes.Informacoes.Emitente;
 using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Elementos;
+using MS.DFe.PDF.Resources;
 
 namespace MS.DFe.PDF.Componentes.Nfe
 {
@@ -32,14 +33,14 @@ namespace MS.DFe.PDF.Componentes.Nfe
                     {
                         innerCol.Item().Row(innerRow =>
                         {
-                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("NATUREZA DA OPERAÇÃO", _ide.natOp));
-                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("PROTOCOLO DE AUTORIZAÇÃO", $"{_protocolo?.infProt.nProt} - {_protocolo?.infProt.dhRecbto.DateTime}"));
+                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.NATUREZA_OPERACAO, _ide.natOp));
+                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.PROTOCOLO_AUTORIZACAO, $"{_protocolo?.infProt.nProt} - {_protocolo?.infProt.dhRecbto.DateTime}"));
                         });
                         innerCol.Item().Row(innerRow =>
                         {
-                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("INSCRIÇÃO ESTADUAL", _emit.IE.ToString()));
-                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO", (_emit.IEST?.ToString()) ?? ""));
-                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoCodigo("CNPJ", _emit.CNPJ.FormataCNPJCPF()));
+                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.INSCRICAO_ESTADUAL, _emit.IE.ToString()));
+                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.INSCRICAO_ESTADUAL_SUBST_TRIBUTÁRIO, (_emit.IEST?.ToString()) ?? ""));
+                            innerRow.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.CNPJ, _emit.CNPJ.FormataCNPJCPF()));
                         });
                     });
                 });

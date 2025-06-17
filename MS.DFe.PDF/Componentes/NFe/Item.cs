@@ -9,6 +9,8 @@ using System;
 using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Elementos;
+using MS.DFe.PDF.Helpers;
+using MS.DFe.PDF.Resources;
 
 
 
@@ -29,79 +31,23 @@ namespace MS.DFe.PDF.Componentes.Nfe
             _casaValorUnitario = _det.Max(x => x.prod.vUnCom.QuantidadeDecimais());
         }
 
-
-        private DadosICMS GetDadosICMS(det item)
-        {
-            var value = item.imposto?.ICMS;
-
-            if (value == null) return null;
-
-            var _type = value.TipoICMS.GetType();
-            var _origem = _type.GetProperty("orig")?.GetValue(value.TipoICMS);
-            var _cst = _type.GetProperty("CST")?.GetValue(value.TipoICMS);
-            var _csosn = _type.GetProperty("CSOSN")?.GetValue(value.TipoICMS);
-            var _base = _type.GetProperty("vBC")?.GetValue(value.TipoICMS);
-            var _aliquota = _type.GetProperty("pICMS")?.GetValue(value.TipoICMS);
-            var _icms = _type.GetProperty("vICMS")?.GetValue(value.TipoICMS);
-
-            var _cstEnum = string.Empty;
-
-            if (_cst != null)
-            {
-                _cstEnum = ((Csticms)_cst).ToString().SomenteNumeros();
-            }
-            else if (_csosn != null)
-            {
-                _cstEnum = ((Csosnicms)_csosn).ToString().SomenteNumeros();
-            }
-
-            return new DadosICMS
-            {
-                Origem = Convert.ToInt32(_origem),
-                CST = _cstEnum,
-                Base = _base == null || string.IsNullOrWhiteSpace(_base.ToString())
-            ? 0m
-            : Convert.ToDecimal(_base),
-                Aliquota = Convert.ToDecimal(_aliquota),
-                Valor = Convert.ToDecimal(_icms),
-            };
-        }
-
-        private DadosIPI GetDadosIPI(det item)
-        {
-            var _value = item.imposto?.IPI;
-
-
-            if (_value == null) return null;
-
-            var _type = _value.TipoIPI.GetType();
-            var _aliq = _type.GetProperty("pIPI")?.GetValue(_value.TipoIPI);
-            var _valor = _type.GetProperty("vIPI")?.GetValue(_value.TipoIPI);
-
-            return new DadosIPI
-            {
-                Aliq = Convert.ToDecimal(_aliq),
-                Valor = Convert.ToDecimal(_valor)
-            };
-        }
-
         public void Compose(IContainer container)
         {
-            var _cabecalho = _crt == CRT.RegimeNormal ? "CST" : "O/CSOSN";
+            var _cabecalho = _crt == CRT.RegimeNormal ? NFeResource.CST : NFeResource.O_CSOSN;
 
             container
                 .Column(column =>
                 {
-                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text("DADOS DOS PRODUTOS / SERVICOS").SemiBold();
+                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.DADOS_PRODUTOS_SERVICOS).SemiBold();
 
                     column.Item().Table(table =>
                     {
                         table.ColumnsDefinition(columns =>
                         {
                             columns.RelativeColumn(2);
-                            columns.ConstantColumn(140);
+                            columns.ConstantColumn(145);
                             columns.RelativeColumn(2);
-                            columns.RelativeColumn(1);
+                            columns.ConstantColumn(25);
                             columns.RelativeColumn(1);
                             columns.RelativeColumn(1);
                             columns.RelativeColumn(2);
@@ -116,41 +62,41 @@ namespace MS.DFe.PDF.Componentes.Nfe
 
                         table.Header(header =>
                         {
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text("CÓDIGO\r\nPRODUTO").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("DESCRIÇÃO DO PRODUTO / SERVIÇO").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("NCM/SH").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.CODIGO_PRODUTO).Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(NFeResource.DESCRIÇÃO_PRODUTO_SERVIÇO).Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(NFeResource.NCM_SH).Bold();
                             header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(_cabecalho).Bold().FontSize(5);
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("CFOP").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("UN").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("QUANTI").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("VALOR\r\nUNIT.").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("VALOR\r\nTOTAL").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("B CÁLC\r\nICMS\r\n").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("VALOR\r\nICMS\r\n").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("VALOR\r\nIPI").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("ALIQ.\r\nICMS").Bold();
-                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text("ALIQ.\r\nIPI").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(NFeResource.CFOP).Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(NFeResource.UN).Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text(NFeResource.QUANTI).Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.VALOR}\r\n{NFeResource.UNIT}.").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.VALOR}\r\n{NFeResource.TOTAL}").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.B_CALC}\r\n{NFeResource.ICMS}").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.VALOR}\r\n{NFeResource.ICMS}").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.VALOR}\r\n{NFeResource.IPI}").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.ALIQ}\r\n{NFeResource.ICMS}").Bold();
+                            header.Cell().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).AlignCenter().Text($"{NFeResource.ALIQ}\r\n{NFeResource.IPI}").Bold();
                         });
 
                         foreach (var _item in _det)
                         {
-                            var _dadosICMS = GetDadosICMS(_item);
-                            var _dadosICI = GetDadosIPI(_item);
+                            var _dadosICMS = ImpostosHelper.GetDadosICMS(_item);
+                            var _dadosICI = ImpostosHelper.GetDadosIPI(_item);
 
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaCodigo(_item.prod.cProd));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaDescricao($"{_item.prod.xProd} {_item.infAdProd}"));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaCodigo(_item.prod.NCM));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaCodigo(_dadosICMS?.OrigemCST));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaCodigo(_item.prod.CFOP.ToString()));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaCodigo(_item.prod.uCom));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_item.prod.qCom.ToString(_item.prod.qCom.QuantidadeDecimais())));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_item.prod.vUnCom.ToString(_casaValorUnitario)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_item.prod.vProd.ToString(2)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_dadosICMS?.Base?.ToString(2)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_dadosICMS?.Valor?.ToString(2)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_dadosICI?.Valor?.ToString(2)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_dadosICMS?.Aliquota?.ToString(2)));
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoTabelaValor(_dadosICI?.Aliq?.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Codigo(_item.prod.cProd));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Descricao($"{_item.prod.xProd}\r\n{_item.infAdProd}"));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Codigo(_item.prod.NCM));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Codigo(_dadosICMS?.OrigemCST));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Codigo(_item.prod.CFOP.ToString("N0")));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Codigo(_item.prod.uCom));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_item.prod.qCom.ToString(_item.prod.qCom.QuantidadeDecimais())));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_item.prod.vUnCom.ToString(_casaValorUnitario)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_item.prod.vProd.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_dadosICMS?.Base?.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_dadosICMS?.Valor?.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_dadosICI?.Valor?.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_dadosICMS?.Aliquota?.ToString(2)));
+                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoTabela.Valor(_dadosICI?.Aliq?.ToString(2)));
                         }
 
                         for (int i = 0; i < 13; i++)

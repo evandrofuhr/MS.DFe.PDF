@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MS.DFe.PDF.Modelos
 {
-    class DadosIPI
+    public class DadosIPI
     {
         public decimal? Aliq { get; set; }
         public decimal? Valor { get; set; }

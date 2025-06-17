@@ -3,6 +3,7 @@ using QuestPDF.Infrastructure;
 using NFe.Classes.Informacoes;
 using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Elementos;
+using MS.DFe.PDF.Resources;
 
 namespace MS.DFe.PDF.Componentes.Nfe
 {
@@ -18,25 +19,23 @@ namespace MS.DFe.PDF.Componentes.Nfe
 
         public void Compose(IContainer container)
         {
-            var _informacaoAdicional = "Inf. fisco:";
-
-            if (_infnfe.infAdic.infCpl != null)
-                _informacaoAdicional = "Inf. Contribuinte:";
-
+            var _informacaoAdicionalCpl = $"{NFeResource.INF_CONTRIBUENTE} {_infnfe.infAdic.infCpl}";
+            var _informacaoAdicionalFisco = $"{NFeResource.INF_FISCO} {_infnfe.infAdic.infAdFisco}";
 
             container.Column(col =>
             {
-                col.Item().Text("DADOS ADICIONAIS").SemiBold();
+                col.Item().Text(NFeResource.DADOS_ADICIONAIS).SemiBold();
                 col.Item().Row(row =>
                 {
-                    row.RelativeItem().AlignLeft().Border(DadoPadraoExtensoes.BORDA).Height(80).Width(280).Padding(DadoPadraoExtensoes.PADDING).Text(text =>
+                    row.ConstantItem(370).Border(DadoPadraoExtensoes.BORDA).AlignLeft().Height(80).Padding(DadoPadraoExtensoes.PADDING).Text(text =>
                     {
-                        text.Line("INFORMAÇÕES COMPLEMENTARES");
-                        text.Line($"{_informacaoAdicional} {_infnfe.infAdic.infAdFisco ?? _infnfe.infAdic.infCpl}\r\nValor Aproximado dos Tributos: {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
+                        text.Line(NFeResource.INFORMAÇÕES_COMPLEMENTARES);
+                        text.Line((!string.IsNullOrWhiteSpace(_informacaoAdicionalCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
+                        (!string.IsNullOrWhiteSpace(_informacaoAdicionalFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                     });
-                    row.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Height(80).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativo("RESERVADO AO FISCO", ""));
+                    row.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Height(80).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Padrao(NFeResource.RESERVADO_FISCO, NFeResource.NULL));
                 });
-                col.Item().Text("Documento impresso por MicroSales - www.microsales.com.br").FontSize(6).AlignRight().Italic();
+                col.Item().Text(NFeResource.MICROSALES_INFO).FontSize(6).AlignRight().Italic();
             });
         }
     }

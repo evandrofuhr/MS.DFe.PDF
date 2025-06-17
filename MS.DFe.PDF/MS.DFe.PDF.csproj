@@ -24,6 +24,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>NFCeResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\NFeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NFeResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +39,10 @@
     <EmbeddedResource Update="Resources\NFCeResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NFCeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\NFeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NFeResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

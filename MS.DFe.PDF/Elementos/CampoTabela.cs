@@ -9,48 +9,46 @@ namespace MS.DFe.PDF.Elementos
         private readonly string _text;
         private readonly EAlinhamento _alinhamento;
 
-
-        public CampoTabela(string text, EAlinhamento alinhamento = EAlinhamento.esquerda)
+        private CampoTabela(string text, EAlinhamento alinhamento)
         {
-            _text = text;
+            _text = text ?? string.Empty;
             _alinhamento = alinhamento;
         }
 
+        public static CampoTabela Codigo(string text) =>
+            new CampoTabela(text, EAlinhamento.centro);
+
+        public static CampoTabela Valor(string text) =>
+            new CampoTabela(text, EAlinhamento.direita);
+
+        public static CampoTabela Descricao(string text) =>
+            new CampoTabela(text, EAlinhamento.esquerda);
+
+        public static CampoTabela Padrao(string text, EAlinhamento alinhamento = EAlinhamento.esquerda) =>
+            new CampoTabela(text, alinhamento);
+
         public void Compose(IContainer container)
         {
-            container.
-                Column(column =>
-               {
-                   var _container = column.Item();
+            container.Column(column =>
+            {
+                var content = column.Item();
 
-                   if (_alinhamento == EAlinhamento.centro)
-                       _container = _container.AlignCenter();
-                   else if (_alinhamento == EAlinhamento.esquerda)
-                       _container = _container.AlignLeft();
-                   else if (_alinhamento == EAlinhamento.direita)
-                       _container = _container.AlignRight();
+                switch (_alinhamento)
+                {
+                    case EAlinhamento.centro:
+                        content = content.AlignCenter();
+                        break;
+                    case EAlinhamento.direita:
+                        content = content.AlignRight();
+                        break;
+                    case EAlinhamento.esquerda:
+                    default:
+                        content = content.AlignLeft();
+                        break;
+                }
 
-                   _container.Padding(1).Text(_text).FontSize(6).LineHeight(1);
-               });
-        }
-    }
-    public class CampoTabelaCodigo : CampoTabela
-    {
-        public CampoTabelaCodigo(string text) : base(text, EAlinhamento.centro)
-        {
-        }
-    }
-    public class CampoTabelaValor : CampoTabela
-    {
-        public CampoTabelaValor(string text) : base(text, EAlinhamento.direita)
-        {
-        }
-    }
-
-    public class CampoTabelaDescricao : CampoTabela
-    {
-        public CampoTabelaDescricao(string text) : base(text, EAlinhamento.esquerda)
-        {
+                content.Padding(1).Text(_text).FontSize(6).LineHeight(1);
+            });
         }
     }
 }

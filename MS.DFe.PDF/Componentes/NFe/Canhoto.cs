@@ -5,6 +5,7 @@ using NFe.Classes.Informacoes.Identificacao;
 using NFe.Classes.Informacoes.Total;
 using NFe.Classes.Informacoes.Emitente;
 using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Resources;
 
 namespace MS.DFe.PDF.Componentes.Nfe
 {
@@ -32,11 +33,11 @@ namespace MS.DFe.PDF.Componentes.Nfe
                     {
                         row.RelativeItem().Column(coll =>
                         {
-                            coll.Item().Height(26).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text($"Recebemos de {_emit.xNome} os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo.\r\nEmissão: {_ide.dhEmi.ToString("dd/MM/yyyy")} Valor Total: {_icmstot.vNF.ToString()} Destinatário: {_dest.xNome}").FontSize(7);
+                            coll.Item().Height(26).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text($"{NFeResource.RECEBEMOS} {_emit.xNome} {NFeResource.PRODUTOS_SERVICOS}\r\n{NFeResource.EMISSAO} {_ide.dhEmi.ToString("dd/MM/yyyy")} {NFeResource.VALOR_TOTAL} {NFeResource.CIFRAO} {_icmstot.vNF.ToString("N2")} {NFeResource.DESTINATARIO} {_dest.xNome}").FontSize(7);
                             coll.Item().Row(innerRow =>
                             {
-                                innerRow.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text("DATA DE RECEBIMENTO");
-                                innerRow.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text("IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR").AlignLeft().AlignStart().FontSize(7);
+                                innerRow.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.DATA_RECEBIMENTO);
+                                innerRow.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.IDENTIFICACAO_ASSINATURA_RECEBEDOR).AlignLeft().AlignStart();
                             }); ;
                         });
                         row.ConstantItem(90)
@@ -46,9 +47,9 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         .AlignCenter()
                         .Element(innerContainer => innerContainer.Column(innerCol =>
                         {
-                            innerCol.Item().AlignCenter().Text("NF-e").Bold().FontSize(14);
-                            innerCol.Item().AlignCenter().Text($"Nº {_ide.nNF.ToNumeroNfe()}").FontSize(12);
-                            innerCol.Item().AlignCenter().Text($"Série: {_ide.serie.ToString()}").FontSize(12);
+                            innerCol.Item().AlignCenter().Text(NFeResource.NFE).Bold().FontSize(14);
+                            innerCol.Item().AlignCenter().Text($"{NFeResource.NUMERO} {_ide.nNF.ToNumeroNfe()}").FontSize(12);
+                            innerCol.Item().AlignCenter().Text($"{NFeResource.SERIE} {_ide.serie.ToString()}").FontSize(12);
                         }));
 
                     });

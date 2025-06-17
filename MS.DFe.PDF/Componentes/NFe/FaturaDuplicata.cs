@@ -4,6 +4,7 @@ using NFe.Classes.Informacoes.Cobranca;
 using System.Linq;
 using System;
 using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Resources;
 
 namespace MS.DFe.PDF.Componentes.Nfe
 {
@@ -20,7 +21,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
         {
             container.Column(column =>
             {
-                column.Item().Padding(DadoPadraoExtensoes.PADDING).Text("FATURA / DUPLICATA").SemiBold();
+                column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.FATURA_DUPLICATA).SemiBold();
 
                 const int maxPorLinha = 14;
                 int total = _cobr.dup.Count;
@@ -38,7 +39,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         col.Item().Row(row =>
                         {
                             row.ConstantItem(37).BorderLeft(DadoPadraoExtensoes.BORDA).BorderTop(DadoPadraoExtensoes.BORDA)
-                                .Padding(DadoPadraoExtensoes.PADDING).Text("Número:").Bold();
+                                .Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.NUMERO_VALOR).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {
@@ -50,7 +51,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         col.Item().Row(row =>
                         {
                             row.ConstantItem(37).BorderLeft(DadoPadraoExtensoes.BORDA)
-                                .Padding(DadoPadraoExtensoes.PADDING).Text("Vencimento:").Bold();
+                                .Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.VENCIMENTO).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {
@@ -62,12 +63,12 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         col.Item().Row(row =>
                         {
                             row.ConstantItem(37).BorderBottom(DadoPadraoExtensoes.BORDA).BorderLeft(DadoPadraoExtensoes.BORDA)
-                                .Padding(DadoPadraoExtensoes.PADDING).Text("Valor:").Bold();
+                                .Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.VALOR).Bold();
 
-                            foreach (var item in duplicatasBloco)
-                            {
-                                row.ConstantItem(38.64f).BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).BorderBottom(DadoPadraoExtensoes.BORDA)
-                                    .Padding(2).AlignCenter().Text(item.vDup.ToString()).SemiBold();
+                        foreach (var item in duplicatasBloco)
+                        {
+                            row.ConstantItem(38.64f).BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).BorderBottom(DadoPadraoExtensoes.BORDA)
+                                .Padding(2).AlignCenter().Text($"{NFeResource.CIFRAO} {item.vDup.ToString("N2")}").SemiBold();
                             }
                         });
                     });

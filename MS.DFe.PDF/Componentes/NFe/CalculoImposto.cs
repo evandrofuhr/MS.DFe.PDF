@@ -3,7 +3,8 @@ using QuestPDF.Infrastructure;
 using NFe.Classes.Informacoes.Total;
 using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Elementos;
-
+using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
 
 namespace MS.DFe.PDF.Componentes.Nfe
 {
@@ -22,32 +23,32 @@ namespace MS.DFe.PDF.Componentes.Nfe
             container.Column(
                 column =>
                 {
-                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text("CALCULO DE IMPOSTO").SemiBold();
+                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.CALCULO_IMPOSTO).SemiBold();
 
                     column.Item().Row(col =>
                     {
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("BASE DE CÁLC. DO ICMS", _icmsTot.vBC.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO ICMS", _icmsTot.vICMS.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("BASE DE CÁLC. ICMS S.T", _icmsTot.vBCST.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO ICMS SUBST.", _icmsTot.vST.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("V. IMP. IMPORTAÇÃO", _icmsTot.vII.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("V. ICMS UF REMET", _icmsTot.vICMSUFRemet.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO FCP", _icmsTot.vFCP.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO PIS", _icmsTot.vPIS.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("V. TOTAL PRODUTOS", _icmsTot.vProd.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.BASE_CALCULO_ICMS, _icmsTot.vBC.ToString("N2")));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_ICMS, _icmsTot.vICMS.ToString("N2")));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.BASE_CALCULO_ICMS_ST, _icmsTot.vBCST.ToString("N2")));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_ICMS_SUBST, _icmsTot.vST.ToString("N2")));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.V_IMP_IMPORTAÇÃO, _icmsTot.vII.ToString("N2")));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.V_ICMS_UF_REMET, _icmsTot.vICMSUFRemet.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_FCP, _icmsTot.vFCP.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_PIS, _icmsTot.vPIS.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.V_TOTAL_PRODUTOS, _icmsTot.vProd.ToString("N2")));
                     });
 
                     column.Item().Row(col =>
                     {
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO FRETE", _icmsTot.vFrete.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO SEGURO", _icmsTot.vSeg.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("DESCONTO", _icmsTot.vDesc.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("OUTRAS DESPESAS", _icmsTot.vOutro.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR IPI", _icmsTot.vIPI.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("V. ICMS UF DEST", _icmsTot.vICMSUFDest.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("V. TOT. TRIB.", _icmsTot.vTotTrib.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR DO COFINS", _icmsTot.vCOFINS.ToString()));
-                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(new CampoInformativoValor("VALOR TOTAL DA NOTA", _icmsTot.vNF.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_FRETE, _icmsTot.vFrete.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_SEGURO, _icmsTot.vSeg.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.DESCONTO, _icmsTot.vDesc.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.OUTRAS_DESPESAS, _icmsTot.vOutro.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_IPI, _icmsTot.vIPI.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.V_ICMS_UF_DEST, _icmsTot.vICMSUFDest.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.V_TOT_TRIB, _icmsTot.vTotTrib.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_COFINS, _icmsTot.vCOFINS.ToString()));
+                        col.RelativeItem().Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Valor(NFeResource.VALOR_TOTAL_NOTA, _icmsTot.vNF.ToString("N2")));
                     });
                 }
             );

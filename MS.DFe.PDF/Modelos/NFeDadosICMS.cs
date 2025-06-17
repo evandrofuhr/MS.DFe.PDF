@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace MS.DFe.PDF.Modelos
 {
-    class DadosICMS
+    public class DadosICMS
     {
         public int Origem { get; set; }
         public string CST { get; set; }
