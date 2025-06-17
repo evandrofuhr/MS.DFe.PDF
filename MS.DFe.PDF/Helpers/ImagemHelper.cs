@@ -1,8 +1,5 @@
 ﻿using MS.DFe.PDF.Modelos;
 using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MS.DFe.PDF.Helpers
 {

@@ -114,10 +114,5 @@ namespace MS.DFe.PDF.Extensoes
         {
             return value.ToString(@"000\.000\.000");
         }
-
-        public static string ToChaveNfe(this string value)
-        {
-            return Regex.Replace(value.SomenteNumeros(), ".{4}", "$0 ").TrimEnd();
-        }
     }
 }

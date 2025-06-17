@@ -157,7 +157,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                     row.RelativeItem(5).Column(innerRow =>
                     {
                         innerRow.Item().Height(60).Border(DadoPadraoExtensoes.BORDA).AlignCenter().Padding(3).Image(CodigoDeBarrasHelper.GerarCodigoDeBarras(_chaveDeAcesso));
-                        innerRow.Item().Height(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.CHAVE_ACESSO, _chaveDeAcesso.ToChaveNfe()));
+                        innerRow.Item().Height(15).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Component(CampoInformativo.Codigo(NFeResource.CHAVE_ACESSO, _chaveDeAcesso.FormataChaveNFe()));
                         innerRow.Item().Height(17).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text($"{NFeResource.CONSULTA_AUTENTICIDADE}\r\n{NFeResource.URL_NFE}").AlignCenter().Bold();
                     });
                 });
