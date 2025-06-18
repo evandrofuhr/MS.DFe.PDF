@@ -69,78 +69,95 @@ while (true)
 
 }
 
-string? _xml = null;
-while (string.IsNullOrEmpty(_xml))
+string? _xmlPath = null;
+while (string.IsNullOrEmpty(_xmlPath))
 {
-    Console.WriteLine("Informe o caminho para o xml processado da NFC-e");
-    _xml = Console.ReadLine();
-    if (!File.Exists(_xml))
+    Console.WriteLine($"Informe o caminho para o xml processado da {(_escolha == 1 ? "NF-e" : "NFC-e")}:");
+    _xmlPath = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(_xmlPath))
+        _xmlPath = "c:/temp/43250142404799000121550000000002121903625971-proc-nfe.xml";
+
+    if (!File.Exists(_xmlPath))
     {
         Console.Clear();
         Console.WriteLine("Arquivo não encontrado.");
-        _xml = null;
+        _xmlPath = null;
     }
 }
 
-string _caminhoImg = null;
-while (_caminhoImg == null)
-{
-    Console.WriteLine("Informe o caminho para o logo processado da NFC-e");
-    _caminhoImg = Console.ReadLine();
-    if (!File.Exists(_caminhoImg))
-    {
-        Console.Clear();
-        Console.WriteLine("Arquivo não encontrado.");
-        _caminhoImg = null;
-    }
-}
-
-byte[] _logoBytes = null;
-_logoBytes = File.ReadAllBytes(_caminhoImg);
-
-NFe.Classes.NFe? _nfe = null;
-nfeProc? _nfeProc = null;
-
-try
-{
-    _nfeProc = FuncoesXml.ArquivoXmlParaClasse<nfeProc>(_xml);
-    _nfe = _nfeProc.NFe;
-}
-catch
-{
-    _nfe = FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(_xml);
-}
-
-if (_nfe == null)
-{
-    Console.WriteLine("Não foi possível converter o arquivo XML.");
-    return;
-}
-
-if (_nfe.infNFe.ide.mod != ModeloDocumento.NFCe && _escolha == 2)
-{
-    Console.WriteLine("O modelo de documento deve ser NFC-e");
-    Console.ReadLine();
-    return;
-}
-else if (_nfe.infNFe.ide.mod != ModeloDocumento.NFe && _escolha == 1)
-{
-    Console.WriteLine("O modelo de documento deve ser NF-e");
-    Console.ReadLine();
-    return;
-}
+byte[]? _logoBytes = null;
 
 if (_escolha == 1)
 {
-    QuestPDF.Settings.License = LicenseType.Community;
+    string? _logoPath = null;
+    while (_logoPath == null)
+    {
+        Console.WriteLine("Informe o caminho para o logo (0 para sair):");
+        _logoPath = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(_logoPath))
+            _logoPath = "c:/temp/test.png";
+
+        if (string.IsNullOrEmpty(_logoPath))
+        {
+            Console.Clear();
+            Console.WriteLine("Caminho inválido.");
+            continue;
+        }
+        if (_logoPath.Trim().Equals("0"))
+        {
+            _logoPath = null;
+            break;
+        }
+        if (!File.Exists(_logoPath))
+        {
+            Console.Clear();
+            Console.WriteLine("Arquivo não encontrado.");
+            _logoPath = null;
+        }
+    }
+
+    if (!string.IsNullOrEmpty(_logoPath))
+        _logoBytes = File.ReadAllBytes(_logoPath);
+}
 
 
-    var pdf = new NFeLeiaute(_logoBytes, _xml);
+if (_escolha == 1)
+{
+    var _xml = File.ReadAllText(_xmlPath);
+    var pdf = new NFeLeiaute(_xml, _logoBytes);
     pdf.ShowInCompanion();
 }
 
 if (_escolha == 2)
 {
+    NFe.Classes.NFe? _nfe = null;
+    nfeProc? _nfeProc = null;
+
+    try
+    {
+        _nfeProc = FuncoesXml.ArquivoXmlParaClasse<nfeProc>(_xmlPath);
+        _nfe = _nfeProc.NFe;
+    }
+    catch
+    {
+        _nfe = FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(_xmlPath);
+    }
+
+    if (_nfe == null)
+    {
+        Console.WriteLine("Não foi possível converter o arquivo XML.");
+        return;
+    }
+
+    if (_nfe.infNFe.ide.mod != ModeloDocumento.NFCe && _escolha == 2)
+    {
+        Console.WriteLine("O modelo de documento deve ser NFC-e");
+        Console.ReadLine();
+        return;
+    }
+
     var _pags = new List<DFeDadosPagamento>();
     var _troco = _nfeProc.NFe.infNFe.pag.Sum(s => s.vTroco ?? 0m);
     foreach (var _pag in _nfeProc.NFe.infNFe.pag.SelectMany(s => s.detPag))
@@ -209,7 +226,7 @@ if (_escolha == 2)
 
     var _pdf = _nfce.Gerar();
 
-    var _fileInfo = new FileInfo(_xml);
+    var _fileInfo = new FileInfo(_xmlPath);
     var _novoNome = $"{_fileInfo.Name}_{DateTime.Now.ToString("yyyyMMdd")}.pdf";
     var _output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
 

@@ -1,6 +1,9 @@
-﻿using MS.DFe.PDF.Modelos;
+﻿using DocumentFormat.OpenXml.Drawing;
+using DocumentFormat.OpenXml.Math;
+using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Destinatario;
+using NFe.Classes.Informacoes.Emitente;
 using System;
 using System.Text.RegularExpressions;
 
@@ -51,6 +54,21 @@ namespace MS.DFe.PDF.Extensoes
             if (!string.IsNullOrEmpty(value.xCpl))
                 _value += $" - {value.xCpl}";
             return _value;
+        }
+
+        public static string ToEndereco1 (this enderEmit value)
+        {
+
+            var _value = $"{value.xLgr}, {value.nro}";
+            if (!string.IsNullOrEmpty(value.xCpl))
+                _value += $", {value.xCpl}";
+            _value += $", {value.xBairro}";
+            return _value;
+        }
+
+        public static string ToEndereco2(this enderEmit value)
+        {
+            return $"{NFeResource.CEP}: {value.CEP.ToCep()} - {value.xMun} - {value.UF}";
         }
 
 

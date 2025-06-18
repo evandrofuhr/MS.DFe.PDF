@@ -1,9 +1,9 @@
 ﻿using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using NFe.Classes.Protocolo;
+using MS.DFe.PDF.Componentes.Nfe;
 
-
-namespace MS.DFe.PDF.Componentes.Nfe
+namespace MS.DFe.PDF.Componentes.NF_e
 {
     public class Cabecalho : IComponent
     {

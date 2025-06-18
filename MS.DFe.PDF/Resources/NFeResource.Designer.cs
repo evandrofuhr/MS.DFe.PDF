@@ -115,6 +115,24 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recebemos de {0} os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo..
+        /// </summary>
+        internal static string CANHOTO1 {
+            get {
+                return ResourceManager.GetString("CANHOTO1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emissão: {0} Valor Total: R$ {1} Destinatário: {2}.
+        /// </summary>
+        internal static string CANHOTO2 {
+            get {
+                return ResourceManager.GetString("CANHOTO2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CEP.
         /// </summary>
         internal static string CEP {
@@ -277,7 +295,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Destinatártio:.
+        ///   Looks up a localized string similar to Destinatário:.
         /// </summary>
         internal static string DESTINATARIO {
             get {
@@ -372,6 +390,15 @@ namespace MS.DFe.PDF.Resources {
         internal static string FRETE {
             get {
                 return ResourceManager.GetString("FRETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HOMOLOGAÇÃO.
+        /// </summary>
+        internal static string HOMOLOGACAO {
+            get {
+                return ResourceManager.GetString("HOMOLOGACAO", resourceCulture);
             }
         }
         
@@ -538,7 +565,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nº.:.
+        ///   Looks up a localized string similar to Nº.
         /// </summary>
         internal static string NUMERO {
             get {
@@ -601,6 +628,15 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PRÉ-VISUALIZAÇÃO.
+        /// </summary>
+        internal static string PRE_VISUALIZACAO {
+            get {
+                return ResourceManager.GetString("PRE_VISUALIZACAO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo..
         /// </summary>
         internal static string PRODUTOS_SERVICOS {
@@ -642,15 +678,6 @@ namespace MS.DFe.PDF.Resources {
         internal static string RAZAO_SOCIAL {
             get {
                 return ResourceManager.GetString("RAZAO_SOCIAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recebemos de.
-        /// </summary>
-        internal static string RECEBEMOS {
-            get {
-                return ResourceManager.GetString("RECEBEMOS", resourceCulture);
             }
         }
         

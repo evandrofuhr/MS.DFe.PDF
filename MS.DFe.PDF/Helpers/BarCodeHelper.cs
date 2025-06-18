@@ -1,25 +1,17 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using ZXing;
+using ZXing.Common;
 using ZXing.QrCode;
-using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
-namespace MS.DFe.PDF.Componentes.NFCe
+namespace MS.DFe.PDF.Helpers
 {
-    internal class QrCode : IComponent
+    public static class BarCodeHelper
     {
-        private readonly string _qrCode;
-
-        public QrCode(string qrCode)
-        {
-            _qrCode = qrCode;
-        }
-
-        public void Compose(IContainer container)
+        public static byte[] QrCode(string value)
         {
             var _writer = new BarcodeWriterPixelData
             {
@@ -31,7 +23,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                     Margin = 0
                 }
             };
-            var _pixelData = _writer.Write(_qrCode);
+            var _pixelData = _writer.Write(value);
 
             byte[] _byteArray = null;
 
@@ -61,8 +53,47 @@ namespace MS.DFe.PDF.Componentes.NFCe
                     _byteArray = _ms.ToArray();
                 }
             }
+            return _byteArray;
+        }
 
-            container.AlignCenter().Width(130).Image(_byteArray, ImageScaling.FitWidth);
+        public static byte[] Barcode128(string value)
+        {
+            int larguraMinimaPorCaracter = 20;
+            int largura = Math.Max(100, value.Length * larguraMinimaPorCaracter);
+
+            var writer = new BarcodeWriterPixelData
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new EncodingOptions
+                {
+                    Width = largura,
+                    Height = 202,
+                    Margin = 2,
+                    PureBarcode = true
+                }
+            };
+
+            var pixelData = writer.Write(value);
+
+            var bitmap = new Bitmap(pixelData.Width, pixelData.Height, PixelFormat.Format32bppRgb);
+
+            var bmpData = bitmap.LockBits(
+                new Rectangle(0, 0, pixelData.Width, pixelData.Height),
+                ImageLockMode.WriteOnly,
+                PixelFormat.Format32bppRgb);
+
+            try
+            {
+                Marshal.Copy(pixelData.Pixels, 0, bmpData.Scan0, pixelData.Pixels.Length);
+            }
+            finally
+            {
+                bitmap.UnlockBits(bmpData);
+            }
+
+            var ms = new MemoryStream();
+            bitmap.Save(ms, ImageFormat.Png);
+            return ms.ToArray();
         }
     }
 }

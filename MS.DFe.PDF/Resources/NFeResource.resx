@@ -163,7 +163,7 @@
     <value>DESCONTO</value>
   </data>
   <data name="DESTINATARIO" xml:space="preserve">
-    <value>Destinatártio:</value>
+    <value>Destinatário:</value>
   </data>
   <data name="DESTINATARIO_REMETENTE" xml:space="preserve">
     <value>DESTINATARIO / REMETENTE</value>
@@ -211,7 +211,7 @@
     <value>NF-e</value>
   </data>
   <data name="NUMERO" xml:space="preserve">
-    <value>Nº.:</value>
+    <value>Nº</value>
   </data>
   <data name="O_CSOSN" xml:space="preserve">
     <value>O/CSOSN</value>
@@ -228,8 +228,8 @@
   <data name="RAZAO_SOCIAL" xml:space="preserve">
     <value>RAZÃO SOCIAL</value>
   </data>
-  <data name="RECEBEMOS" xml:space="preserve">
-    <value>Recebemos de</value>
+  <data name="CANHOTO1" xml:space="preserve">
+    <value>Recebemos de {0} os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo.</value>
   </data>
   <data name="SAIDA" xml:space="preserve">
     <value>1 - SAÍDA</value>
@@ -401,5 +401,14 @@
   </data>
   <data name="IDENTIFICACAO_EMITENTE" xml:space="preserve">
     <value>IDENTIFICAÇÃO DO EMITENTE</value>
+  </data>
+  <data name="PRE_VISUALIZACAO" xml:space="preserve">
+    <value>PRÉ-VISUALIZAÇÃO</value>
+  </data>
+  <data name="HOMOLOGACAO" xml:space="preserve">
+    <value>HOMOLOGAÇÃO</value>
+  </data>
+  <data name="CANHOTO2" xml:space="preserve">
+    <value>Emissão: {0} Valor Total: R$ {1} Destinatário: {2}</value>
   </data>
 </root>
