@@ -97,7 +97,7 @@ if (_escolha == 1)
         _logoPath = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(_logoPath))
-            _logoPath = "c:/temp/test.png";
+            _logoPath = "c:/temp/logo80.png";
 
         if (string.IsNullOrEmpty(_logoPath))
         {
@@ -127,6 +127,10 @@ if (_escolha == 1)
 {
     var _xml = File.ReadAllText(_xmlPath);
     var pdf = new NFeLeiaute(_xml, _logoBytes);
+
+    //pdf.AdicionarLogoSoftwareHouse(_logoBytes);
+
+
     pdf.ShowInCompanion();
 }
 

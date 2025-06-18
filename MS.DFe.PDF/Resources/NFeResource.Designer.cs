@@ -207,9 +207,18 @@ namespace MS.DFe.PDF.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Consulta de autenticidade no portal nacional da NF-e.
         /// </summary>
-        internal static string CONSULTA_AUTENTICIDADE {
+        internal static string CONSULTA1 {
             get {
-                return ResourceManager.GetString("CONSULTA_AUTENTICIDADE", resourceCulture);
+                return ResourceManager.GetString("CONSULTA1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  ou no site da Sefaz Autorizadora.
+        /// </summary>
+        internal static string CONSULTA2 {
+            get {
+                return ResourceManager.GetString("CONSULTA2", resourceCulture);
             }
         }
         
@@ -313,7 +322,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Documento Auxiliar da \r\nNota Fiscal Eletrônica.
+        ///   Looks up a localized string similar to Documento Auxiliar da Nota Fiscal Eletrônica.
         /// </summary>
         internal static string DOCUMENTO_AUXILIAR {
             get {
@@ -511,7 +520,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Município.
+        ///   Looks up a localized string similar to MUNICÍPIO.
         /// </summary>
         internal static string MUNICIPIO {
             get {
@@ -754,7 +763,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to www.nfe.fazenda.gov.br/portal ou no site da Sefaz Autorizadora.
+        ///   Looks up a localized string similar to www.nfe.fazenda.gov.br/portal.
         /// </summary>
         internal static string URL_NFE {
             get {

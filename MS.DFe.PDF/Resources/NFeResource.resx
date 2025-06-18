@@ -141,7 +141,7 @@
   <data name="CNPJ_CPF" xml:space="preserve">
     <value>CNPJ / CPF</value>
   </data>
-  <data name="CONSULTA_AUTENTICIDADE" xml:space="preserve">
+  <data name="CONSULTA1" xml:space="preserve">
     <value>Consulta de autenticidade no portal nacional da NF-e</value>
   </data>
   <data name="CST" xml:space="preserve">
@@ -169,7 +169,7 @@
     <value>DESTINATARIO / REMETENTE</value>
   </data>
   <data name="DOCUMENTO_AUXILIAR" xml:space="preserve">
-    <value>Documento Auxiliar da \r\nNota Fiscal Eletrônica</value>
+    <value>Documento Auxiliar da Nota Fiscal Eletrônica</value>
   </data>
   <data name="EMISSAO" xml:space="preserve">
     <value>Emissão:</value>
@@ -202,7 +202,7 @@
     <value>INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO</value>
   </data>
   <data name="MUNICIPIO" xml:space="preserve">
-    <value>Município</value>
+    <value>MUNICÍPIO</value>
   </data>
   <data name="NATUREZA_OPERACAO" xml:space="preserve">
     <value>NATUREZA DA OPERAÇÃO</value>
@@ -241,7 +241,7 @@
     <value>UF</value>
   </data>
   <data name="URL_NFE" xml:space="preserve">
-    <value>www.nfe.fazenda.gov.br/portal ou no site da Sefaz Autorizadora</value>
+    <value>www.nfe.fazenda.gov.br/portal</value>
   </data>
   <data name="VALOR_INF" xml:space="preserve">
     <value>Valor:</value>
@@ -410,5 +410,8 @@
   </data>
   <data name="CANHOTO2" xml:space="preserve">
     <value>Emissão: {0} Valor Total: R$ {1} Destinatário: {2}</value>
+  </data>
+  <data name="CONSULTA2" xml:space="preserve">
+    <value> ou no site da Sefaz Autorizadora</value>
   </data>
 </root>

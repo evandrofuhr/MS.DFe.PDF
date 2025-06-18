@@ -10,6 +10,11 @@ namespace MS.DFe.PDF.Extensoes
             return valor.ToString("#,##0.00", bz);
         }
 
+        public static string Formata(this int valor)
+        {
+            return valor.ToString();
+        }
+
         public static string FormataNumero(this long valor) => valor.ToString().PadLeft(9, '0');
 
         public static string FormataSerie(this int valor) => valor.ToString().PadLeft(3, '0');

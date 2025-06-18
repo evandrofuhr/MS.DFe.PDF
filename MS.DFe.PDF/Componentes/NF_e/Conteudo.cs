@@ -1,18 +1,14 @@
-﻿using QuestPDF.Fluent;
+﻿using MS.DFe.PDF.Componentes.Nfe;
+using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using NFe.Classes.Protocolo;
-using NFe.Classes.Informacoes.Identificacao;
-using NFe.Classes.Informacoes.Emitente;
-using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Elementos;
 
-namespace MS.DFe.PDF.Componentes.Nfe
+namespace MS.DFe.PDF.Componentes.NF_e
 {
-    public class ConteudoNFe : IComponent
+    public class Conteudo : IComponent
     {
         private readonly NFe.Classes.NFe _nfe;
 
-        public ConteudoNFe(NFe.Classes.NFe nfe)
+        public Conteudo(NFe.Classes.NFe nfe)
         {
             _nfe = nfe;
         }

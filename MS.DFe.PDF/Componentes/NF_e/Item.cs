@@ -14,7 +14,7 @@ using MS.DFe.PDF.Resources;
 
 
 
-namespace MS.DFe.PDF.Componentes.Nfe
+namespace MS.DFe.PDF.Componentes.NF_e
 {
     public class Item : IComponent
     {

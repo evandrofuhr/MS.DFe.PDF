@@ -1,22 +1,24 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
+﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Destinatario;
+using NFe.Classes.Informacoes.Emitente;
 using NFe.Classes.Informacoes.Identificacao;
 using NFe.Classes.Informacoes.Total;
-using NFe.Classes.Informacoes.Emitente;
-using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Resources;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System.Drawing;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {
-    public class Canhoto : IComponent
+    public class CabecalhoCanhoto : IComponent
     {
         private readonly ide _ide;
         private readonly emit _emit;
         private readonly ICMSTot _icmstot;
         private readonly dest _dest;
 
-        public Canhoto(ide ide, emit emit, ICMSTot icmstot, dest dest)
+        public CabecalhoCanhoto(ide ide, emit emit, ICMSTot icmstot, dest dest)
         {
             _ide = ide;
             _emit = emit;
@@ -41,8 +43,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container.Row(
                 row =>
                 {
-                    row.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.DATA_RECEBIMENTO);
-                    row.ConstantItem(244).Height(25).Border(DadoPadraoExtensoes.BORDA).Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.IDENTIFICACAO_ASSINATURA_RECEBEDOR);
+                    row.RelativeItem().PadraoInformacao(NFeResource.DATA_RECEBIMENTO, string.Empty);
+                    row.RelativeItem().PadraoInformacao(NFeResource.IDENTIFICACAO_ASSINATURA_RECEBEDOR, string.Empty);
                 }
            );
         }
@@ -53,12 +55,11 @@ namespace MS.DFe.PDF.Componentes.NF_e
                 row =>
                 {
                     row.RelativeItem().Column(
-                         coll =>
+                         column =>
                          {
-                             coll.Item()
-                                .Height(26)
+                             column.Item()
                                 .Border(DadoPadraoExtensoes.BORDA)
-                                .Padding(DadoPadraoExtensoes.PADDING)
+                                .Padding(5f)
                                 .Text(
                                     text =>
                                     {
@@ -81,7 +82,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                     }
                                 );
 
-                             coll.Item().Element(ComposeRecebimento);
+                             column.Item().ExtendVertical().Element(ComposeRecebimento);
                          }
                     );
                     row.ConstantItem(90)
@@ -100,8 +101,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container.Column(
                 column =>
                 {
-                    column.Item().Element(ComposeRow);
-                    column.Item().PaddingVertical(7).LineHorizontal(DadoPadraoExtensoes.BORDA);
+                    column.Item().Height(48).Element(ComposeRow);
+                    column.Item().PaddingVertical(4).LineHorizontal(DadoPadraoExtensoes.BORDA);
                 }
             );
         }

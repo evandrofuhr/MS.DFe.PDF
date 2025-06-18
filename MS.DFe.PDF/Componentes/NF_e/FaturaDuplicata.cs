@@ -21,7 +21,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
         {
             container.Column(column =>
             {
-                column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.FATURA_DUPLICATA).SemiBold();
+                column.Item().PadraoLabelGrupo(NFeResource.FATURA_DUPLICATA);
 
                 const int maxPorLinha = 14;
                 int total = _cobr.dup.Count;

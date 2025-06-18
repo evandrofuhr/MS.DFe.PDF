@@ -8,6 +8,6 @@ namespace MS.DFe.PDF.Extensoes
     {
 
             public const float BORDA = 0.5f;
-            public const float PADDING = 1f;
+            public const float PADDING = 2f;
     }
 }
