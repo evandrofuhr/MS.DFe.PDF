@@ -202,7 +202,7 @@
     <value>INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO</value>
   </data>
   <data name="MUNICIPIO" xml:space="preserve">
-    <value>Municipio</value>
+    <value>Município</value>
   </data>
   <data name="NATUREZA_OPERACAO" xml:space="preserve">
     <value>NATUREZA DA OPERAÇÃO</value>
@@ -211,7 +211,7 @@
     <value>NF-e</value>
   </data>
   <data name="NUMERO" xml:space="preserve">
-    <value>Nº</value>
+    <value>Nº.:</value>
   </data>
   <data name="O_CSOSN" xml:space="preserve">
     <value>O/CSOSN</value>

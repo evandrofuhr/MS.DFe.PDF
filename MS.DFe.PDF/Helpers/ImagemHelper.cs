@@ -5,7 +5,7 @@ namespace MS.DFe.PDF.Helpers
 {
     public static class ImagemHelper
     {
-        public static ETipoImg ObterTipoImagem(byte[] imagemBytes)
+        public static ETipoImg TipoImagem(byte[] imagemBytes)
         {
             if (imagemBytes == null || imagemBytes.Length.Equals(0)) return ETipoImg.SemImagem;
 

@@ -484,7 +484,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Municipio.
+        ///   Looks up a localized string similar to Município.
         /// </summary>
         internal static string MUNICIPIO {
             get {
@@ -538,7 +538,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nº.
+        ///   Looks up a localized string similar to Nº.:.
         /// </summary>
         internal static string NUMERO {
             get {

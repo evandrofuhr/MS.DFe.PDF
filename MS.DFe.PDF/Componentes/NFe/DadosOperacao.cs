@@ -41,7 +41,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                 var _complemento = "";
                 if (_emit.enderEmit.xBairro != null) _complemento = $" - {_emit.enderEmit.xCpl}";
 
-                var _tipoImg = ImagemHelper.ObterTipoImagem(_logo);
+                var _tipoImg = ImagemHelper.TipoImagem(_logo);
 
                 col.Item().Row(row =>
                 {

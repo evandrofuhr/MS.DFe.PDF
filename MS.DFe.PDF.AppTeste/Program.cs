@@ -82,6 +82,22 @@ while (string.IsNullOrEmpty(_xml))
     }
 }
 
+string _caminhoImg = null;
+while (_caminhoImg == null)
+{
+    Console.WriteLine("Informe o caminho para o logo processado da NFC-e");
+    _caminhoImg = Console.ReadLine();
+    if (!File.Exists(_caminhoImg))
+    {
+        Console.Clear();
+        Console.WriteLine("Arquivo não encontrado.");
+        _caminhoImg = null;
+    }
+}
+
+byte[] _logoBytes = null;
+_logoBytes = File.ReadAllBytes(_caminhoImg);
+
 NFe.Classes.NFe? _nfe = null;
 nfeProc? _nfeProc = null;
 
@@ -118,13 +134,6 @@ if (_escolha == 1)
 {
     QuestPDF.Settings.License = LicenseType.Community;
 
-    
-
-    byte[] _logoBytes = null;
-
-    var caminho = @"D:\projetos\Testes\geradorPdfs\bruh.png";
-    if (File.Exists(caminho))
-        _logoBytes = File.ReadAllBytes(caminho);
 
     var pdf = new NFeLeiaute(_logoBytes, _xml);
     pdf.ShowInCompanion();
