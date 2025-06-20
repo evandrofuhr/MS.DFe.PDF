@@ -79,7 +79,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                 .Border(DadoPadraoExtensoes.BORDA)
                                 .Height(80)
                                 .Padding(DadoPadraoExtensoes.PADDING)
-                                .Component(CampoInformativo.Padrao(NFeResource.RESERVADO_FISCO, NFeResource.NULL));
+                                .Component(CampoInformativo.Padrao(NFeResource.RESERVADO_FISCO, string.Empty));
                         }
                     );
                     column.Item().Element(ComposeSoftwareHouse);

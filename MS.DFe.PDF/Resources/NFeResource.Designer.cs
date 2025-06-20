@@ -556,15 +556,6 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string NULL {
-            get {
-                return ResourceManager.GetString("NULL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to NUMERAÇÃO.
         /// </summary>
         internal static string NUMERACAO {
@@ -792,9 +783,9 @@ namespace MS.DFe.PDF.Resources {
         /// <summary>
         ///   Looks up a localized string similar to V. IMP. IMPORTAÇÃO.
         /// </summary>
-        internal static string V_IMP_IMPORTAÇÃO {
+        internal static string V_IMP_IMPORTACAO {
             get {
-                return ResourceManager.GetString("V_IMP_IMPORTAÇÃO", resourceCulture);
+                return ResourceManager.GetString("V_IMP_IMPORTACAO", resourceCulture);
             }
         }
         

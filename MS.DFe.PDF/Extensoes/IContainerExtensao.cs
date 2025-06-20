@@ -1,5 +1,4 @@
 ﻿using MS.DFe.PDF.Elementos;
-using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System;

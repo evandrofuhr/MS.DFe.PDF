@@ -1,13 +1,8 @@
 ﻿using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes.Detalhe;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
 using NFe.Classes.Informacoes.Transporte;
 using System.Linq;
-using System;
 using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Elementos;
-using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using System.Collections.Generic;
 

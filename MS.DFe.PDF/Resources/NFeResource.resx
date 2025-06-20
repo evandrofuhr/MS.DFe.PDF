@@ -288,7 +288,7 @@
   <data name="V_ICMS_UF_REMET" xml:space="preserve">
     <value>V. ICMS UF REMET</value>
   </data>
-  <data name="V_IMP_IMPORTAÇÃO" xml:space="preserve">
+  <data name="V_IMP_IMPORTACAO" xml:space="preserve">
     <value>V. IMP. IMPORTAÇÃO</value>
   </data>
   <data name="V_TOTAL_PRODUTOS" xml:space="preserve">
@@ -359,9 +359,6 @@
   </data>
   <data name="INF_CONTRIBUENTE" xml:space="preserve">
     <value>Inf. Contribuente:</value>
-  </data>
-  <data name="NULL" xml:space="preserve">
-    <value />
   </data>
   <data name="MICROSALES_INFO" xml:space="preserve">
     <value>Documento impresso por MicroSales - www.microsales.com.br</value>

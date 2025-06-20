@@ -30,7 +30,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             row.RelativeItem().PadraoInformacao(NFeResource.VALOR_ICMS, _icmsTot.vICMS);
                             row.RelativeItem().PadraoInformacao(NFeResource.BASE_CALCULO_ICMS_ST, _icmsTot.vBCST);
                             row.RelativeItem().PadraoInformacao(NFeResource.VALOR_ICMS_SUBST, _icmsTot.vST);
-                            row.RelativeItem().PadraoInformacao(NFeResource.V_IMP_IMPORTAÇÃO, _icmsTot.vII);
+                            row.RelativeItem().PadraoInformacao(NFeResource.V_IMP_IMPORTACAO, _icmsTot.vII);
                             row.RelativeItem().PadraoInformacao(NFeResource.V_ICMS_UF_REMET, _icmsTot.vICMSUFRemet);
                             row.RelativeItem().PadraoInformacao(NFeResource.VALOR_FCP, _icmsTot.vFCP);
                             row.RelativeItem().PadraoInformacao(NFeResource.VALOR_PIS, _icmsTot.vPIS);
