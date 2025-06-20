@@ -1,6 +1,7 @@
 ﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Emitente;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace MS.DFe.PDF.Componentes.NFCe
     {
         private readonly decimal _vTotTrib;
         private readonly DFeDadosComprovante _comprovante;
-        private readonly DFeDadosEmitente _emit;
+        private readonly emit _emit;
 
-        public Rodape(decimal vTotTrib, DFeDadosComprovante comprovante, DFeDadosEmitente emit)
+        public Rodape(decimal vTotTrib, DFeDadosComprovante comprovante, emit emit)
         {
             _vTotTrib = vTotTrib;
             _comprovante = comprovante;

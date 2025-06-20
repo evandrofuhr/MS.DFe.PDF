@@ -1,6 +1,7 @@
 ﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Emitente;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
@@ -8,8 +9,8 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Cabecalho : IComponent
     {
-        private readonly DFeDadosEmitente _emit;
-        public Cabecalho(DFeDadosEmitente emit)
+        private readonly emit _emit;
+        public Cabecalho(emit emit)
         {
             _emit = emit;
         }

@@ -76,7 +76,7 @@ while (string.IsNullOrEmpty(_xmlPath))
     _xmlPath = Console.ReadLine();
 
     if (string.IsNullOrWhiteSpace(_xmlPath))
-        _xmlPath = "c:/temp/tt.xml";
+        _xmlPath = "c:/temp/nfc.xml";
 
     if (!File.Exists(_xmlPath))
     {
@@ -168,65 +168,10 @@ if (_escolha == 2)
     {
         _pags.Add(new DFeDadosPagamento(_troco, (int)_pag.tPag, _pag.vPag));
     }
-
-    var _nfce = new NFCeLeiaute(
-        new DFeDados(
-            new DFeDadosEmitente(
-                _nfeProc.NFe.infNFe.emit.xNome,
-                _nfeProc.NFe.infNFe.emit.CNPJ,
-                _nfeProc.NFe.infNFe.emit.enderEmit.xLgr,
-                _nfeProc.NFe.infNFe.emit.enderEmit.nro,
-                _nfeProc.NFe.infNFe.emit.enderEmit.xBairro,
-                _nfeProc.NFe.infNFe.emit.enderEmit.xMun,
-                _nfeProc.NFe.infNFe.emit.enderEmit.UF.ToString()
-            ),
-            _nfeProc.NFe.infNFe.det.Select(
-                s => new DFeDadosItem(
-                    s.prod.cProd,
-                    s.prod.xProd,
-                    s.prod.qCom,
-                    s.prod.uCom,
-                    s.prod.vUnCom,
-                    s.prod.vProd
-                )
-            ),
-            new DFeDadosTotal(
-                _nfeProc.NFe.infNFe.total.ICMSTot.vProd,
-                _nfeProc.NFe.infNFe.total.ICMSTot.vDesc,
-                _nfeProc.NFe.infNFe.total.ICMSTot.vFrete,
-                _nfeProc.NFe.infNFe.total.ICMSTot.vOutro,
-                _nfeProc.NFe.infNFe.total.ICMSTot.vSeg,
-                _nfeProc.NFe.infNFe.total.ICMSTot.vNF
-            ),
-            _pags,
-            new DFeDadosConsumidor(
-                _nfeProc.NFe.infNFe.dest?.CNPJ,
-                _nfeProc.NFe.infNFe.dest?.CPF
-            ),
-            new DFeDadosConsulta(
-                _nfeProc.NFe.infNFeSupl.urlChave,
-                _nfeProc.protNFe.infProt.chNFe
-            ),
-            new DFeDadosIdentificacao(
-                _nfeProc.NFe.infNFe.ide.nNF,
-                _nfeProc.NFe.infNFe.ide.serie,
-                _nfeProc.NFe.infNFe.ide.dhEmi,
-                _nfeProc.protNFe.infProt.nProt,
-                _nfeProc.protNFe.infProt.dhRecbto
-            ),
-            new DFeDadosComprovante(
-                new string[]
-                {
-                "Cartão de Débito: Visa",
-                "Data/Hora: 02/07/2023 20:02",
-                "Valor: R$ 120,00",
-                "NSU: 1023882"
-                }
-            ),
-            _nfeProc.NFe.infNFeSupl.qrCode,
-            _nfeProc.NFe.infNFe.total.ICMSTot.vTotTrib
-        )
-    );
+    var _xml = File.ReadAllText(_xmlPath);
+    
+    
+    var _nfce = new NFCeLeiaute(_xml);
 
     var _pdf = _nfce.Gerar();
 

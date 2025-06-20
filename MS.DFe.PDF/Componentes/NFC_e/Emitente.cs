@@ -3,14 +3,15 @@ using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
+using NFe.Classes.Informacoes.Emitente;
 
 namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Emitente : IComponent
     {
-        private readonly DFeDadosEmitente _emit;
+        private readonly emit _emit;
 
-        public Emitente(DFeDadosEmitente emit)
+        public Emitente(emit emit)
         {
             _emit = emit;
         }
@@ -23,7 +24,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
 
         private void ComporEnderecoEmitente(ColumnDescriptor column)
         {
-            column.Item().AlignCenter().Texto(_emit.Endereco);
+            column.Item().AlignCenter().Texto(_emit.enderEmit.ToEnderecoEmit());
         }
 
         public void Compose(IContainer container)

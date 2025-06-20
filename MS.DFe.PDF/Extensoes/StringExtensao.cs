@@ -71,6 +71,12 @@ namespace MS.DFe.PDF.Extensoes
             return $"{NFeResource.CEP}: {value.CEP.ToCep()} - {value.xMun} - {value.UF}";
         }
 
+        public static string ToEnderecoEmit(this enderEmit value)
+        {
+            return $"{value.xLgr} {value.nro}, {value.xBairro}, {value.xMun}, {value.UF}";
+        }
+
+
 
         public static string ToString(this decimal item, int casas = 2)
         {
