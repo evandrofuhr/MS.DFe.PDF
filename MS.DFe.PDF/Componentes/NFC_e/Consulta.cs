@@ -1,10 +1,9 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes;
+using NFe.Classes.Protocolo;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using NFe.Classes.Protocolo;
-using NFe.Classes;
 
 
 namespace MS.DFe.PDF.Componentes.NFCe

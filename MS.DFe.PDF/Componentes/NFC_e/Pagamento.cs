@@ -1,5 +1,4 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Pagamento;
 using QuestPDF.Fluent;
@@ -33,8 +32,11 @@ namespace MS.DFe.PDF.Componentes.NFCe
 
                 foreach (var item in _pag)
                 {
-                    table.Cell().AlignLeft().Texto(item.PagamentoDescricao());
-                    table.Cell().AlignRight().Texto(item.vPag.ToString());
+                    foreach (var det in item.detPag)
+                    {
+                        table.Cell().AlignLeft().Texto(det.PagamentoDescricao());
+                        table.Cell().AlignRight().Texto(det.vPag.Formata() ?? "0,00");
+                    }
                 }
 
                 var _troco = _pag.Sum(s => s.vTroco);
@@ -51,12 +53,4 @@ namespace MS.DFe.PDF.Componentes.NFCe
     }
 }
 
-public static class PagamentoExtensoes
-{
-    public static string PagamentoDescricao(this pag pagamento)
-    {
-        var chave = $"TIPO_PAGAMENTO_{pagamento.tPag}";
-        var descricao = NFCeResource.ResourceManager.GetString(chave);
-        return descricao ?? NFCeResource.TIPO_PAGAMENTO_99;
-    }
-}
+

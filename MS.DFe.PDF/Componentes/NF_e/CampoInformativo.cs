@@ -3,7 +3,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System;
 
-namespace MS.DFe.PDF.Elementos
+namespace MS.DFe.PDF.Componentes.NF_e
 {
     public class CampoInformativo : IComponent
     {

@@ -1,10 +1,8 @@
-﻿using MS.DFe.PDF.Modelos;
-using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
+﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Modelos;
 using NFe.Classes.Informacoes.Detalhe;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using MS.DFe.PDF.Extensoes;
 
 namespace MS.DFe.PDF.Helpers
 {

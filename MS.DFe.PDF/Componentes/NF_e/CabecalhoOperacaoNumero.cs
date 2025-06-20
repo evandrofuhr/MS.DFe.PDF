@@ -1,4 +1,5 @@
 ﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Identificacao;
 using QuestPDF.Fluent;
@@ -31,15 +32,15 @@ namespace MS.DFe.PDF.Componentes.NF_e
                            }
                         );
 
-                   row.ConstantItem(13)
-                        .Border(DadoPadraoExtensoes.BORDA)
-                        .AlignCenter()
-                        .Text(((int)_ide.tpNF).ToString())
-                        .FontSize(12)
-                        .Bold();
+                    row.ConstantItem(13)
+                         .Border(ConstantsHelper.BORDA)
+                         .AlignCenter()
+                         .Text(((int)_ide.tpNF).ToString())
+                         .FontSize(12)
+                         .Bold();
 
                     row.ConstantItem(4).ShrinkHorizontal();
-               }
+                }
            );
         }
 
@@ -47,7 +48,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
         {
 
             container
-                .Border(DadoPadraoExtensoes.BORDA)
+                .Border(ConstantsHelper.BORDA)
                 .Padding(1)
                 .AlignMiddle()
                 .Column(

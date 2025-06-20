@@ -1,9 +1,9 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
+﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Destinatario;
 using NFe.Classes.Informacoes.Identificacao;
-using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Resources;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 
 
 namespace MS.DFe.PDF.Componentes.NF_e

@@ -1,5 +1,4 @@
-﻿using MS.DFe.PDF.Elementos;
-using MS.DFe.PDF.Extensoes;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
@@ -19,7 +18,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
             _infnfe = infnfe;
             _protocolo = protocolo;
         }
-        
+
 
         public void Compose(IContainer container)
         {
@@ -28,10 +27,10 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container.Column(
                 column =>
                 {
-                    column.Item().Height(60).Border(DadoPadraoExtensoes.BORDA).AlignCenter().Padding(3).Image(BarCodeHelper.Barcode128(_chaveDeAcesso));
+                    column.Item().Height(60).Border(ConstantsHelper.BORDA).AlignCenter().Padding(3).Image(BarCodeHelper.Barcode128(_chaveDeAcesso));
                     column.Item().PadraoInformacao(NFeResource.CHAVE_ACESSO, _chaveDeAcesso.FormataChaveNFe(), true);
                     column.Item()
-                        .BorderRight(DadoPadraoExtensoes.BORDA)
+                        .BorderRight(ConstantsHelper.BORDA)
                         .Padding(5)
                         .AlignCenter()
                         .Text(

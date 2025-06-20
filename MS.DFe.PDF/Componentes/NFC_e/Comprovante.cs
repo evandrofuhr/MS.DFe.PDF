@@ -1,18 +1,18 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Emitente;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes.Emitente;
+using System.Collections.Generic;
 
 
 namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Comprovante : IComponent
     {
-        private readonly DFeDadosComprovante _comprovante;
+        private readonly IEnumerable<string> _comprovante;
         private readonly emit _emit;
-        public Comprovante(DFeDadosComprovante comprovante, emit emit)
+        public Comprovante(IEnumerable<string> comprovante, emit emit)
         {
             _comprovante = comprovante;
             _emit = emit;
@@ -26,13 +26,13 @@ namespace MS.DFe.PDF.Componentes.NFCe
         public void Compose(IContainer container)
         {
             container.Column(
-                c =>                                                                       
+                c =>
                 {
                     ComporTitulo(c);
                     c.Item().Component(new Emitente(_emit));
-                    c.Item().Height(3).MinimalBox();
+                    c.Item().Height(3).ShrinkHorizontal();
 
-                    foreach (var _texto in _comprovante.Textos)
+                    foreach (var _texto in _comprovante)
                         c.Item().AlignCenter().Text(_texto);
                 }
             );

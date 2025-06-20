@@ -1,7 +1,6 @@
 ﻿using DFe.Classes.Flags;
 using DFe.Utils;
 using MS.DFe.PDF.Componentes.NF_e;
-using MS.DFe.PDF.Componentes.Nfe;
 using MS.DFe.PDF.Resources;
 using NFe.Classes;
 using NFe.Classes.Protocolo;

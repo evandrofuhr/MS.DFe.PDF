@@ -1,5 +1,4 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Total;
 using QuestPDF.Fluent;

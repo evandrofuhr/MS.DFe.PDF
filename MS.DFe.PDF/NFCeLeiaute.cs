@@ -1,16 +1,15 @@
-﻿using DFe.Utils;
+﻿using DFe.Classes.Flags;
+using DFe.Utils;
 using MS.DFe.PDF.Componentes.NFCe;
 using MS.DFe.PDF.Resources;
+using NFe.Classes;
 using NFe.Classes.Protocolo;
 using QuestPDF.Drawing;
 using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using System.IO;
-using NFe.Classes;
-using System;
-using DFe.Classes.Flags;
-using MS.DFe.PDF.Modelos;
 using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System;
+using System.IO;
 
 
 
@@ -47,6 +46,7 @@ namespace MS.DFe.PDF
             container
                 .Page(page =>
                     {
+                        page.PageColor(Colors.White);
                         page.DefaultTextStyle(TextStyle.Default.FontSize(7).FontFamily("Lucida Console"));
 
                         page.MarginHorizontal(3);
@@ -57,21 +57,9 @@ namespace MS.DFe.PDF
 
                         page.Content().Element(ComposeContent);
 
-                        page.Footer().Component(
-                        new Rodape(
-                            _nfe.infNFe.total.ICMSTot.vTotTrib,
-                            new DFeDadosComprovante(new[]
-                            {
-                                "Cartão de Débito: Visa",
-                                "Data/Hora: 02/07/2023 20:02",
-                                "Valor: R$ 120,00",
-                                "NSU: 1023882"
-                            }),
-                            _nfe.infNFe.emit
-                        )
-                    );
+                        page.Footer().Component(new Rodape(_nfe.infNFe));
                     }
-                );              
+                );
         }
 
         public DocumentMetadata GetMetadata()
@@ -116,7 +104,7 @@ namespace MS.DFe.PDF
         {
             if (_nfe == null) throw new Exception("Não foi possível converter o arquivo XML.");
 
-            if (_nfe.infNFe.ide.mod != ModeloDocumento.NFCe) throw new Exception("Tipo de documento XML inválido para NF-e.");
+            if (_nfe.infNFe.ide.mod != ModeloDocumento.NFCe) throw new Exception("Tipo de documento XML inválido para NFC-e.");
         }
 
         public byte[] Gerar()

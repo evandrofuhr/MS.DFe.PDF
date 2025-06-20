@@ -22,7 +22,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
         private void ComposeSemLogo(IContainer container)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
+                .Border(ConstantsHelper.BORDA)
                 .Padding(5)
                 .Column(
                     _column =>
@@ -53,7 +53,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
             if (_tipo == ETipoImg.QuadradoOuVertical)
             {
                 container
-                    .Border(DadoPadraoExtensoes.BORDA)
+                    .Border(ConstantsHelper.BORDA)
                     .Padding(5)
                     .AlignMiddle()
                     .Row(
@@ -69,7 +69,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
             {
 
                 container
-                    .Border(DadoPadraoExtensoes.BORDA)
+                    .Border(ConstantsHelper.BORDA)
                     .Padding(5)
                     .AlignMiddle()
                     .Column(

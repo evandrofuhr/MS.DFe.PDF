@@ -1,10 +1,10 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes.Transporte;
-using System.Linq;
-using MS.DFe.PDF.Extensoes;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Transporte;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace MS.DFe.PDF.Componentes.Nfe
@@ -33,7 +33,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                 _modFrete = (int)_transp.modFrete;
 
             var _frete = $"{_modFrete}-{_tipoFrete[_modFrete]}";
-           
+
             container.Column(
                 column =>
                 {
@@ -81,22 +81,22 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         if (_volume.Quantidade == 0)
                             row.ConstantItem(110).PadraoInformacao(NFeResource.QUANTIDADE, string.Empty);
                         else
-                            row.ConstantItem(110).PadraoInformacao(NFeResource.QUANTIDADE, _volume.Quantidade);
+                            row.ConstantItem(110).PadraoInformacao(NFeResource.QUANTIDADE, _volume.Quantidade.ToString("N3"), string.Empty);
 
                         row.ConstantItem(127).PadraoInformacao(NFeResource.ESPECIE, _volume.Especie);
                         row.ConstantItem(110).PadraoInformacao(NFeResource.MARCA, _volume.Marca);
                         row.ConstantItem(93).PadraoInformacao(NFeResource.NUMERACAO, _volume.Numeracao);
-                        
+
                         if (_volume.PesoBruto == 0)
                             row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, string.Empty);
                         else
-                            row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, _volume.PesoBruto);
-                        
-                        
+                            row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, _volume.PesoBruto.ToString("N3"), string.Empty);
+
+
                         if (_volume.PesoLiquido == 0)
                             row.ConstantItem(69).PadraoInformacao(NFeResource.PESO_LIQUIDO, string.Empty);
                         else
-                            row.ConstantItem(69).PadraoInformacao(NFeResource.PESO_LIQUIDO, _volume.PesoLiquido);
+                            row.ConstantItem(69).PadraoInformacao(NFeResource.PESO_LIQUIDO, _volume.PesoLiquido.ToString("N3"));
                     });
                 }
             );

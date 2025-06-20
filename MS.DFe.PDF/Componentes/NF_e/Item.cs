@@ -1,12 +1,12 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes.Detalhe;
-using NFe.Classes.Informacoes.Emitente;
-using System.Collections.Generic;
-using System.Linq;
-using MS.DFe.PDF.Extensoes;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Detalhe;
+using NFe.Classes.Informacoes.Emitente;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
+using System.Collections.Generic;
+using System.Linq;
 
 
 
@@ -33,7 +33,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container
                 .Column(column =>
                 {
-                    column.Item().Padding(DadoPadraoExtensoes.PADDING).Text(NFeResource.DADOS_PRODUTOS_SERVICOS).SemiBold();
+                    column.Item().Padding(ConstantsHelper.PADDING).Text(NFeResource.DADOS_PRODUTOS_SERVICOS).SemiBold();
 
                     column.Item().Table(table =>
                     {
@@ -100,9 +100,9 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
                         for (int i = 0; i < 13; i++)
                         {
-                            table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).BorderBottom(DadoPadraoExtensoes.BORDA).Height(1);
+                            table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Height(1);
                         }
-                        table.Cell().BorderLeft(DadoPadraoExtensoes.BORDA).BorderRight(DadoPadraoExtensoes.BORDA).BorderBottom(DadoPadraoExtensoes.BORDA).Extend().Padding(4).Text("");
+                        table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Extend().Padding(4).Text("");
                     });
 
                 });

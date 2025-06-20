@@ -1,8 +1,8 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes.Total;
-using MS.DFe.PDF.Extensoes;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Total;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {

@@ -1,6 +1,6 @@
-﻿using QuestPDF.Fluent;
+﻿using NFe.Classes.Protocolo;
+using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using NFe.Classes.Protocolo;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {
@@ -20,7 +20,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
         {
             container.Column(
                 column =>
-                {   
+                {
                     column.Item().Component(new CabecalhoCanhoto(_nfe.infNFe.ide, _nfe.infNFe.emit, _nfe.infNFe.total.ICMSTot, _nfe.infNFe.dest));
                     column.Item().Component(new CabecalhoOperacao(_nfe.infNFe.ide, _nfe.infNFe.emit, _nfe.infNFe, _protocolo, _logo));
                     column.Item().Component(new CabecalhoFiscal(_nfe.infNFe.ide, _nfe.infNFe.emit, _protocolo));

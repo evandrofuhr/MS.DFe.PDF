@@ -1,11 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using DFe.Classes.Flags;
-using DFe.Utils;
 using MS.DFe.PDF;
-using MS.DFe.PDF.Modelos;
-using NFe.Classes;
-using QuestPDF.Infrastructure;
 
 using QuestPDF.Companion;
 
@@ -52,12 +47,12 @@ File.WriteAllBytes(_file, _pdf);
 var _escolha = 1;
 while (true)
 {
-    Console.WriteLine("Qual tipo de impressão NF-e(1), NFC-e(2), Sair(0): ");
+    Console.WriteLine("Qual tipo de impressão NF-e(1), NFC-e(2), CC-e(3), Sair(0): ");
     var _tela = Console.ReadLine();
     if (int.TryParse(_tela, out int _int))
     {
         if (_int <= 0) Environment.Exit(0);
-        if (_int <= 2)
+        if (_int <= 3)
         {
             _escolha = _int;
             break;
@@ -76,7 +71,7 @@ while (string.IsNullOrEmpty(_xmlPath))
     _xmlPath = Console.ReadLine();
 
     if (string.IsNullOrWhiteSpace(_xmlPath))
-        _xmlPath = "c:/temp/nfc.xml";
+        _xmlPath = "c:/temp/xuxu.xml";
 
     if (!File.Exists(_xmlPath))
     {
@@ -136,57 +131,15 @@ if (_escolha == 1)
 
 if (_escolha == 2)
 {
-    NFe.Classes.NFe? _nfe = null;
-    nfeProc? _nfeProc = null;
-
-    try
-    {
-        _nfeProc = FuncoesXml.ArquivoXmlParaClasse<nfeProc>(_xmlPath);
-        _nfe = _nfeProc.NFe;
-    }
-    catch
-    {
-        _nfe = FuncoesXml.ArquivoXmlParaClasse<NFe.Classes.NFe>(_xmlPath);
-    }
-
-    if (_nfe == null)
-    {
-        Console.WriteLine("Não foi possível converter o arquivo XML.");
-        return;
-    }
-
-    if (_nfe.infNFe.ide.mod != ModeloDocumento.NFCe && _escolha == 2)
-    {
-        Console.WriteLine("O modelo de documento deve ser NFC-e");
-        Console.ReadLine();
-        return;
-    }
-
-    var _pags = new List<DFeDadosPagamento>();
-    var _troco = _nfeProc.NFe.infNFe.pag.Sum(s => s.vTroco ?? 0m);
-    foreach (var _pag in _nfeProc.NFe.infNFe.pag.SelectMany(s => s.detPag))
-    {
-        _pags.Add(new DFeDadosPagamento(_troco, (int)_pag.tPag, _pag.vPag));
-    }
     var _xml = File.ReadAllText(_xmlPath);
-    
-    
+
     var _nfce = new NFCeLeiaute(_xml);
+    _nfce.ShowInCompanion();
 
-    var _pdf = _nfce.Gerar();
+}
 
-    var _fileInfo = new FileInfo(_xmlPath);
-    var _novoNome = $"{_fileInfo.Name}_{DateTime.Now.ToString("yyyyMMdd")}.pdf";
-    var _output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
-
-    if (!Directory.Exists(_output))
-        Directory.CreateDirectory(_output);
-    var _file = Path.Combine(_output, _novoNome);
-
-    File.WriteAllBytes(_file, _pdf);
-
-    Console.WriteLine($"Arquivo salvo em {_file}");
-    Console.ReadKey();
+if (_escolha == 3)
+{
 
 }
 

@@ -1,11 +1,10 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using NFe.Classes.Protocolo;
-using NFe.Classes.Informacoes.Identificacao;
-using NFe.Classes.Informacoes.Emitente;
-using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Elementos;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Emitente;
+using NFe.Classes.Informacoes.Identificacao;
+using NFe.Classes.Protocolo;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {

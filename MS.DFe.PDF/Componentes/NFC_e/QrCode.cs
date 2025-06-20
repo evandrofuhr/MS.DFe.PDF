@@ -1,13 +1,6 @@
 ﻿using MS.DFe.PDF.Helpers;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
-using ZXing;
-using ZXing.QrCode;
-using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace MS.DFe.PDF.Componentes.NFCe
 {

@@ -1,4 +1,6 @@
-﻿using MS.DFe.PDF.Elementos;
+﻿using MS.DFe.PDF.Componentes.NF_e;
+using MS.DFe.PDF.Helpers;
+using NFe.Classes.Servicos.ConsultaCadastro;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System;
@@ -19,24 +21,26 @@ namespace MS.DFe.PDF.Extensoes
 
         public static void PadraoLabelGrupo(this IContainer container, string label)
         {
-            container.PaddingVertical(DadoPadraoExtensoes.PADDING).Text(label);
+            container.PaddingVertical(ConstantsHelper.PADDING).Text(label);
         }
 
         public static void PadraoInformacao(this IContainer container, string label, decimal? valor)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .Component(
                     CampoInformativo.Valor(label, valor?.Formata())
                 );
         }
 
+
+
         public static void PadraoInformacao(this IContainer container, string label, int? valor)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .Component(
                     CampoInformativo.Valor(label, valor.ToString())
                 );
@@ -45,18 +49,27 @@ namespace MS.DFe.PDF.Extensoes
         public static void PadraoInformacao(this IContainer container, string label, string valor, bool center = false)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .Component(
                     center ? CampoInformativo.Codigo(label, valor) : CampoInformativo.Padrao(label, valor)
+                );
+        }
+
+        public static void PadraoInformacao(this IContainer container, string label, string valor, string _)
+        {
+            container
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
+                .Component(CampoInformativo.Valor(label, valor)
                 );
         }
 
         public static void PadraoDadosTabela(this IContainer container, string valor, bool centro = false)
         {
             container
-                .BorderRight(DadoPadraoExtensoes.BORDA)
-                .BorderLeft(DadoPadraoExtensoes.BORDA)
+                .BorderRight(ConstantsHelper.BORDA)
+                .BorderLeft(ConstantsHelper.BORDA)
                 .Padding(2)
                 .Text(
                 text =>
@@ -71,18 +84,19 @@ namespace MS.DFe.PDF.Extensoes
         public static void PadraoDadosTabela(this IContainer container, string valor)
         {
             container
-                .BorderRight(DadoPadraoExtensoes.BORDA)
-                .BorderLeft(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
-                .AlignRight()
+                .BorderRight(ConstantsHelper.BORDA)
+                .BorderLeft(ConstantsHelper.BORDA)
+                .Padding(2)
                 .Text(valor);
         }
+
+        
 
         public static void PadraoInformacaoTabela(this IContainer container, string label)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .AlignCenter()
                 .Text(label)
                 .SemiBold()
@@ -92,8 +106,8 @@ namespace MS.DFe.PDF.Extensoes
         public static void PadraoInformacaoTabela(this IContainer container, string label, string _label)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .AlignCenter()
                 .Text(
                 text =>
@@ -108,8 +122,8 @@ namespace MS.DFe.PDF.Extensoes
         public static void PadraoInformacao(this IContainer container, string label, DateTimeOffset? valor)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .Component(
                    CampoInformativo.Hora(label, valor)
                 );
@@ -118,8 +132,8 @@ namespace MS.DFe.PDF.Extensoes
         public static void PadraoInformacao(this IContainer container, string label, DateTime? valor)
         {
             container
-                .Border(DadoPadraoExtensoes.BORDA)
-                .Padding(DadoPadraoExtensoes.PADDING)
+                .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .Component(
                     CampoInformativo.Data(label, valor)
                 );

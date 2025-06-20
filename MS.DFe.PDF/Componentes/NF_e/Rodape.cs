@@ -1,9 +1,8 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using NFe.Classes.Informacoes;
-using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Elementos;
+﻿using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {
@@ -63,22 +62,22 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         row =>
                         {
                             row.ConstantItem(370)
-                                .Border(DadoPadraoExtensoes.BORDA)
+                                .Border(ConstantsHelper.BORDA)
                                 .AlignLeft()
                                 .Height(80)
-                                .Padding(DadoPadraoExtensoes.PADDING)
+                                .Padding(ConstantsHelper.PADDING)
                                 .Text(
                                     text =>
                                     {
                                         text.Line(NFeResource.INFORMAÇÕES_COMPLEMENTARES);
-                                        text.Line((!string.IsNullOrWhiteSpace(_informacaoAdicionalCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
-                                        (!string.IsNullOrWhiteSpace(_informacaoAdicionalFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
+                                        text.Line((!string.IsNullOrWhiteSpace(_infnfe.infAdic.infCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
+                                        (!string.IsNullOrWhiteSpace(_infnfe.infAdic.infAdFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                                     }
                                 );
                             row.RelativeItem()
-                                .Border(DadoPadraoExtensoes.BORDA)
+                                .Border(ConstantsHelper.BORDA)
                                 .Height(80)
-                                .Padding(DadoPadraoExtensoes.PADDING)
+                                .Padding(ConstantsHelper.PADDING)
                                 .Component(CampoInformativo.Padrao(NFeResource.RESERVADO_FISCO, string.Empty));
                         }
                     );

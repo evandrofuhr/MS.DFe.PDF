@@ -1,13 +1,12 @@
 ﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes.Destinatario;
 using NFe.Classes.Informacoes.Emitente;
 using NFe.Classes.Informacoes.Identificacao;
 using NFe.Classes.Informacoes.Total;
 using QuestPDF.Fluent;
-using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using System.Drawing;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {
@@ -58,7 +57,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                          column =>
                          {
                              column.Item()
-                                .Border(DadoPadraoExtensoes.BORDA)
+                                .Border(ConstantsHelper.BORDA)
                                 .Padding(5f)
                                 .Text(
                                     text =>
@@ -86,8 +85,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
                          }
                     );
                     row.ConstantItem(90)
-                        .Border(DadoPadraoExtensoes.BORDA)
-                        .Padding(DadoPadraoExtensoes.PADDING)
+                        .Border(ConstantsHelper.BORDA)
+                        .Padding(ConstantsHelper.PADDING)
                         .AlignMiddle()
                         .AlignCenter()
                         .Element(ComposeQuadroNumero);
@@ -102,7 +101,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                 column =>
                 {
                     column.Item().Height(48).Element(ComposeRow);
-                    column.Item().PaddingVertical(4).LineHorizontal(DadoPadraoExtensoes.BORDA);
+                    column.Item().PaddingVertical(4).LineHorizontal(ConstantsHelper.BORDA);
                 }
             );
         }
