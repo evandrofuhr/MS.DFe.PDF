@@ -18,7 +18,7 @@ namespace MS.DFe.PDF.Extensoes
             return text.Span(string.Join(" ", textos) ?? string.Empty);
         }
 
-        public static void PadraoLabelGrupo (this IContainer container, string label)
+        public static void PadraoLabelGrupo(this IContainer container, string label)
         {
             container.PaddingVertical(DadoPadraoExtensoes.PADDING).Text(label);
         }
@@ -50,6 +50,59 @@ namespace MS.DFe.PDF.Extensoes
                 .Padding(DadoPadraoExtensoes.PADDING)
                 .Component(
                     center ? CampoInformativo.Codigo(label, valor) : CampoInformativo.Padrao(label, valor)
+                );
+        }
+
+        public static void PadraoDadosTabela(this IContainer container, string valor, bool centro = false)
+        {
+            container
+                .BorderRight(DadoPadraoExtensoes.BORDA)
+                .BorderLeft(DadoPadraoExtensoes.BORDA)
+                .Padding(2)
+                .Text(
+                text =>
+                    {
+                        text.Span(valor);
+                        if (centro) text.AlignCenter();
+                        else text.AlignLeft();
+                    }
+                );
+        }
+
+        public static void PadraoDadosTabela(this IContainer container, string valor)
+        {
+            container
+                .BorderRight(DadoPadraoExtensoes.BORDA)
+                .BorderLeft(DadoPadraoExtensoes.BORDA)
+                .Padding(DadoPadraoExtensoes.PADDING)
+                .AlignRight()
+                .Text(valor);
+        }
+
+        public static void PadraoInformacaoTabela(this IContainer container, string label)
+        {
+            container
+                .Border(DadoPadraoExtensoes.BORDA)
+                .Padding(DadoPadraoExtensoes.PADDING)
+                .AlignCenter()
+                .Text(label)
+                .SemiBold()
+                .FontSize(4);
+        }
+
+        public static void PadraoInformacaoTabela(this IContainer container, string label, string _label)
+        {
+            container
+                .Border(DadoPadraoExtensoes.BORDA)
+                .Padding(DadoPadraoExtensoes.PADDING)
+                .AlignCenter()
+                .Text(
+                text =>
+                    {
+                        text.DefaultTextStyle(d => d.SemiBold().FontSize(4));
+                        text.Line(label);
+                        text.Span(_label);
+                    }
                 );
         }
 

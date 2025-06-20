@@ -76,7 +76,7 @@ while (string.IsNullOrEmpty(_xmlPath))
     _xmlPath = Console.ReadLine();
 
     if (string.IsNullOrWhiteSpace(_xmlPath))
-        _xmlPath = "c:/temp/43250142404799000121550000000002121903625971-proc-nfe.xml";
+        _xmlPath = "c:/temp/tt.xml";
 
     if (!File.Exists(_xmlPath))
     {
@@ -97,7 +97,7 @@ if (_escolha == 1)
         _logoPath = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(_logoPath))
-            _logoPath = "c:/temp/logo80.png";
+            _logoPath = "c:/temp/bruh.png";
 
         if (string.IsNullOrEmpty(_logoPath))
         {
