@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Elementos\**" />
+    <EmbeddedResource Remove="Elementos\**" />
+    <None Remove="Elementos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
     <PackageReference Include="Hercules.NET.NFe.NFCe" Version="2025.6.4.1947" />
     <PackageReference Include="QuestPDF" Version="2025.5.1" />
@@ -44,10 +50,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NFeResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Elementos\" />
   </ItemGroup>
 
 </Project>

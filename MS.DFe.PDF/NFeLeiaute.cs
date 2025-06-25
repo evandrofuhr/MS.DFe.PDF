@@ -101,17 +101,18 @@ namespace MS.DFe.PDF
                 page.Footer().ShowOnce().Component(new Rodape(_nfe.infNFe, _logoSoftwareHouse));
             });
         }
-
+        public byte[] Gerar()
+        {
+            return this.GeneratePdf();
+        }
         public DocumentMetadata GetMetadata()
         {
-            throw new NotImplementedException();
+            return DocumentMetadata.Default;
         }
 
         public DocumentSettings GetSettings()
         {
-            return new DocumentSettings
-            {
-            };
+            return DocumentSettings.Default;
         }
     }
 

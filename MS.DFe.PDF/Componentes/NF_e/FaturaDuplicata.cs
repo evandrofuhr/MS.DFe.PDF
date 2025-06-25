@@ -64,7 +64,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         col.Item().Row(row =>
                         {
                             row.ConstantItem(37).BorderBottom(ConstantsHelper.BORDA).BorderLeft(ConstantsHelper.BORDA)
-                                .Padding(ConstantsHelper.PADDING).Text(NFeResource.VALOR).Bold();
+                                .Padding(ConstantsHelper.PADDING).Text(NFeResource.VALOR_INF).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {

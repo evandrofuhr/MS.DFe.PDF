@@ -40,7 +40,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         {
                             row.RelativeItem(4).PadraoInformacao(NFeResource.ENDERECO, _dest.enderDest?.ToEndereco());
                             row.RelativeItem(3).PadraoInformacao(NFeResource.BAIRRO, _dest.enderDest?.xBairro);
-                            row.RelativeItem(2).PadraoInformacao(NFeResource.CEP, _dest.enderDest?.CEP?.ToCep(), true);
+                            row.RelativeItem(1).PadraoInformacao(NFeResource.CEP, _dest.enderDest?.CEP?.ToCep(), true);
                             row.RelativeItem(2).PadraoInformacao(NFeResource.DATA_ENTRADA_SAIDA, _ide.dhSaiEnt?.DateTime);
                         }
                     );

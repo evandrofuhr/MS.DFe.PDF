@@ -58,11 +58,10 @@ namespace MS.DFe.PDF.Componentes.NF_e
                          {
                              column.Item()
                                 .Border(ConstantsHelper.BORDA)
-                                .Padding(5f)
+                                .Padding(ConstantsHelper.PADDING)
                                 .Text(
                                     text =>
                                     {
-                                        text.DefaultTextStyle(s => s.FontSize(7));
                                         text.Line(
                                             string.Format(
                                                 NFeResource.CANHOTO1,

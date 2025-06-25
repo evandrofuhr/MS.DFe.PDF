@@ -33,7 +33,6 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container
                 .Column(column =>
                 {
-                    column.Item().Padding(ConstantsHelper.PADDING).Text(NFeResource.DADOS_PRODUTOS_SERVICOS).SemiBold();
 
                     column.Item().Table(table =>
                     {
@@ -60,6 +59,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         table.Header(
                             header =>
                             {
+                                header.Cell().ColumnSpan(14).PadraoLabelGrupo(NFeResource.DADOS_PRODUTOS_SERVICOS);
+
                                 header.Cell().PadraoInformacaoTabela(NFeResource.CODIGO_PRODUTO);
                                 header.Cell().PadraoInformacaoTabela(NFeResource.DESCRIÇÃO_PRODUTO_SERVIÇO);
                                 header.Cell().PadraoInformacaoTabela(NFeResource.NCM_SH);
@@ -103,6 +104,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Height(1);
                         }
                         table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Extend().Padding(4).Text("");
+
+                        table.Footer(footer =>
+                        {
+                            footer.Cell()
+                                .ColumnSpan(14)
+                                .BorderTop(ConstantsHelper.BORDA);
+                        });
+
                     });
 
                 });

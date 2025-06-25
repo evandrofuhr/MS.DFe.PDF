@@ -35,7 +35,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
         private void ComposeText(IContainer container, float fontSizeBase = 12f)
         {
-            container.AlignCenter().Text(
+            container.AlignCenter().AlignMiddle().Text(
                 text =>
                 {
                     text.Line(_emit.xFant).FontSize(fontSizeBase).Bold();

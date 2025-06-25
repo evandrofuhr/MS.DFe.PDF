@@ -1,4 +1,5 @@
-﻿using MS.DFe.PDF.Helpers;
+﻿using MS.DFe.PDF.Extensoes;
+using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
 using QuestPDF.Fluent;
@@ -57,7 +58,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container.Column(
                 column =>
                 {
-                    column.Item().Text(NFeResource.DADOS_ADICIONAIS).SemiBold();
+                    column.Item().PadraoLabelGrupo(NFeResource.DADOS_ADICIONAIS); ;
+
                     column.Item().Row(
                         row =>
                         {
@@ -78,7 +80,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                 .Border(ConstantsHelper.BORDA)
                                 .Height(80)
                                 .Padding(ConstantsHelper.PADDING)
-                                .Component(CampoInformativo.Padrao(NFeResource.RESERVADO_FISCO, string.Empty));
+                                .Text(NFeResource.RESERVADO_FISCO);
                         }
                     );
                     column.Item().Element(ComposeSoftwareHouse);

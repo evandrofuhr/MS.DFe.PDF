@@ -87,6 +87,7 @@ namespace MS.DFe.PDF.Extensoes
                 .BorderRight(ConstantsHelper.BORDA)
                 .BorderLeft(ConstantsHelper.BORDA)
                 .Padding(2)
+                .AlignRight()
                 .Text(valor);
         }
 
