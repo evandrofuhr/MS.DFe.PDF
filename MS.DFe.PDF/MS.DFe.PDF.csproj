@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ERP\MicroSalesERP\MicroSalesERP.Comum\MicroSalesERP.Comum.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\CCeResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
