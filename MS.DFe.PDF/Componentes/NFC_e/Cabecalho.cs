@@ -1,6 +1,6 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Emitente;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
@@ -8,8 +8,8 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Cabecalho : IComponent
     {
-        private readonly DFeDadosEmitente _emit;
-        public Cabecalho(DFeDadosEmitente emit)
+        private readonly emit _emit;
+        public Cabecalho(emit emit)
         {
             _emit = emit;
         }
@@ -18,7 +18,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
         {
             column.Item().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DANFE).Bold();
             column.Item().AlignCenter().DefaultTextStyle(TextStyle.Default.FontSize(6)).Texto(NFCeResource.DOC_AUX).Bold();
-            column.Item().Height(3).MinimalBox();
+            column.Item().Height(3).ShrinkHorizontal();
             column.Item().Element(e => e.BorderBottom(0.8f));
         }
 
@@ -28,7 +28,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                 c =>
                 {
                     c.Item().Component(new Emitente(_emit));
-                    c.Item().Height(3).MinimalBox();
+                    c.Item().Height(3).ShrinkHorizontal();
                     ComporTitulo(c);
                 }
             );

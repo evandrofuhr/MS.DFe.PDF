@@ -1,6 +1,6 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Total;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
@@ -8,12 +8,17 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Total : IComponent
     {
-        private readonly DFeDadosTotal _total;
+        private readonly total _total;
 
-        public Total(DFeDadosTotal total)
+        public Total(total total)
         {
             _total = total;
         }
+
+        private bool TemDescontos => _total.ICMSTot.vDesc > 0;
+        private bool TemFrete => _total.ICMSTot.vFrete > 0;
+        private bool TemSeguro => _total.ICMSTot.vSeg > 0;
+        private bool TemOutro => _total.ICMSTot.vOutro > 0;
 
         public void Compose(IContainer container)
         {
@@ -26,36 +31,36 @@ namespace MS.DFe.PDF.Componentes.NFCe
                 });
 
                 table.Cell().AlignLeft().Texto(NFCeResource.TOTAL, NFCeResource.CIFRAO);
-                table.Cell().AlignRight().Texto(_total.vProd);
+                table.Cell().AlignRight().Texto(_total.ICMSTot.vProd);
 
-                if (_total.TemDescontos || _total.TemFrete || _total.TemSeguro || _total.TemOutro)
+                if (TemDescontos || TemFrete || TemSeguro || TemOutro)
                 {
-                    if (_total.TemDescontos)
+                    if (TemDescontos)
                     {
                         table.Cell().AlignLeft().Texto(NFCeResource.DESCONTO, NFCeResource.CIFRAO);
-                        table.Cell().AlignRight().Texto(_total.vDesc);
+                        table.Cell().AlignRight().Texto(_total.ICMSTot.vDesc);
                     }
 
-                    if (_total.TemFrete)
+                    if (TemFrete)
                     {
                         table.Cell().AlignLeft().Texto(NFCeResource.FRETE, NFCeResource.CIFRAO);
-                        table.Cell().AlignRight().Texto(_total.vFrete);
+                        table.Cell().AlignRight().Texto(_total.ICMSTot.vFrete);
                     }
 
-                    if (_total.TemSeguro)
+                    if (TemSeguro)
                     {
                         table.Cell().AlignLeft().Texto(NFCeResource.SEGURO, NFCeResource.CIFRAO);
-                        table.Cell().AlignRight().Texto(_total.vSeg);
+                        table.Cell().AlignRight().Texto(_total.ICMSTot.vSeg);
                     }
 
-                    if (_total.TemOutro)
+                    if (TemOutro)
                     {
                         table.Cell().AlignLeft().Texto(NFCeResource.OUTROS, NFCeResource.CIFRAO);
-                        table.Cell().AlignRight().Texto(_total.vOutro);
+                        table.Cell().AlignRight().Texto(_total.ICMSTot.vOutro);
                     }
 
                     table.Cell().AlignLeft().Texto(NFCeResource.PAGAR, NFCeResource.CIFRAO).Bold();
-                    table.Cell().AlignRight().Texto(_total.vNF).Bold();
+                    table.Cell().AlignRight().Texto(_total.ICMSTot.vNF).Bold();
                 }
             });
         }
