@@ -8,7 +8,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using System;
-using MicroSalesERP.Comum;
+
 
 
 namespace MS.DFe.PDF
@@ -18,7 +18,7 @@ namespace MS.DFe.PDF
         private readonly NFe.Classes.NFe _nfe;
         private readonly protNFe _protocolo;
         private readonly byte[] _logo;
-        private byte[] _logoSoftwareHouse = Convert.FromBase64String(Constantes.LOGOBASE64); 
+        private byte[] _logoSoftwareHouse;
 
         public NFeLeiaute(string xml)
         {
@@ -56,6 +56,11 @@ namespace MS.DFe.PDF
             }
 
             Validar();
+        }
+
+        public void AdicionarLogoSoftwareHouse(byte[] logo)
+        {
+            _logoSoftwareHouse = logo;
         }
 
         private void Validar()

@@ -23,17 +23,17 @@ namespace MS.DFe.PDF.Componentes.NF_e
         {
             container
                 .Border(ConstantsHelper.BORDA)
-                .Padding(5)
+                .Padding(ConstantsHelper.PADDING)
                 .Column(
                     _column =>
                     {
                         _column.Item().Height(20).AlignCenter().Text(NFeResource.IDENTIFICACAO_EMITENTE);
-                        _column.Item().AlignCenter().AlignMiddle().Element(e => ComposeText(e, 12f));
+                        _column.Item().AlignCenter().AlignMiddle().Element(e => ComposeText(e, 11f));
                     }
                 );
         }
 
-        private void ComposeText(IContainer container, float fontSizeBase = 12f)
+        private void ComposeText(IContainer container, float fontSizeBase = 11f)
         {
             container.AlignCenter().AlignMiddle().Text(
                 text =>
@@ -57,14 +57,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
             {
                 container
                     .Border(ConstantsHelper.BORDA)
-                    .Padding(5)
+                    .Padding(ConstantsHelper.PADDING)
                     .AlignMiddle()
                     .Row(
                         row =>
                         {
                             row.ConstantItem(80).AlignCenter().AlignMiddle().Height(80).Image(_logo);
                             row.ConstantItem(5);
-                            row.RelativeItem().AlignMiddle().AlignCenter().Element(e => ComposeText(e, 12f));
+                            row.RelativeItem().AlignMiddle().AlignCenter().Element(e => ComposeText(e, 11f));
                         }
                     );
             }
@@ -73,14 +73,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
                 container
                     .Border(ConstantsHelper.BORDA)
-                    .Padding(5)
+                    .Padding(ConstantsHelper.PADDING)
                     .AlignMiddle()
                     .Column(
                         column =>
                         {
                             column.Item().AlignCenter().Height(34).Image(_logo);
                             column.Item().Height(1f).ShrinkHorizontal();
-                            column.Item().AlignCenter().Element(e => ComposeText(e, 10f));
+                            column.Item().AlignCenter().Element(e => ComposeText(e, 11f));
                         }
                     );
 
