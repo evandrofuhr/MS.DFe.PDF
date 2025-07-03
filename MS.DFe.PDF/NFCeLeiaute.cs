@@ -41,6 +41,17 @@ namespace MS.DFe.PDF
 
         }
 
+        private void ComposeWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-30).TranslateX(55).Text(NFeResource.PRE_VISUALIZACAO).FontSize(20).Bold().FontColor(Colors.Grey.Lighten1);
+        }
+
+        private void ComposeHomWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-30).TranslateX(45).Text(NFeResource.HOMOLOGACAO).FontSize(30).Bold().FontColor(Colors.Grey.Lighten1);
+        }
+
+
         public void Compose(IDocumentContainer container)
         {
             container
@@ -52,6 +63,16 @@ namespace MS.DFe.PDF
                         page.MarginHorizontal(3);
 
                         page.ContinuousSize(72.1f, Unit.Millimetre);
+
+                        page.Background().Element(backgroundContainer =>
+                        {
+                            if (_nfe.infNFe.ide.tpAmb == null || _nfe.infNFe.ide.tpAmb ==0)
+                                ComposeWaterMark(backgroundContainer);
+                            else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
+                                ComposeHomWaterMark(backgroundContainer);
+                            else
+                                backgroundContainer.Background(Colors.White);
+                        });
 
                         page.Header().Component(new Cabecalho(_nfe.infNFe.emit));
 
