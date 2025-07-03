@@ -27,7 +27,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
 
                 table.Cell().AlignCenter().Texto(NFCeResource.CONSULTE_CHAVE).Bold();
                 table.Cell().AlignCenter().Texto(_infNFeSupl.urlChave);
-                table.Cell().AlignCenter().Texto(_infProt.chNFe.FormataChaveNFe());
+                table.Cell().AlignCenter().Texto(_infProt?.chNFe.FormataChaveNFe());
 
             });
         }

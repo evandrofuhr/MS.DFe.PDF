@@ -71,34 +71,40 @@ namespace MS.DFe.PDF
 
         private void ComposeContent(IContainer container)
         {
-            container.Table(
-                table =>
+            container.Table(table =>
+            {
+                table.ColumnsDefinition(column => column.RelativeColumn());
+
+                table.Cell().Component(new Detalhe(_nfe));
+                table.Cell().Component(new Total(_nfe.infNFe.total));
+                table.Cell().Component(new Pagamento(_nfe.infNFe.pag));
+
+                if (_nfe.infNFeSupl != null || _protocolo?.infProt != null)
                 {
-                    table.ColumnsDefinition(column => column.RelativeColumn());
+                    table.Cell().Component(new Consulta(_nfe.infNFeSupl, _protocolo?.infProt));
+                }
 
-                    table.Cell().Component(new Detalhe(_nfe));
-                    table.Cell().Component(new Total(_nfe.infNFe.total));
-                    table.Cell().Component(new Pagamento(_nfe.infNFe.pag));
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new Consulta(_nfe.infNFeSupl, _protocolo.infProt));
-
-                    table.Cell().Height(5);
-
+                if (_nfe.infNFe.dest != null)
+                {
                     table.Cell().Component(new Consumidor(_nfe.infNFe.dest));
+                }
 
-                    table.Cell().Height(5);
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new Identificacao(_nfe.infNFe.ide, _protocolo?.infProt));
+                table.Cell().Component(new Identificacao(_nfe.infNFe.ide, _protocolo?.infProt));
 
-                    table.Cell().Height(5);
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new QrCode(_nfe.infNFeSupl.qrCode ?? string.Empty));
-
-
+                if (!string.IsNullOrWhiteSpace(_nfe.infNFeSupl?.qrCode))
+                {
+                    table.Cell().Component(new QrCode(_nfe.infNFeSupl.qrCode));
                     table.Cell().Height(5);
                 }
-            );
+            });
         }
+
 
         private void Validar()
         {

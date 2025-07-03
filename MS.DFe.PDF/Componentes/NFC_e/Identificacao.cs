@@ -42,7 +42,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             text =>
                             {
                                 text.TextoSpan(NFCeResource.PROTOCOLO).Bold();
-                                text.TextoSpan(string.Empty, _infProt.nProt);
+                                text.TextoSpan(string.Empty, _infProt?.nProt);
                             }
                         );
 
@@ -52,7 +52,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             text =>
                             {
                                 text.TextoSpan(NFCeResource.DATA).Bold();
-                                text.TextoSpan(string.Empty, _infProt.dhRecbto.FormataDataHora());
+                                text.TextoSpan(string.Empty, _infProt?.dhRecbto.FormataDataHora());
                             }
                         );
                 }
