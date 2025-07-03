@@ -86,7 +86,6 @@ namespace MS.DFe.PDF
         public DocumentMetadata GetMetadata()
         {
             var _metadata = DocumentMetadata.Default;
-            _metadata.RasterDpi = 72;
             return _metadata;
         }
 

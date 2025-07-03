@@ -38,7 +38,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             {
                                 text.DefaultTextStyle(d => d.Bold());
                                 text.Line(NFeResource.CONSULTA1);
-                                text.Hyperlink(NFeResource.URL_NFE, NFeResource.URL_NFE);
+                                text.Hyperlink(NFeResource.URL_NFE_TEXT, NFeResource.URL_NFE).FontColor("3366CC");
                                 text.Span(NFeResource.CONSULTA2);
                             }
                         );
