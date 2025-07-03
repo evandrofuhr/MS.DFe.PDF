@@ -25,11 +25,13 @@ namespace MS.DFe.PDF.Componentes.NF_e
             {
                 container
                     .AlignRight()
-                    .Text(text =>
-                    {
-                        text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
-                        text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
-                    });
+                    .Text
+                    (text =>
+                        {
+                            text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
+                            text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
+                        }
+                    );
             }
             else
             {
@@ -40,10 +42,11 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             row.RelativeItem()
                                 .AlignRight()
                                 .Text(text =>
-                                {
-                                    text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
-                                    text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
-                                });
+                                    {
+                                        text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
+                                        text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
+                                    }
+                                );
 
                             row.ConstantItem(1).ShrinkHorizontal();
 
@@ -73,14 +76,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                 .AlignLeft()
                                 .Height(70)
                                 .Padding(ConstantsHelper.PADDING)
-                                .Text(
-                                    text =>
+                                .Text(text =>
                                     {
                                         text.Line(NFeResource.INFORMAÇÕES_COMPLEMENTARES);
                                         text.Line((!string.IsNullOrWhiteSpace(_infnfe.infAdic.infCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
                                         (!string.IsNullOrWhiteSpace(_infnfe.infAdic.infAdFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                                     }
                                 );
+
                             row.RelativeItem()
                                 .Border(ConstantsHelper.BORDA)
                                 .Height(70)
