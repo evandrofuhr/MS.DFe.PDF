@@ -75,7 +75,7 @@ namespace MS.DFe.PDF
 
         private void ComposeWaterMark(IContainer container)
         {
-            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(200).TranslateX(-120).Text(NFeResource.PRE_VISUALIZACAO).FontSize(60).Bold().FontColor(Colors.Grey.Lighten1);
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(200).TranslateX(-120).Text(NFeResource.PRE_VISUALIZACAO).FontSize(55).Bold().FontColor(Colors.Grey.Lighten1);
         }
 
         private void ComposeHomWaterMark(IContainer container)
@@ -92,10 +92,15 @@ namespace MS.DFe.PDF
                 page.DefaultTextStyle(TextStyle.Default.FontSize(6).FontFamily("Times New Roman"));
                 page.PageColor(Colors.White);
 
-                if (_protocolo == null)
-                    page.Background().Element(ComposeWaterMark);
-                if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
-                    page.Background().Element(ComposeHomWaterMark);
+                page.Background().Element(backgroundContainer =>
+                {
+                    if (_protocolo == null)
+                        ComposeWaterMark(backgroundContainer);
+                    else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
+                        ComposeHomWaterMark(backgroundContainer);
+                    else
+                        backgroundContainer.Background(Colors.White);
+                });
 
                 page.Header().Component(new Cabecalho(_nfe, _protocolo, _logo));
                 page.Content().Component(new Conteudo(_nfe));

@@ -241,7 +241,7 @@
     <value>UF</value>
   </data>
   <data name="URL_NFE" xml:space="preserve">
-    <value>www.nfe.fazenda.gov.br/portal</value>
+    <value>https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&amp;tipoConteudo=7PhJ+gAVw2g=</value>
   </data>
   <data name="VALOR_INF" xml:space="preserve">
     <value>Valor:</value>
@@ -361,7 +361,7 @@
     <value>Inf. Contribuente:</value>
   </data>
   <data name="MICROSALES_INFO" xml:space="preserve">
-    <value>Documento impresso por MicroSales - www.microsales.com.br</value>
+    <value>Documento impresso por MicroSales -</value>
   </data>
   <data name="CIFRAO" xml:space="preserve">
     <value>R$</value>
@@ -410,5 +410,14 @@
   </data>
   <data name="CONSULTA2" xml:space="preserve">
     <value> ou no site da Sefaz Autorizadora</value>
+  </data>
+  <data name="URL_NFE_TEXT" xml:space="preserve">
+    <value>www.nfe.fazenda.gov.br/portal</value>
+  </data>
+  <data name="URL_MS" xml:space="preserve">
+    <value>https://www.microsales.com.br/</value>
+  </data>
+  <data name="URL_MS_TEXT" xml:space="preserve">
+    <value> www.microsales.com.br</value>
   </data>
 </root>

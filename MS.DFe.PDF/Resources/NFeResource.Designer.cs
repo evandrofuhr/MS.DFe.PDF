@@ -511,7 +511,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Documento impresso por MicroSales - www.microsales.com.br.
+        ///   Looks up a localized string similar to Documento impresso por MicroSales -.
         /// </summary>
         internal static string MICROSALES_INFO {
             get {
@@ -754,11 +754,38 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to www.nfe.fazenda.gov.br/portal.
+        ///   Looks up a localized string similar to https://www.microsales.com.br/.
+        /// </summary>
+        internal static string URL_MS {
+            get {
+                return ResourceManager.GetString("URL_MS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  www.microsales.com.br.
+        /// </summary>
+        internal static string URL_MS_TEXT {
+            get {
+                return ResourceManager.GetString("URL_MS_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&amp;tipoConteudo=7PhJ+gAVw2g=.
         /// </summary>
         internal static string URL_NFE {
             get {
                 return ResourceManager.GetString("URL_NFE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to www.nfe.fazenda.gov.br/portal.
+        /// </summary>
+        internal static string URL_NFE_TEXT {
+            get {
+                return ResourceManager.GetString("URL_NFE_TEXT", resourceCulture);
             }
         }
         

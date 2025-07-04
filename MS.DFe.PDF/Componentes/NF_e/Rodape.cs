@@ -1,4 +1,5 @@
-﻿using MS.DFe.PDF.Extensoes;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
@@ -23,10 +24,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
             if (_logo == null)
             {
                 container
-                    .Text(NFeResource.MICROSALES_INFO)
                     .AlignRight()
-                    .FontSize(6)
-                    .Italic();
+                    .Text
+                    (text =>
+                        {
+                            text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
+                            text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
+                        }
+                    );
             }
             else
             {
@@ -35,10 +40,13 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         row =>
                         {
                             row.RelativeItem()
-                                .Text(NFeResource.MICROSALES_INFO)
                                 .AlignRight()
-                                .FontSize(6)
-                                .Italic();
+                                .Text(text =>
+                                    {
+                                        text.Span(NFeResource.MICROSALES_INFO).FontSize(7).Italic();
+                                        text.Hyperlink(NFeResource.URL_MS_TEXT, NFeResource.URL_MS).FontSize(7).Italic().FontColor("3366CC");
+                                    }
+                                );
 
                             row.ConstantItem(1).ShrinkHorizontal();
 
@@ -66,24 +74,25 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             row.ConstantItem(370)
                                 .Border(ConstantsHelper.BORDA)
                                 .AlignLeft()
-                                .Height(80)
+                                .Height(70)
                                 .Padding(ConstantsHelper.PADDING)
-                                .Text(
-                                    text =>
+                                .Text(text =>
                                     {
                                         text.Line(NFeResource.INFORMAÇÕES_COMPLEMENTARES);
                                         text.Line((!string.IsNullOrWhiteSpace(_infnfe.infAdic.infCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
                                         (!string.IsNullOrWhiteSpace(_infnfe.infAdic.infAdFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                                     }
                                 );
+
                             row.RelativeItem()
                                 .Border(ConstantsHelper.BORDA)
-                                .Height(80)
+                                .Height(70)
                                 .Padding(ConstantsHelper.PADDING)
                                 .Text(NFeResource.RESERVADO_FISCO);
                         }
                     );
                     column.Item().Element(ComposeSoftwareHouse);
+                    column.Item().Height(7, Unit.Millimetre);
                 }
             );
         }

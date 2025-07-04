@@ -41,6 +41,17 @@ namespace MS.DFe.PDF
 
         }
 
+        private void ComposeWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-30).TranslateX(55).Text(NFeResource.PRE_VISUALIZACAO).FontSize(20).Bold().FontColor(Colors.Grey.Lighten1);
+        }
+
+        private void ComposeHomWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-30).TranslateX(45).Text(NFeResource.HOMOLOGACAO).FontSize(30).Bold().FontColor(Colors.Grey.Lighten1);
+        }
+
+
         public void Compose(IDocumentContainer container)
         {
             container
@@ -52,6 +63,16 @@ namespace MS.DFe.PDF
                         page.MarginHorizontal(3);
 
                         page.ContinuousSize(72.1f, Unit.Millimetre);
+
+                        page.Background().Element(backgroundContainer =>
+                        {
+                            if (_nfe.infNFe.ide.tpAmb == 0)
+                                ComposeWaterMark(backgroundContainer);
+                            else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
+                                ComposeHomWaterMark(backgroundContainer);
+                            else
+                                backgroundContainer.Background(Colors.White);
+                        });
 
                         page.Header().Component(new Cabecalho(_nfe.infNFe.emit));
 
@@ -65,40 +86,45 @@ namespace MS.DFe.PDF
         public DocumentMetadata GetMetadata()
         {
             var _metadata = DocumentMetadata.Default;
-            _metadata.RasterDpi = 72;
             return _metadata;
         }
 
         private void ComposeContent(IContainer container)
         {
-            container.Table(
-                table =>
+            container.Table(table =>
+            {
+                table.ColumnsDefinition(column => column.RelativeColumn());
+
+                table.Cell().Component(new Detalhe(_nfe));
+                table.Cell().Component(new Total(_nfe.infNFe.total));
+                table.Cell().Component(new Pagamento(_nfe.infNFe.pag));
+
+                if (_nfe.infNFeSupl != null || _protocolo?.infProt != null)
                 {
-                    table.ColumnsDefinition(column => column.RelativeColumn());
+                    table.Cell().Component(new Consulta(_nfe.infNFeSupl, _protocolo?.infProt));
+                }
 
-                    table.Cell().Component(new Detalhe(_nfe));
-                    table.Cell().Component(new Total(_nfe.infNFe.total));
-                    table.Cell().Component(new Pagamento(_nfe.infNFe.pag));
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new Consulta(_nfe.infNFeSupl, _protocolo.infProt));
-
-                    table.Cell().Height(5);
-
+                if (_nfe.infNFe.dest != null)
+                {
                     table.Cell().Component(new Consumidor(_nfe.infNFe.dest));
+                }
 
-                    table.Cell().Height(5);
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new Identificacao(_nfe.infNFe.ide, _protocolo?.infProt));
+                table.Cell().Component(new Identificacao(_nfe.infNFe.ide, _protocolo?.infProt));
 
-                    table.Cell().Height(5);
+                table.Cell().Height(5);
 
-                    table.Cell().Component(new QrCode(_nfe.infNFeSupl.qrCode ?? string.Empty));
-
-
+                if (!string.IsNullOrWhiteSpace(_nfe.infNFeSupl?.qrCode))
+                {
+                    table.Cell().Component(new QrCode(_nfe.infNFeSupl.qrCode));
                     table.Cell().Height(5);
                 }
-            );
+            });
         }
+
 
         private void Validar()
         {
