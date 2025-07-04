@@ -66,7 +66,7 @@ namespace MS.DFe.PDF
 
                         page.Background().Element(backgroundContainer =>
                         {
-                            if (_nfe.infNFe.ide.tpAmb == 0)
+                            if (_nfe.infNFe.ide.tpAmb == 0 || _nfe.Signature?.KeyInfo == null)
                                 ComposeWaterMark(backgroundContainer);
                             else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
                                 ComposeHomWaterMark(backgroundContainer);
