@@ -1,5 +1,4 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
@@ -8,11 +7,11 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Detalhe : IComponent
     {
-        private readonly DFeDados _dados;
+        private readonly NFe.Classes.NFe _nfe;
 
-        public Detalhe(DFeDados dados)
+        public Detalhe(NFe.Classes.NFe nfe)
         {
-            _dados = dados;
+            _nfe = nfe;
         }
 
         private void ComporCabecalho(TableDescriptor table)
@@ -54,7 +53,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
         {
             table.Cell().Column(c =>
             {
-                foreach (var item in _dados.det)
+                foreach (var item in _nfe.infNFe.det)
                 {
                     c.Item().Table(t =>
                     {
@@ -64,8 +63,8 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             d.RelativeColumn(7);
                         });
 
-                        t.Cell().Texto(item.cProd);
-                        t.Cell().Texto(item.xProd);
+                        t.Cell().Texto(item.prod.cProd);
+                        t.Cell().Texto(item.prod.xProd);
                     });
 
                     c.Item().Table(t =>
@@ -77,9 +76,9 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             d.RelativeColumn(4);
                         });
 
-                        t.Cell().AlignRight().Texto(item.qCom.Formata(), item.uCom);
-                        t.Cell().AlignRight().Texto(item.vUnCom);
-                        t.Cell().AlignRight().Texto(item.vProd);
+                        t.Cell().AlignRight().Texto(item.prod.qCom.Formata(), item.prod.uCom);
+                        t.Cell().AlignRight().Texto(item.prod.vUnCom);
+                        t.Cell().AlignRight().Texto(item.prod.vProd);
                     });
                 }
                 c.Item().Height(3);
@@ -98,7 +97,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
 
                 t.Cell().ColumnSpan(2).BorderBottom(0.8f);
                 t.Cell().AlignLeft().Texto(NFCeResource.QTDE_TOTAL_ITENS);
-                t.Cell().AlignRight().Texto(_dados.TotalItens.ToString());
+                t.Cell().AlignRight().Texto(_nfe.infNFe.det.Count.ToString());
             });
         }
 

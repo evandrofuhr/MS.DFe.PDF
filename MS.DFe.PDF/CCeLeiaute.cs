@@ -1,6 +1,5 @@
 ﻿using MS.DFe.PDF.Componentes.CCe;
 using MS.DFe.PDF.Modelos;
-using QuestPDF.Drawing;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -39,6 +38,11 @@ namespace MS.DFe.PDF
         public byte[] Gerar()
         {
             return this.GeneratePdf();
+        }
+
+        public DocumentSettings GetSettings()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

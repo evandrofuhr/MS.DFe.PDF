@@ -1,6 +1,7 @@
 ﻿using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Modelos;
 using MS.DFe.PDF.Resources;
+using NFe.Classes.Informacoes.Identificacao;
+using NFe.Classes.Protocolo;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
@@ -8,11 +9,12 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Identificacao : IComponent
     {
-        private readonly DFeDadosIdentificacao _dados;
-
-        public Identificacao(DFeDadosIdentificacao dados)
+        private readonly ide _ide;
+        private readonly infProt _infProt;
+        public Identificacao(ide ide, infProt infProt)
         {
-            _dados = dados;
+            _ide = ide;
+            _infProt = infProt;
         }
 
         public void Compose(IContainer container)
@@ -25,10 +27,10 @@ namespace MS.DFe.PDF.Componentes.NFCe
                         .AlignCenter()
                         .Texto(
                             NFCeResource.NFCE_NR,
-                            _dados.Numero,
+                            _ide.nNF.FormataNumero(),
                             NFCeResource.SERIE,
-                            _dados.Serie,
-                            _dados.Emissao,
+                            _ide.serie.FormataSerie(),
+                            _ide.dhEmi.FormataDataHora(),
                             "-",
                             NFCeResource.VIA_CONSUMIDOR
                         )
@@ -40,7 +42,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             text =>
                             {
                                 text.TextoSpan(NFCeResource.PROTOCOLO).Bold();
-                                text.TextoSpan(string.Empty, _dados.nProt);
+                                text.TextoSpan(string.Empty, _infProt?.nProt);
                             }
                         );
 
@@ -50,7 +52,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
                             text =>
                             {
                                 text.TextoSpan(NFCeResource.DATA).Bold();
-                                text.TextoSpan(string.Empty, _dados.Recebimento);
+                                text.TextoSpan(string.Empty, _infProt?.dhRecbto.FormataDataHora());
                             }
                         );
                 }

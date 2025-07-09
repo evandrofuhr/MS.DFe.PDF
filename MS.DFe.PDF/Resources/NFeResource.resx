@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BAIRRO" xml:space="preserve">
+    <value>BAIRRO / DISTRITO</value>
+  </data>
+  <data name="BASE_CALCULO_ICMS" xml:space="preserve">
+    <value>BASE DE CÁLC. DO ICMS</value>
+  </data>
+  <data name="BASE_CALCULO_ICMS_ST" xml:space="preserve">
+    <value>BASE DE CÁLC. ICMS S.T</value>
+  </data>
+  <data name="CALCULO_IMPOSTO" xml:space="preserve">
+    <value>CÁLCULO DE IMPOSTO</value>
+  </data>
+  <data name="CEP" xml:space="preserve">
+    <value>CEP</value>
+  </data>
+  <data name="CHAVE_ACESSO" xml:space="preserve">
+    <value>CHAVE DE ACESSO</value>
+  </data>
+  <data name="CNPJ" xml:space="preserve">
+    <value>CNPJ</value>
+  </data>
+  <data name="CNPJ_CPF" xml:space="preserve">
+    <value>CNPJ / CPF</value>
+  </data>
+  <data name="CONSULTA1" xml:space="preserve">
+    <value>Consulta de autenticidade no portal nacional da NF-e</value>
+  </data>
+  <data name="CST" xml:space="preserve">
+    <value>O/CST</value>
+  </data>
+  <data name="DANFE" xml:space="preserve">
+    <value>DANFE</value>
+  </data>
+  <data name="DATA_EMISSAO" xml:space="preserve">
+    <value>DATA DE EMISSÃO</value>
+  </data>
+  <data name="DATA_ENTRADA_SAIDA" xml:space="preserve">
+    <value>DATA ENTRADA / SAÍDA</value>
+  </data>
+  <data name="DATA_RECEBIMENTO" xml:space="preserve">
+    <value>DATA DE RECEBIMENTO</value>
+  </data>
+  <data name="DESCONTO" xml:space="preserve">
+    <value>DESCONTO</value>
+  </data>
+  <data name="DESTINATARIO" xml:space="preserve">
+    <value>Destinatário:</value>
+  </data>
+  <data name="DESTINATARIO_REMETENTE" xml:space="preserve">
+    <value>DESTINATARIO / REMETENTE</value>
+  </data>
+  <data name="DOCUMENTO_AUXILIAR" xml:space="preserve">
+    <value>Documento Auxiliar da Nota Fiscal Eletrônica</value>
+  </data>
+  <data name="EMISSAO" xml:space="preserve">
+    <value>Emissão:</value>
+  </data>
+  <data name="ENDERECO" xml:space="preserve">
+    <value>ENDEREÇO</value>
+  </data>
+  <data name="ENTRADA" xml:space="preserve">
+    <value>0 - ENTRADA</value>
+  </data>
+  <data name="FATURA_DUPLICATA" xml:space="preserve">
+    <value>FATURA / DUPLICATA</value>
+  </data>
+  <data name="FONE" xml:space="preserve">
+    <value>Fone</value>
+  </data>
+  <data name="FONE_FAX" xml:space="preserve">
+    <value>FONE / FAX</value>
+  </data>
+  <data name="HORA_ENTRADA_SAÍDA" xml:space="preserve">
+    <value>HORA_ENTRADA_SAÍDA</value>
+  </data>
+  <data name="IDENTIFICACAO_ASSINATURA_RECEBEDOR" xml:space="preserve">
+    <value>IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR</value>
+  </data>
+  <data name="INSCRICAO_ESTADUAL" xml:space="preserve">
+    <value>INSCRIÇÃO ESTADUAL</value>
+  </data>
+  <data name="INSCRICAO_ESTADUAL_SUBST_TRIBUTÁRIO" xml:space="preserve">
+    <value>INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO</value>
+  </data>
+  <data name="MUNICIPIO" xml:space="preserve">
+    <value>MUNICÍPIO</value>
+  </data>
+  <data name="NATUREZA_OPERACAO" xml:space="preserve">
+    <value>NATUREZA DA OPERAÇÃO</value>
+  </data>
+  <data name="NFE" xml:space="preserve">
+    <value>NF-e</value>
+  </data>
+  <data name="NUMERO" xml:space="preserve">
+    <value>Nº</value>
+  </data>
+  <data name="O_CSOSN" xml:space="preserve">
+    <value>O/CSOSN</value>
+  </data>
+  <data name="OUTRAS_DESPESAS" xml:space="preserve">
+    <value>OUTRAS DESPESAS</value>
+  </data>
+  <data name="PRODUTOS_SERVICOS" xml:space="preserve">
+    <value>os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo.</value>
+  </data>
+  <data name="PROTOCOLO_AUTORIZACAO" xml:space="preserve">
+    <value>PROTOCOLO DE AUTORIZAÇÃO</value>
+  </data>
+  <data name="RAZAO_SOCIAL" xml:space="preserve">
+    <value>RAZÃO SOCIAL</value>
+  </data>
+  <data name="CANHOTO1" xml:space="preserve">
+    <value>Recebemos de {0} os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo.</value>
+  </data>
+  <data name="SAIDA" xml:space="preserve">
+    <value>1 - SAÍDA</value>
+  </data>
+  <data name="SERIE" xml:space="preserve">
+    <value>Série:</value>
+  </data>
+  <data name="UF" xml:space="preserve">
+    <value>UF</value>
+  </data>
+  <data name="URL_NFE" xml:space="preserve">
+    <value>https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&amp;tipoConteudo=7PhJ+gAVw2g=</value>
+  </data>
+  <data name="VALOR_INF" xml:space="preserve">
+    <value>Valor:</value>
+  </data>
+  <data name="VALOR_COFINS" xml:space="preserve">
+    <value>VALOR DO COFINS</value>
+  </data>
+  <data name="VALOR_FCP" xml:space="preserve">
+    <value>VALOR DO FCP</value>
+  </data>
+  <data name="VALOR_FRETE" xml:space="preserve">
+    <value>VALOR DO FRETE</value>
+  </data>
+  <data name="VALOR_ICMS" xml:space="preserve">
+    <value>VALOR DO ICMS</value>
+  </data>
+  <data name="VALOR_ICMS_SUBST" xml:space="preserve">
+    <value>VALOR DO ICMS SUBST</value>
+  </data>
+  <data name="VALOR_IPI" xml:space="preserve">
+    <value>VALOR IPI</value>
+  </data>
+  <data name="VALOR_PIS" xml:space="preserve">
+    <value>VALOR DO PIS</value>
+  </data>
+  <data name="VALOR_SEGURO" xml:space="preserve">
+    <value>VALOR DO SEGURO</value>
+  </data>
+  <data name="VALOR_TOTAL" xml:space="preserve">
+    <value>Valor Total:</value>
+  </data>
+  <data name="VALOR_TOTAL_NOTA" xml:space="preserve">
+    <value>VALOR TOTAL DA NOTA</value>
+  </data>
+  <data name="VALOS_ICMS_SUBST" xml:space="preserve">
+    <value>VALOR DO ICMS SUBST.</value>
+  </data>
+  <data name="VENCIMENTO" xml:space="preserve">
+    <value>Vencimento:</value>
+  </data>
+  <data name="V_ICMS_UF_DEST" xml:space="preserve">
+    <value>V. ICMS UF DEST</value>
+  </data>
+  <data name="V_ICMS_UF_REMET" xml:space="preserve">
+    <value>V. ICMS UF REMET</value>
+  </data>
+  <data name="V_IMP_IMPORTACAO" xml:space="preserve">
+    <value>V. IMP. IMPORTAÇÃO</value>
+  </data>
+  <data name="V_TOTAL_PRODUTOS" xml:space="preserve">
+    <value>V. TOTAL PRODUTOS</value>
+  </data>
+  <data name="V_TOT_TRIB" xml:space="preserve">
+    <value>V. TOT. TRIB.</value>
+  </data>
+  <data name="DADOS_PRODUTOS_SERVICOS" xml:space="preserve">
+    <value>DADOS DOS PRODUTOS / SERVICOS</value>
+  </data>
+  <data name="CODIGO_PRODUTO" xml:space="preserve">
+    <value>CÓDIGO PRODUTO</value>
+  </data>
+  <data name="DESCRIÇÃO_PRODUTO_SERVIÇO" xml:space="preserve">
+    <value>DESCRIÇÃO DO PRODUTO / SERVIÇO</value>
+  </data>
+  <data name="NCM_SH" xml:space="preserve">
+    <value>NCM/SH</value>
+  </data>
+  <data name="CFOP" xml:space="preserve">
+    <value>CFOP</value>
+  </data>
+  <data name="UN" xml:space="preserve">
+    <value>UN</value>
+  </data>
+  <data name="QUANTI" xml:space="preserve">
+    <value>QUANTI.</value>
+  </data>
+  <data name="VALOR" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
+  <data name="UNIT" xml:space="preserve">
+    <value>UNIT</value>
+  </data>
+  <data name="TOTAL" xml:space="preserve">
+    <value>TOTAL</value>
+  </data>
+  <data name="ICMS" xml:space="preserve">
+    <value>ICMS</value>
+  </data>
+  <data name="B_CALC" xml:space="preserve">
+    <value>B. CÁLC</value>
+  </data>
+  <data name="ALIQ" xml:space="preserve">
+    <value>ALIQ.</value>
+  </data>
+  <data name="IPI" xml:space="preserve">
+    <value>IPI</value>
+  </data>
+  <data name="NUMERO_VALOR" xml:space="preserve">
+    <value>Número:</value>
+  </data>
+  <data name="RESERVADO_FISCO" xml:space="preserve">
+    <value>RESERVADO AO FISCO</value>
+  </data>
+  <data name="VALOR_APROXIMADO_TRIBUTOS" xml:space="preserve">
+    <value>Valor Aproximado dos Tributos:</value>
+  </data>
+  <data name="INFORMAÇÕES_COMPLEMENTARES" xml:space="preserve">
+    <value>INFORMAÇÕES COMPLEMENTARES</value>
+  </data>
+  <data name="DADOS_ADICIONAIS" xml:space="preserve">
+    <value>DADOS ADICIONAIS</value>
+  </data>
+  <data name="INF_FISCO" xml:space="preserve">
+    <value>Inf. Fisco:</value>
+  </data>
+  <data name="INF_CONTRIBUENTE" xml:space="preserve">
+    <value>Inf. Contribuente:</value>
+  </data>
+  <data name="MICROSALES_INFO" xml:space="preserve">
+    <value>Documento impresso por MicroSales -</value>
+  </data>
+  <data name="CIFRAO" xml:space="preserve">
+    <value>R$</value>
+  </data>
+  <data name="TRANSPORTADOR" xml:space="preserve">
+    <value>TRANSPORTADOR / VOLUMES TRANSPORTADOS</value>
+  </data>
+  <data name="CODIGO_ANTT" xml:space="preserve">
+    <value>CÓDIGO ANTT</value>
+  </data>
+  <data name="PLACA_VEICULO" xml:space="preserve">
+    <value>PLACA DO VEÍCULO</value>
+  </data>
+  <data name="QUANTIDADE" xml:space="preserve">
+    <value>QUANTIDADE</value>
+  </data>
+  <data name="NUMERACAO" xml:space="preserve">
+    <value>NUMERAÇÃO</value>
+  </data>
+  <data name="PESO_BRUTO" xml:space="preserve">
+    <value>PESO BRUTO</value>
+  </data>
+  <data name="PESO_LIQUIDO" xml:space="preserve">
+    <value>PESO LÍQUIDO</value>
+  </data>
+  <data name="FRETE" xml:space="preserve">
+    <value>FRETE</value>
+  </data>
+  <data name="ESPECIE" xml:space="preserve">
+    <value>ESPÉCIE</value>
+  </data>
+  <data name="MARCA" xml:space="preserve">
+    <value>MARCA</value>
+  </data>
+  <data name="IDENTIFICACAO_EMITENTE" xml:space="preserve">
+    <value>IDENTIFICAÇÃO DO EMITENTE</value>
+  </data>
+  <data name="PRE_VISUALIZACAO" xml:space="preserve">
+    <value>PRÉ-VISUALIZAÇÃO</value>
+  </data>
+  <data name="HOMOLOGACAO" xml:space="preserve">
+    <value>HOMOLOGAÇÃO</value>
+  </data>
+  <data name="CANHOTO2" xml:space="preserve">
+    <value>Emissão: {0} Valor Total: R$ {1} Destinatário: {2}</value>
+  </data>
+  <data name="CONSULTA2" xml:space="preserve">
+    <value> ou no site da Sefaz Autorizadora</value>
+  </data>
+  <data name="URL_NFE_TEXT" xml:space="preserve">
+    <value>www.nfe.fazenda.gov.br/portal</value>
+  </data>
+  <data name="URL_MS" xml:space="preserve">
+    <value>https://www.microsales.com.br/</value>
+  </data>
+  <data name="URL_MS_TEXT" xml:space="preserve">
+    <value> www.microsales.com.br</value>
+  </data>
+</root>
