@@ -85,8 +85,7 @@ namespace MS.DFe.PDF
 
         public DocumentMetadata GetMetadata()
         {
-            var _metadata = DocumentMetadata.Default;
-            return _metadata;
+            return DocumentMetadata.Default;
         }
 
         private void ComposeContent(IContainer container)
@@ -140,7 +139,7 @@ namespace MS.DFe.PDF
 
         public DocumentSettings GetSettings()
         {
-            return new DocumentSettings { };
+            return DocumentSettings.Default;
         }
 
     }
