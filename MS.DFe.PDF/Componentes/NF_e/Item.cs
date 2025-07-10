@@ -101,9 +101,9 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
                         for (int i = 0; i < 13; i++)
                         {
-                            table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Height(1);
+                            table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA);
                         }
-                        table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Extend().Padding(4).Text("");
+                        table.Cell().BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA).Extend();
 
                         table.Footer(footer =>
                         {
