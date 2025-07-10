@@ -70,7 +70,7 @@ namespace MS.DFe.PDF.Extensoes
             container
                 .BorderRight(ConstantsHelper.BORDA)
                 .BorderLeft(ConstantsHelper.BORDA)
-                .Padding(2)
+                .Padding(ConstantsHelper.PADDING)
                 .Text(
                 text =>
                     {
@@ -86,7 +86,7 @@ namespace MS.DFe.PDF.Extensoes
             container
                 .BorderRight(ConstantsHelper.BORDA)
                 .BorderLeft(ConstantsHelper.BORDA)
-                .Padding(2)
+                .Padding(ConstantsHelper.PADDING)
                 .AlignRight()
                 .Text(valor);
         }
@@ -97,7 +97,6 @@ namespace MS.DFe.PDF.Extensoes
         {
             container
                 .Border(ConstantsHelper.BORDA)
-                .Padding(ConstantsHelper.PADDING)
                 .AlignCenter()
                 .Text(label)
                 .SemiBold()

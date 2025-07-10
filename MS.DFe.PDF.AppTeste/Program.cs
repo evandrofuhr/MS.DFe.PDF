@@ -71,7 +71,7 @@ while (string.IsNullOrEmpty(_xmlPath))
     _xmlPath = Console.ReadLine();
 
     if (string.IsNullOrWhiteSpace(_xmlPath))
-        _xmlPath = "c:/temp/xuxu.xml";
+        _xmlPath = "c:/temp/xuxuu.xml";
 
     if (!File.Exists(_xmlPath))
     {
