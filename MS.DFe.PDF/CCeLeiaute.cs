@@ -42,7 +42,7 @@ namespace MS.DFe.PDF
 
         public DocumentSettings GetSettings()
         {
-            throw new System.NotImplementedException();
+            return DocumentSettings.Default;
         }
     }
 }
