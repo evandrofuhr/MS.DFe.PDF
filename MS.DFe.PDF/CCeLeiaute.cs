@@ -13,6 +13,7 @@ namespace MS.DFe.PDF
 
         public CCeLeiaute(CCeDados dados, byte[] logo = null)
         {
+            QuestPDF.Settings.License = LicenseType.Community;
             _logo = logo;
             _dados = dados;
         }
