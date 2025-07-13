@@ -67,7 +67,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                                 NFeResource.CANHOTO1,
                                                 _emit.xNome
                                             )
-                                        );
+                                        ).FontSize(7);
 
                                         text.Span(
                                             string.Format(
@@ -76,7 +76,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                                 _icmstot.vNF.ToString("N2"),
                                                 _dest.xNome
                                             )
-                                        );
+                                        ).FontSize(7);
                                     }
                                 );
 
