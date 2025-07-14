@@ -62,7 +62,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                     .Row(
                         row =>
                         {
-                            row.ConstantItem(80).AlignCenter().AlignMiddle().Image(_logo);
+                            row.ConstantItem(80).AlignCenter().AlignMiddle().Height(80).Image(_logo).FitArea();
                             row.ConstantItem(5);
                             row.RelativeItem().AlignMiddle().AlignCenter().Element(e => ComposeText(e, 11f));
                         }
@@ -78,7 +78,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                     .Column(
                         column =>
                         {
-                            column.Item().AlignCenter().Height(34).Image(_logo);
+                            column.Item().AlignCenter().Height(34).Image(_logo).FitArea();
                             column.Item().Height(1f).ShrinkHorizontal();
                             column.Item().AlignCenter().Element(e => ComposeText(e, 11f));
                         }

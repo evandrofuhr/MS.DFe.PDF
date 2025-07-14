@@ -27,15 +27,19 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         .Text(
                            text =>
                            {
-                               text.Line(NFeResource.ENTRADA).FontSize(8);
-                               text.Span(NFeResource.SAIDA).FontSize(8);
+                               text.Line(NFeResource.ENTRADA);
+                               text.Span(NFeResource.SAIDA);
                            }
                         );
 
                     row.ConstantItem(13)
+                    .PaddingTop(3)
+                    .PaddingBottom(2)
                          .Border(ConstantsHelper.BORDA)
                          .AlignCenter()
+                         .PaddingTop(1.4f)
                          .Text(((int)_ide.tpNF).ToString())
+                         .AlignCenter()
                          .FontSize(12)
                          .Bold();
 
@@ -54,7 +58,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                 .Column(
                     column =>
                         {
-                            column.Item().Text(NFeResource.DANFE).FontSize(10).Bold().AlignCenter().LineHeight(1.5f);
+                            column.Item().Text(NFeResource.DANFE).FontSize(14).Bold().AlignCenter().LineHeight(1.5f);
                             column.Item().Text(NFCeResource.DOC_AUX).FontSize(6.6f).AlignCenter().LineHeight(1);
                             column.Item().Height(3);
                             column.Item().Element(ComposeEntradaSaida);
@@ -63,8 +67,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             column.Item().AlignCenter().Text(
                                 text =>
                                 {
-                                    text.Line($"{NFeResource.NUMERO} {_ide.nNF.ToNumeroNfe()}").FontSize(8).Bold();
-                                    text.Span($"{NFeResource.SERIE} {_ide.serie.ToString()}").FontSize(8).Bold();
+                                    text.Line($"{NFeResource.NUMERO} {_ide.nNF.ToNumeroNfe()}").Bold();
+                                    text.Span($"{NFeResource.SERIE} {_ide.serie.ToString()}").Bold();
                                 }
                             );
 
@@ -73,7 +77,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                 .Text(
                                     text =>
                                     {
-                                        text.DefaultTextStyle(d => d.FontSize(8).Bold());
+                                        text.DefaultTextStyle(d => d.Bold());
                                         text.Span("Folha ");
                                         text.CurrentPageNumber();
                                         text.Span("/");

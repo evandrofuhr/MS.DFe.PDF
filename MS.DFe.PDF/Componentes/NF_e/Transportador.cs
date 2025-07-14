@@ -44,10 +44,10 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         {
                             row.ConstantItem(237).PadraoInformacao(NFeResource.RAZAO_SOCIAL, _transp.transporta?.xNome);
                             row.ConstantItem(110).PadraoInformacao(NFeResource.FRETE, _frete, true);
-                            row.ConstantItem(93).PadraoInformacao(NFeResource.CODIGO_ANTT, string.Empty);
+                            row.ConstantItem(88).PadraoInformacao(NFeResource.CODIGO_ANTT, string.Empty);
                             row.RelativeItem().PadraoInformacao(NFeResource.PLACA_VEICULO, _transp.veicTransp?.placa, true);
                             row.ConstantItem(15).PadraoInformacao(NFeResource.UF, _transp.veicTransp?.UF, true);
-                            row.ConstantItem(69).PadraoInformacao(NFeResource.CNPJ_CPF, _transp.transporta?.CNPJ.FormataCNPJCPF() ?? _transp.transporta?.CPF.FormataCNPJCPF(), true);
+                            row.ConstantItem(78).PadraoInformacao(NFeResource.CNPJ_CPF, _transp.transporta?.CNPJ.FormataCNPJCPF() ?? _transp.transporta?.CPF.FormataCNPJCPF(), true);
                         }
                     );
 
@@ -57,7 +57,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                             row.ConstantItem(237).PadraoInformacao(NFeResource.ENDERECO, _transp.transporta?.xEnder);
                             row.RelativeItem().PadraoInformacao(NFeResource.MUNICIPIO, _transp.transporta?.xMun);
                             row.ConstantItem(15).PadraoInformacao(NFeResource.UF, _transp.transporta?.UF, true);
-                            row.ConstantItem(69).PadraoInformacao(NFeResource.INSCRICAO_ESTADUAL, _transp.transporta?.IE, true);
+                            row.ConstantItem(78).PadraoInformacao(NFeResource.INSCRICAO_ESTADUAL, _transp.transporta?.IE, true);
                         }
                     );
 
@@ -85,7 +85,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
 
                         row.ConstantItem(127).PadraoInformacao(NFeResource.ESPECIE, _volume?.Especie ?? string.Empty);
                         row.ConstantItem(110).PadraoInformacao(NFeResource.MARCA, _volume?.Marca ?? string.Empty);
-                        row.ConstantItem(93).PadraoInformacao(NFeResource.NUMERACAO, _volume?.Numeracao ?? string.Empty);
+                        row.ConstantItem(88).PadraoInformacao(NFeResource.NUMERACAO, _volume?.Numeracao ?? string.Empty);
 
                         if (_volume ==null || _volume.PesoBruto == 0)
                             row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, string.Empty);
@@ -94,9 +94,9 @@ namespace MS.DFe.PDF.Componentes.Nfe
 
 
                         if (_volume == null || _volume.PesoLiquido == 0)
-                            row.ConstantItem(69).PadraoInformacao(NFeResource.PESO_LIQUIDO, string.Empty);
+                            row.ConstantItem(78).PadraoInformacao(NFeResource.PESO_LIQUIDO, string.Empty);
                         else
-                            row.ConstantItem(69).PadraoInformacao(NFeResource.PESO_LIQUIDO, _volume.PesoLiquido.ToString("N3"), string.Empty);
+                            row.ConstantItem(78).PadraoInformacao(NFeResource.PESO_LIQUIDO, _volume.PesoLiquido.ToString("N3"), string.Empty);
                     });
                 }
             );

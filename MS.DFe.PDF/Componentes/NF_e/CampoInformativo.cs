@@ -37,7 +37,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
         {
             container.Column(column =>
             {
-                column.Item().AlignLeft().Text(_label).FontSize(4);
+                column.Item().AlignLeft().Text(_label).FontSize(5.2f);
 
                 var content = column.Item();
 
@@ -55,7 +55,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                         break;
                 }
 
-                content.Text(_text).FontSize(8).Bold().LineHeight(1);
+                content.Text(_text).Bold().LineHeight(1);
             });
         }
     }

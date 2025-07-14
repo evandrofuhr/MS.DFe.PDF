@@ -24,7 +24,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
             {
                 column.Item().PadraoLabelGrupo(NFeResource.FATURA_DUPLICATA);
 
-                const int maxPorLinha = 14;
+                const int maxPorLinha = 9;
                 int total = _cobr.dup.Count;
                 int blocos = (int)Math.Ceiling(total / (double)maxPorLinha);
 
@@ -39,37 +39,37 @@ namespace MS.DFe.PDF.Componentes.Nfe
                     {
                         col.Item().Row(row =>
                         {
-                            row.ConstantItem(37).BorderLeft(ConstantsHelper.BORDA).BorderTop(ConstantsHelper.BORDA)
+                            row.ConstantItem(51.4f).BorderLeft(ConstantsHelper.BORDA).BorderTop(ConstantsHelper.BORDA)
                                 .Padding(ConstantsHelper.PADDING).Text(NFeResource.NUMERO_VALOR).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {
-                                row.ConstantItem(38.64f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderTop(ConstantsHelper.BORDA)
-                                    .Padding(2).AlignCenter().Text(item.nDup).SemiBold();
+                                row.ConstantItem(58.5f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderTop(ConstantsHelper.BORDA)
+                                    .Padding(ConstantsHelper.PADDING).AlignCenter().Text(item.nDup);
                             }
                         });
 
                         col.Item().Row(row =>
                         {
-                            row.ConstantItem(37).BorderLeft(ConstantsHelper.BORDA)
+                            row.ConstantItem(51.4f).BorderLeft(ConstantsHelper.BORDA)
                                 .Padding(ConstantsHelper.PADDING).Text(NFeResource.VENCIMENTO).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {
-                                row.ConstantItem(38.64f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA)
-                                    .Padding(2).AlignCenter().Text(item.dVenc?.ToString("dd/MM/yyyy")).SemiBold();
+                                row.ConstantItem(58.5f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA)
+                                    .Padding(ConstantsHelper.PADDING).AlignCenter().Text(item.dVenc?.ToString("dd/MM/yyyy"));
                             }
                         });
 
                         col.Item().Row(row =>
                         {
-                            row.ConstantItem(37).BorderBottom(ConstantsHelper.BORDA).BorderLeft(ConstantsHelper.BORDA)
+                            row.ConstantItem(51.4f).BorderBottom(ConstantsHelper.BORDA).BorderLeft(ConstantsHelper.BORDA)
                                 .Padding(ConstantsHelper.PADDING).Text(NFeResource.VALOR_INF).Bold();
 
                             foreach (var item in duplicatasBloco)
                             {
-                                row.ConstantItem(38.64f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA)
-                                    .Padding(2).AlignCenter().Text($"{NFeResource.CIFRAO} {item.vDup.ToString("N2")}").SemiBold();
+                                row.ConstantItem(58.5f).BorderLeft(ConstantsHelper.BORDA).BorderRight(ConstantsHelper.BORDA).BorderBottom(ConstantsHelper.BORDA)
+                                    .Padding(ConstantsHelper.PADDING).AlignCenter().Text($"{NFeResource.CIFRAO} {item.vDup.ToString("N2")}");
                             }
                         });
                     });

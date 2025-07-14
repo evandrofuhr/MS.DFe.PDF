@@ -84,7 +84,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             var _dadosICI = ImpostosHelper.GetDadosIPI(_item);
 
                             table.Cell().PadraoDadosTabela(_item.prod.cProd, true);
-                            table.Cell().PadraoDadosTabela($"{_item.prod.xProd}\r\n{_item.infAdProd}", false);
+                            table.Cell().PadraoDadosTabela($"{_item.prod.xProd}{(string.IsNullOrEmpty(_item.infAdProd) ? "" : "\r\n" + _item.infAdProd)}", false);
                             table.Cell().PadraoDadosTabela(_item.prod.NCM, true);
                             table.Cell().PadraoDadosTabela(_dadosICMS?.OrigemCST, true);
                             table.Cell().PadraoDadosTabela(_item.prod.CFOP.ToString("N0"), true);
