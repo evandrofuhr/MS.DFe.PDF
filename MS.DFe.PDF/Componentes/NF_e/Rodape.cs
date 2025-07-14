@@ -6,6 +6,7 @@ using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
+using System.Collections.Generic;
 
 namespace MS.DFe.PDF.Componentes.NF_e
 {
@@ -66,7 +67,16 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
             var _informacaoAdicionalCpl = $"{NFeResource.INF_CONTRIBUENTE} {_infnfe.infAdic.infCpl}";
             var _informacaoAdicionalFisco = $"{NFeResource.INF_FISCO} {_infnfe.infAdic.infAdFisco}";
-            var _tamanhoFonte = (cpl.Length + fisco.Length).ToTamanhoFonte();
+
+            var _informacao = new List<string>();
+            if (!string.IsNullOrEmpty(cpl))
+                _informacao.Add(_informacaoAdicionalCpl);
+            if (!string.IsNullOrEmpty(fisco))
+                _informacao.Add(_informacaoAdicionalFisco);
+
+            var _final = string.Join("\r\n", _informacao);
+                                   
+            var _tamanhoFonte = _final.Length.ToTamanhoFonte();
 
             container.Column(
                 column =>
@@ -81,11 +91,12 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                 .AlignLeft()
                                 .Height(110)
                                 .Padding(ConstantsHelper.PADDING)
-                                .Text(text =>
+                                .Column(
+                                    c =>
                                     {
-                                        text.Line(NFeResource.INFORMAÇÕES_COMPLEMENTARES).FontSize(7);
-                                        text.Line((!string.IsNullOrWhiteSpace(_infnfe.infAdic.infCpl) ? _informacaoAdicionalCpl + "\r\n" : "") +
-                                        (!string.IsNullOrWhiteSpace(_infnfe.infAdic.infAdFisco) ? _informacaoAdicionalFisco + "\r\n" : "") + $"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(_tamanhoFonte);
+                                        c.Item().Text(NFeResource.INFORMAÇÕES_COMPLEMENTARES).FontSize(7);
+                                        c.Item().Text(_final).ClampLines(17).FontSize(_tamanhoFonte);                                        
+                                        c.Item().Text($"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                                     }
                                 );
 
