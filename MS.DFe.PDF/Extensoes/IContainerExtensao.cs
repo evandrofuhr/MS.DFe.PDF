@@ -21,7 +21,7 @@ namespace MS.DFe.PDF.Extensoes
 
         public static void PadraoLabelGrupo(this IContainer container, string label)
         {
-            container.PaddingVertical(ConstantsHelper.PADDING).Text(label);
+            container.PaddingVertical(ConstantsHelper.PADDING).Text(label).FontSize(7);
         }
 
         public static void PadraoInformacao(this IContainer container, string label, decimal? valor)
@@ -31,18 +31,6 @@ namespace MS.DFe.PDF.Extensoes
                 .Padding(ConstantsHelper.PADDING)
                 .Component(
                     CampoInformativo.Valor(label, valor?.Formata())
-                );
-        }
-
-
-
-        public static void PadraoInformacao(this IContainer container, string label, int? valor)
-        {
-            container
-                .Border(ConstantsHelper.BORDA)
-                .Padding(ConstantsHelper.PADDING)
-                .Component(
-                    CampoInformativo.Valor(label, valor.ToString())
                 );
         }
 
@@ -70,10 +58,12 @@ namespace MS.DFe.PDF.Extensoes
             container
                 .BorderRight(ConstantsHelper.BORDA)
                 .BorderLeft(ConstantsHelper.BORDA)
-                .Padding(ConstantsHelper.PADDING)
+                .BorderTop(0.09f)
+                .Padding(0.8f)
                 .Text(
                 text =>
                     {
+                        text.DefaultTextStyle(d => d.FontSize(6));
                         text.Span(valor);
                         if (centro) text.AlignCenter();
                         else text.AlignLeft();
@@ -86,9 +76,11 @@ namespace MS.DFe.PDF.Extensoes
             container
                 .BorderRight(ConstantsHelper.BORDA)
                 .BorderLeft(ConstantsHelper.BORDA)
-                .Padding(ConstantsHelper.PADDING)
+                .BorderTop(0.09f)
+                .Padding(0.8f)
                 .AlignRight()
-                .Text(valor);
+                .Text(valor)
+                .FontSize(7);
         }
 
         
@@ -97,10 +89,12 @@ namespace MS.DFe.PDF.Extensoes
         {
             container
                 .Border(ConstantsHelper.BORDA)
+                .Padding(ConstantsHelper.PADDING)
                 .AlignCenter()
+                .AlignMiddle()
                 .Text(label)
                 .SemiBold()
-                .FontSize(4);
+                .FontSize(5.5f);
         }
 
         public static void PadraoInformacaoTabela(this IContainer container, string label, string _label)
@@ -112,7 +106,7 @@ namespace MS.DFe.PDF.Extensoes
                 .Text(
                 text =>
                     {
-                        text.DefaultTextStyle(d => d.SemiBold().FontSize(4));
+                        text.DefaultTextStyle(d => d.SemiBold().FontSize(5.5f));
                         text.Line(label);
                         text.Span(_label);
                     }

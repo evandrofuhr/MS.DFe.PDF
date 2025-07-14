@@ -61,6 +61,23 @@ namespace MS.DFe.PDF.Extensoes
             return $"{value.xLgr} {value.nro}, {value.xBairro}, {value.xMun}, {value.UF}";
         }
 
+        public static float ToTamanhoFonte(this int tamanho)
+        {
+            if (tamanho <= 600) return 8f;
+            else if (tamanho <= 700) return 7.8f;
+            else if (tamanho <= 800) return 7.4f;
+            else if (tamanho <= 900) return 7f;
+            else if (tamanho <= 1000) return 6.8f;
+            else if (tamanho <= 1100) return 6.4f;
+            else if (tamanho <= 1200) return 6f;
+            else if (tamanho <= 1300) return 5.8f;
+            else if (tamanho <= 1400) return 5.6f;
+            else if (tamanho <= 1500) return 5.4f;
+            else if (tamanho <= 1600) return 5.2f;
+            else if (tamanho <= 1700) return 5f;
+            else return 4.4f;
+        }
+
         public static string FormataAmbiente(this EAmbiente valor)
         {
             if (valor == EAmbiente.PRODUCAO) return CCeResource.AMBIENTE_PRODUCAO;

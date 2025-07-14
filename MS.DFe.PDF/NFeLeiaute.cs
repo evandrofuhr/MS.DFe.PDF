@@ -89,7 +89,7 @@ namespace MS.DFe.PDF
             {
                 page.Size(PageSizes.A4);
                 page.Margin(3, Unit.Millimetre);
-                page.DefaultTextStyle(TextStyle.Default.FontSize(6).FontFamily("Times New Roman"));
+                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily("Times New Roman"));
                 page.PageColor(Colors.White);
 
                 page.Background().Element(backgroundContainer =>
@@ -102,7 +102,7 @@ namespace MS.DFe.PDF
                         backgroundContainer.Background(Colors.White);
                 });
 
-                page.Header().Component(new Cabecalho(_nfe, _protocolo, _logo));
+                page.Header().Component(new Cabecalho  (_nfe, _protocolo, _logo));
                 page.Content().Component(new Conteudo(_nfe));
                 page.Footer().ShowOnce().Component(new Rodape(_nfe.infNFe, _logoSoftwareHouse));
             });
