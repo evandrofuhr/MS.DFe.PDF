@@ -89,7 +89,7 @@ namespace MS.DFe.PDF
             {
                 page.Size(PageSizes.A4);
                 page.Margin(3, Unit.Millimetre);
-                page.DefaultTextStyle(TextStyle.Default.FontSize(9.5f).FontFamily("Times New Roman"));
+                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily("Times New Roman"));
                 page.PageColor(Colors.White);
 
                 page.Background().Element(backgroundContainer =>
