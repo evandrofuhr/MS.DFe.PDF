@@ -4,21 +4,22 @@ namespace MS.DFe.PDF.Extensoes
 {
     internal static class NumberExtensao
     {
+        private static readonly CultureInfo _culture = new CultureInfo("pt-BR");
+
         public static string Formata(this decimal valor)
         {
-            CultureInfo bz = new CultureInfo("pt-BR");
-            return valor.ToString("#,##0.00", bz);
+            return valor.ToString("#,##0.00", _culture);
         }
 
         public static string ToString(this decimal item, int casas = 2)
         {
             var _formato = $"#,##0.{string.Empty.PadRight(casas, '0')}";
-            return item.ToString(_formato);
+            return item.ToString(_formato, _culture);
         }
 
         public static int QuantidadeDecimais(this decimal value)
         {
-            var _valueStr = value.ToString("0.###############");
+            var _valueStr = value.ToString("0.###############", _culture);
 
             var _posicao = _valueStr.IndexOf(',');
 

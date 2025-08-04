@@ -1,6 +1,4 @@
-﻿using DocumentFormat.OpenXml.ExtendedProperties;
-using DocumentFormat.OpenXml.Spreadsheet;
-using MS.DFe.PDF.Extensoes;
+﻿using MS.DFe.PDF.Extensoes;
 using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
