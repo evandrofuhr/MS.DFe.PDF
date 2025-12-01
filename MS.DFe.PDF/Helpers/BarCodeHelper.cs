@@ -1,12 +1,8 @@
 ﻿using SkiaSharp;
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices;
 using ZXing;
 using ZXing.Common;
-using ZXing.QrCode;
 using ZXing.SkiaSharp.Rendering;
 
 namespace MS.DFe.PDF.Helpers

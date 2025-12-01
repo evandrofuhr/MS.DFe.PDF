@@ -102,7 +102,7 @@ namespace MS.DFe.PDF
                         backgroundContainer.Background(Colors.White);
                 });
 
-                page.Header().Component(new Cabecalho  (_nfe, _protocolo, _logo));
+                page.Header().Component(new Cabecalho(_nfe, _protocolo, _logo));
                 page.Content().Component(new Conteudo(_nfe));
                 page.Footer().ShowOnce().Component(new Rodape(_nfe.infNFe, _logoSoftwareHouse));
             });

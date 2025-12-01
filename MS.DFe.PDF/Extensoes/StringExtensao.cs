@@ -1,8 +1,4 @@
-﻿using MS.DFe.PDF.Modelos;
-using MS.DFe.PDF.Resources;
-using NFe.Classes.Informacoes.Destinatario;
-using NFe.Classes.Informacoes.Emitente;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 
 namespace MS.DFe.PDF.Extensoes
@@ -61,6 +57,6 @@ namespace MS.DFe.PDF.Extensoes
         {
             return Convert.ToUInt64(value).ToString(@"00000\-000");
         }
-        
+
     }
 }

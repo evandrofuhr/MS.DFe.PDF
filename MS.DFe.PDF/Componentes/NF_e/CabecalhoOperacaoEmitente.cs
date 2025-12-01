@@ -40,7 +40,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                 {
                     text.Line(_emit.xFant).FontSize(fontSizeBase).Bold();
                     text.Line(_emit.enderEmit.ToEndereco1()).FontSize(fontSizeBase - 2f);
-                    if(_emit.enderEmit.fone != null)
+                    if (_emit.enderEmit.fone != null)
                         text.Line(_emit.enderEmit.ToEndereco2()).FontSize(fontSizeBase - 2f);
                     else
                         text.Span(_emit.enderEmit.ToEndereco2()).FontSize(fontSizeBase - 2f);

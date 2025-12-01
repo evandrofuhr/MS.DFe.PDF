@@ -87,7 +87,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
                         row.ConstantItem(110).PadraoInformacao(NFeResource.MARCA, _volume?.Marca ?? string.Empty);
                         row.ConstantItem(88).PadraoInformacao(NFeResource.NUMERACAO, _volume?.Numeracao ?? string.Empty);
 
-                        if (_volume ==null || _volume.PesoBruto == 0)
+                        if (_volume == null || _volume.PesoBruto == 0)
                             row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, string.Empty);
                         else
                             row.RelativeItem().PadraoInformacao(NFeResource.PESO_BRUTO, _volume.PesoBruto.ToString("N3"), string.Empty);

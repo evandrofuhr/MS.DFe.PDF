@@ -2,7 +2,6 @@
 using MS.DFe.PDF.Resources;
 using NFe.Classes.Informacoes;
 using NFe.Classes.Informacoes.Emitente;
-using NFe.Classes.Informacoes.Pagamento;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Collections.Generic;

@@ -1,6 +1,5 @@
 ﻿using MS.DFe.PDF.Componentes.NF_e;
 using MS.DFe.PDF.Helpers;
-using NFe.Classes.Servicos.ConsultaCadastro;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System;
@@ -83,7 +82,7 @@ namespace MS.DFe.PDF.Extensoes
                 .FontSize(7);
         }
 
-        
+
 
         public static void PadraoInformacaoTabela(this IContainer container, string label)
         {
