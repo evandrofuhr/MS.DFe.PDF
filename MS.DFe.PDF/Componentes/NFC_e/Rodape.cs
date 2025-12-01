@@ -11,7 +11,7 @@ namespace MS.DFe.PDF.Componentes.NFCe
 {
     internal class Rodape : IComponent
     {
-        private decimal _vTotTrib { get => _infNFe.total.ICMSTot.vTotTrib; }
+        private decimal _vTotTrib { get => _infNFe.total.ICMSTot.vTotTrib ?? decimal.Zero; }
         private emit _emit { get => _infNFe.emit; }
         private readonly infNFe _infNFe;
 
