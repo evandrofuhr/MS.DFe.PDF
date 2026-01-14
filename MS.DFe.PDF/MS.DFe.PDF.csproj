@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hercules.NET.NFe.NFCe" Version="2025.12.19.1847" />
+    <PackageReference Include="Hercules.NET.NFe.NFCe" Version="2026.1.7.1903" />
     <PackageReference Include="QuestPDF" Version="2025.5.1" />
     <PackageReference Include="SkiaSharp" Version="3.119.0" />
-    <PackageReference Include="System.Drawing.Common" Version="9.0.6" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.9" />
     <PackageReference Include="ZXing.Net" Version="0.16.10" />
     <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.21" />
   </ItemGroup>
