@@ -12,7 +12,7 @@ namespace MS.DFe.PDF
     {
         private static byte[] Definir(NFe.Classes.NFe nfe, protNFe protocolo, byte[] logo = null, byte[] logoSoftwareHouse = null)
         {
-            if (nfe.infNFe.ide.mod != ModeloDocumento.NFe)
+            if (nfe.infNFe.ide.mod == ModeloDocumento.NFe)
             {
                 var _leiaute = new NFeLeiaute(nfe, protocolo, logo);
                 if (logoSoftwareHouse?.Any() ?? false)
