@@ -11,14 +11,23 @@ using QuestPDF.Infrastructure;
 using System;
 using System.IO;
 
-
-
 namespace MS.DFe.PDF
 {
     public class NFCeLeiaute : IDocument
     {
         private readonly NFe.Classes.NFe _nfe;
         private readonly protNFe _protocolo;
+
+        public NFCeLeiaute(NFe.Classes.NFe nfe, protNFe protocolo)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            _nfe = nfe;
+            _protocolo = protocolo;
+
+            Validar();
+        }
+
         public NFCeLeiaute(string xml)
         {
             QuestPDF.Settings.License = LicenseType.Community;
