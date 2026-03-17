@@ -29,7 +29,7 @@ namespace MS.DFe.PDF.Componentes.CCe
                         container.Border(0.8f).Row(
                             row =>
                             {
-                                row.ConstantItem(110).Padding(3).MaxWidth(110).Image(_logo, ImageScaling.FitWidth);
+                                row.ConstantItem(110).Padding(3).MaxWidth(110).Image(_logo).FitWidth();
                                 row.RelativeItem().AlignMiddle().Column(
                                     column =>
                                     {

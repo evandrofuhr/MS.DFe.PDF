@@ -20,6 +20,17 @@ namespace MS.DFe.PDF
         private readonly byte[] _logo;
         private byte[] _logoSoftwareHouse;
 
+        public NFeLeiaute(NFe.Classes.NFe nfe, protNFe protocolo, byte[] logo)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            _nfe = nfe;
+            _protocolo = protocolo;
+            _logo = logo;
+
+            Validar();
+        }
+
         public NFeLeiaute(string xml)
         {
             QuestPDF.Settings.License = LicenseType.Community;
@@ -102,7 +113,7 @@ namespace MS.DFe.PDF
                         backgroundContainer.Background(Colors.White);
                 });
 
-                page.Header().Component(new Cabecalho  (_nfe, _protocolo, _logo));
+                page.Header().Component(new Cabecalho(_nfe, _protocolo, _logo));
                 page.Content().Component(new Conteudo(_nfe));
                 page.Footer().ShowOnce().Component(new Rodape(_nfe.infNFe, _logoSoftwareHouse));
             });

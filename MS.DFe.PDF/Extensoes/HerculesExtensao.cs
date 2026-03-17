@@ -4,10 +4,8 @@ using NFe.Classes.Informacoes.Destinatario;
 using NFe.Classes.Informacoes.Emitente;
 using NFe.Classes.Informacoes.Pagamento;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-using System.Text;
 
 namespace MS.DFe.PDF.Extensoes
 {
@@ -23,7 +21,7 @@ namespace MS.DFe.PDF.Extensoes
                 if (atributo != null)
                     return atributo.Description;
             }
-            return valor.ToString(); 
+            return valor.ToString();
         }
 
         public static string PagamentoDescricao(this detPag pagamento)

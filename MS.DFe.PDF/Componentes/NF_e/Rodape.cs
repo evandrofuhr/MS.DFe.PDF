@@ -63,8 +63,8 @@ namespace MS.DFe.PDF.Componentes.NF_e
             var cpl = _infnfe.infAdic?.infCpl ?? string.Empty;
             var fisco = _infnfe.infAdic?.infAdFisco ?? string.Empty;
 
-            var _informacaoAdicionalCpl = $"{NFeResource.INF_CONTRIBUENTE} {_infnfe.infAdic.infCpl}";
-            var _informacaoAdicionalFisco = $"{NFeResource.INF_FISCO} {_infnfe.infAdic.infAdFisco}";
+            var _informacaoAdicionalCpl = $"{NFeResource.INF_CONTRIBUENTE} {cpl}";
+            var _informacaoAdicionalFisco = $"{NFeResource.INF_FISCO} {fisco}";
 
             var _informacao = new List<string>();
             if (!string.IsNullOrEmpty(cpl))
@@ -73,7 +73,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                 _informacao.Add(_informacaoAdicionalFisco);
 
             var _final = string.Join("\r\n", _informacao);
-                                   
+
             var _tamanhoFonte = _final.Length.ToTamanhoFonte();
 
             container.Column(
@@ -93,7 +93,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                                     c =>
                                     {
                                         c.Item().Text(NFeResource.INFORMAÇÕES_COMPLEMENTARES).FontSize(7);
-                                        c.Item().Text(_final).ClampLines(17).FontSize(_tamanhoFonte);                                        
+                                        c.Item().Text(_final).ClampLines(17).FontSize(_tamanhoFonte);
                                         c.Item().Text($"{NFeResource.VALOR_APROXIMADO_TRIBUTOS} {NFeResource.CIFRAO} {_infnfe.total.ICMSTot.vTotTrib.ToString()}").FontSize(7);
                                     }
                                 );
@@ -109,7 +109,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                     column.Item().Height(7, Unit.Millimetre);
                 }
             );
-        
+
         }
 
     }
