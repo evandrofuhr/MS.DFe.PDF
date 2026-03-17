@@ -19,7 +19,7 @@ namespace MS.DFe.PDF.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class NFeResource {
@@ -412,7 +412,7 @@ namespace MS.DFe.PDF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HORA_ENTRADA_SAÍDA.
+        ///   Looks up a localized string similar to HORA ENTRADA / SAÍDA.
         /// </summary>
         internal static string HORA_ENTRADA_SAÍDA {
             get {
