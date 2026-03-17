@@ -41,7 +41,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             row.RelativeItem(4).PadraoInformacao(NFeResource.ENDERECO, _dest.enderDest?.ToEndereco());
                             row.RelativeItem(3).PadraoInformacao(NFeResource.BAIRRO, _dest.enderDest?.xBairro);
                             row.RelativeItem(1).PadraoInformacao(NFeResource.CEP, _dest.enderDest?.CEP?.ToCep(), true);
-                            row.ConstantItem(75).PadraoInformacao(NFeResource.DATA_ENTRADA_SAIDA, _ide.dhSaiEnt?.DateTime);
+                            row.ConstantItem(75).PadraoInformacao(NFeResource.DATA_ENTRADA_SAIDA, _ide.dhSaiEnt?.DateTime ?? null);
                         }
                     );
                     column.Item().Row(
@@ -51,7 +51,7 @@ namespace MS.DFe.PDF.Componentes.NF_e
                             row.RelativeItem(5).PadraoInformacao(NFeResource.FONE_FAX, _dest.enderDest?.fone?.ToTelefone(), true);
                             row.RelativeItem(1).PadraoInformacao(NFeResource.UF, _dest.enderDest?.UF, true);
                             row.RelativeItem(5).PadraoInformacao(NFeResource.INSCRICAO_ESTADUAL, _dest.IE, true);
-                            row.ConstantItem(75).PadraoInformacao(NFeResource.HORA_ENTRADA_SAÍDA, _ide.dhSaiEnt);
+                            row.ConstantItem(75).PadraoInformacao(NFeResource.HORA_ENTRADA_SAÍDA, _ide.dhSaiEnt?.DateTime.ToString("HH:mm") ?? null);
                         }
                     );
                 }

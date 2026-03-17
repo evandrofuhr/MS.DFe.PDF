@@ -156,6 +156,9 @@
   <data name="DATA_ENTRADA_SAIDA" xml:space="preserve">
     <value>DATA ENTRADA / SAÍDA</value>
   </data>
+  <data name="HORA_ENTRADA_SAÍDA" xml:space="preserve">
+    <value>HORA ENTRADA / SAÍDA</value>
+  </data>
   <data name="DATA_RECEBIMENTO" xml:space="preserve">
     <value>DATA DE RECEBIMENTO</value>
   </data>
@@ -188,9 +191,6 @@
   </data>
   <data name="FONE_FAX" xml:space="preserve">
     <value>FONE / FAX</value>
-  </data>
-  <data name="HORA_ENTRADA_SAÍDA" xml:space="preserve">
-    <value>HORA_ENTRADA_SAÍDA</value>
   </data>
   <data name="IDENTIFICACAO_ASSINATURA_RECEBEDOR" xml:space="preserve">
     <value>IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR</value>
