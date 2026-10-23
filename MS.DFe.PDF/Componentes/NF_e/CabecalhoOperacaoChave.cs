@@ -22,7 +22,10 @@ namespace MS.DFe.PDF.Componentes.NF_e
 
         public void Compose(IContainer container)
         {
-            var _chaveDeAcesso = _protocolo?.infProt.chNFe.ToString() ?? _infnfe.Id?.SomenteNumeros() ?? string.Empty.PadLeft(44, '0');
+            var _origem = _protocolo?.infProt.chNFe.ToString() ?? _infnfe.Id;
+            var _chaveDeAcesso = _origem?.NormalizarChaveNFe();
+            if (string.IsNullOrEmpty(_chaveDeAcesso))
+                _chaveDeAcesso = string.Empty.PadLeft(44, '0');
 
             container.Column(
                 column =>
