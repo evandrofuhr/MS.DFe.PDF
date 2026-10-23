@@ -12,6 +12,7 @@ namespace MS.DFe.PDF.Componentes.Nfe
     public class Transportador : IComponent
     {
         private readonly transp _transp;
+        private readonly bool _exibirDetalhe;
         private readonly Dictionary<int, string> _tipoFrete = new Dictionary<int, string>
         {
             {0, "Por conta Remetente"},
@@ -22,12 +23,26 @@ namespace MS.DFe.PDF.Componentes.Nfe
             {9, "Sem Transporte"}
         };
 
-        public Transportador(transp transp)
+        public Transportador(transp transp, bool exibirDetalhe = true)
         {
             _transp = transp;
+            _exibirDetalhe = exibirDetalhe;
         }
+
+        public static bool TemDetalhe(transp transp)
+        {
+            if (transp == null)
+                return false;
+            if (transp.transporta != null || transp.veicTransp != null)
+                return true;
+            return transp.vol != null && transp.vol.Count > 0;
+        }
+
         public void Compose(IContainer container)
         {
+            if (_transp == null)
+                return;
+
             var _modFrete = 9;
             if (_transp.modFrete != null)
                 _modFrete = (int)_transp.modFrete;
@@ -38,6 +53,15 @@ namespace MS.DFe.PDF.Componentes.Nfe
                 column =>
                 {
                     column.Item().PadraoLabelGrupo(NFeResource.TRANSPORTADOR);
+
+                    if (!_exibirDetalhe)
+                    {
+                        column.Item().Row(row =>
+                        {
+                            row.ConstantItem(160).PadraoInformacao(NFeResource.FRETE, _frete, true);
+                        });
+                        return;
+                    }
 
                     column.Item().Row(
                         row =>

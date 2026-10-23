@@ -420,4 +420,31 @@
   <data name="URL_MS_TEXT" xml:space="preserve">
     <value> www.microsales.com.br</value>
   </data>
+  <data name="CALCULO_ISSQN" xml:space="preserve">
+    <value>CÁLCULO DO ISSQN</value>
+  </data>
+  <data name="INSCRICAO_MUNICIPAL" xml:space="preserve">
+    <value>INSCRIÇÃO MUNICIPAL</value>
+  </data>
+  <data name="VALOR_TOTAL_SERVICOS" xml:space="preserve">
+    <value>VALOR TOTAL DOS SERVIÇOS</value>
+  </data>
+  <data name="BASE_CALCULO_ISSQN" xml:space="preserve">
+    <value>BASE DE CÁLCULO DO ISSQN</value>
+  </data>
+  <data name="VALOR_ISSQN" xml:space="preserve">
+    <value>VALOR DO ISSQN</value>
+  </data>
+  <data name="NUMERO_FATURA" xml:space="preserve">
+    <value>NÚMERO</value>
+  </data>
+  <data name="VALOR_ORIGINAL" xml:space="preserve">
+    <value>VALOR ORIGINAL</value>
+  </data>
+  <data name="VALOR_DESCONTO" xml:space="preserve">
+    <value>VALOR DO DESCONTO</value>
+  </data>
+  <data name="VALOR_LIQUIDO" xml:space="preserve">
+    <value>VALOR LÍQUIDO</value>
+  </data>
 </root>
