@@ -7,12 +7,12 @@ using QuestPDF.Companion;
 var _escolha = 1;
 while (true)
 {
-    Console.WriteLine("Qual tipo de impressão NF-e(1), NFC-e(2), CC-e(3), Sair(0): ");
+    Console.WriteLine("Qual tipo de impressão NF-e(1), NFC-e(2), CC-e(3), NF-e retrato(4), Sair(0): ");
     var _tela = Console.ReadLine();
     if (int.TryParse(_tela, out int _int))
     {
         if (_int <= 0) Environment.Exit(0);
-        if (_int <= 3)
+        if (_int <= 4)
         {
             _escolha = _int;
             break;
@@ -27,7 +27,7 @@ while (true)
 string? _xmlPath = null;
 while (string.IsNullOrEmpty(_xmlPath))
 {
-    Console.WriteLine($"Informe o caminho para o xml processado da {(_escolha == 1 ? "NF-e" : "NFC-e")}:");
+    Console.WriteLine($"Informe o caminho para o xml processado da {(_escolha == 1 || _escolha == 4 ? "NF-e" : "NFC-e")}:");
     _xmlPath = Console.ReadLine();
 
     if (!File.Exists(_xmlPath))
@@ -40,7 +40,7 @@ while (string.IsNullOrEmpty(_xmlPath))
 
 byte[]? _logoBytes = null;
 
-if (_escolha == 1)
+if (_escolha == 1 || _escolha == 4)
 {
     string? _logoPath = null;
     while (_logoPath == null)
@@ -76,6 +76,16 @@ if (_escolha == 1)
 {
     var _xml = File.ReadAllText(_xmlPath);
     var pdf = new NFeLeiaute(_xml, _logoBytes);
+
+    //pdf.AdicionarLogoSoftwareHouse(_logoBytes);
+
+    pdf.ShowInCompanion();
+}
+
+if (_escolha == 4)
+{
+    var _xml = File.ReadAllText(_xmlPath);
+    var pdf = new NFeLeiauteRetrato(_xml, _logoBytes);
 
     //pdf.AdicionarLogoSoftwareHouse(_logoBytes);
 

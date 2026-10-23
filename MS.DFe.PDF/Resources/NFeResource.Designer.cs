@@ -968,5 +968,59 @@ namespace MS.DFe.PDF.Resources {
                 return ResourceManager.GetString("VENCIMENTO", resourceCulture);
             }
         }
+
+        internal static string CALCULO_ISSQN {
+            get {
+                return ResourceManager.GetString("CALCULO_ISSQN", resourceCulture);
+            }
+        }
+
+        internal static string INSCRICAO_MUNICIPAL {
+            get {
+                return ResourceManager.GetString("INSCRICAO_MUNICIPAL", resourceCulture);
+            }
+        }
+
+        internal static string VALOR_TOTAL_SERVICOS {
+            get {
+                return ResourceManager.GetString("VALOR_TOTAL_SERVICOS", resourceCulture);
+            }
+        }
+
+        internal static string BASE_CALCULO_ISSQN {
+            get {
+                return ResourceManager.GetString("BASE_CALCULO_ISSQN", resourceCulture);
+            }
+        }
+
+        internal static string VALOR_ISSQN {
+            get {
+                return ResourceManager.GetString("VALOR_ISSQN", resourceCulture);
+            }
+        }
+
+        internal static string NUMERO_FATURA {
+            get {
+                return ResourceManager.GetString("NUMERO_FATURA", resourceCulture);
+            }
+        }
+
+        internal static string VALOR_ORIGINAL {
+            get {
+                return ResourceManager.GetString("VALOR_ORIGINAL", resourceCulture);
+            }
+        }
+
+        internal static string VALOR_DESCONTO {
+            get {
+                return ResourceManager.GetString("VALOR_DESCONTO", resourceCulture);
+            }
+        }
+
+        internal static string VALOR_LIQUIDO {
+            get {
+                return ResourceManager.GetString("VALOR_LIQUIDO", resourceCulture);
+            }
+        }
     }
 }
