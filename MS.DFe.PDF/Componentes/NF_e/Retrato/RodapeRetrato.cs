@@ -105,7 +105,6 @@ namespace MS.DFe.PDF.Componentes.NF_e.Retrato
                 });
 
                 column.Item().PaddingTop(2).Element(ComposeSoftwareHouse);
-                column.Item().Height(7, Unit.Millimetre);
             });
         }
     }

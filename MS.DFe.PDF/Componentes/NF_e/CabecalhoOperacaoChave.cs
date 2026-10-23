@@ -27,7 +27,14 @@ namespace MS.DFe.PDF.Componentes.NF_e
             container.Column(
                 column =>
                 {
-                    column.Item().Height(60).Border(ConstantsHelper.BORDA).AlignCenter().Padding(3).Image(BarCodeHelper.Barcode128(_chaveDeAcesso));
+                    column.Item()
+                        .Height(60)
+                        .Border(ConstantsHelper.BORDA)
+                        .Padding(3)
+                        .AlignCenter()
+                        .AlignMiddle()
+                        .Image(BarCodeHelper.Barcode128(_chaveDeAcesso))
+                        .FitArea();
                     column.Item().PadraoInformacao(NFeResource.CHAVE_ACESSO, _chaveDeAcesso.FormataChaveNFe(), true);
                     column.Item()
                         .BorderRight(ConstantsHelper.BORDA)

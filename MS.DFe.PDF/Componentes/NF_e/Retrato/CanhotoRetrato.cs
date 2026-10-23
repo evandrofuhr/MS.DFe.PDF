@@ -17,13 +17,17 @@ namespace MS.DFe.PDF.Componentes.NF_e.Retrato
         private readonly emit _emit;
         private readonly ICMSTot _icmstot;
         private readonly dest _dest;
+        private readonly bool _indicadaAoLado;
+        private readonly bool _picote;
 
-        public CanhotoRetrato(ide ide, emit emit, ICMSTot icmstot, dest dest)
+        public CanhotoRetrato(ide ide, emit emit, ICMSTot icmstot, dest dest, bool indicadaAoLado = false, bool picote = true)
         {
             _ide = ide;
             _emit = emit;
             _icmstot = icmstot;
             _dest = dest;
+            _indicadaAoLado = indicadaAoLado;
+            _picote = picote;
         }
 
         private void ComposeQuadroNumero(IContainer container)
@@ -63,12 +67,11 @@ namespace MS.DFe.PDF.Componentes.NF_e.Retrato
                                 .Text(
                                     text =>
                                     {
-                                        text.Line(
-                                            string.Format(
-                                                NFeResource.CANHOTO1,
-                                                _emit.xNome
-                                            )
-                                        ).FontSize(7);
+                                        var recebimento = string.Format(NFeResource.CANHOTO1, _emit.xNome);
+                                        if (_indicadaAoLado)
+                                            recebimento = recebimento.Replace("indicada abaixo", "indicada ao lado");
+
+                                        text.Line(recebimento).FontSize(7);
 
                                         text.Span(
                                             string.Format(
@@ -112,7 +115,8 @@ namespace MS.DFe.PDF.Componentes.NF_e.Retrato
                 column =>
                 {
                     column.Item().Height(48).Element(ComposeRow);
-                    column.Item().PaddingTop(2).Element(ComposePicote);
+                    if (_picote)
+                        column.Item().PaddingTop(2).Element(ComposePicote);
                 }
             );
         }
