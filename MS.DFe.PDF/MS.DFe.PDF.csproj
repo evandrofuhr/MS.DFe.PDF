@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageId>MS.DFe.PDF</PackageId>
-	  <Version>1.0.4</Version>
+	  <Version>1.1.2</Version>
 	  <Authors>MicroSales</Authors>
 	  <Company>MicroSales</Company>
 	  <IsPackable>true</IsPackable>
-	  <Description>Biblioteca de geração de PDF NF-e, NFC-e e CC-e</Description>
+	  <Description>Biblioteca de geração de PDF NF-e, NFC-e, CC-e, CT-e e MDF-e</Description>
 	  <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hercules.NET.CTe" Version="2026.10.19.2059" />
+    <PackageReference Include="Hercules.NET.MDFe" Version="2026.10.19.2059" />
     <PackageReference Include="Hercules.NET.NFe.NFCe" Version="2026.7.4.1436" />
     <PackageReference Include="QuestPDF" Version="2025.5.1" />
     <PackageReference Include="SkiaSharp" Version="3.119.0" />
@@ -32,6 +34,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CCeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CTeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CTeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\MDFeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MDFeResource.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\NFCeResource.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -49,6 +61,14 @@
     <EmbeddedResource Update="Resources\CCeResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CCeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CTeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CTeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\MDFeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MDFeResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\NFCeResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

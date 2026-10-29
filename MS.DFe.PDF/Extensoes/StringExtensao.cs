@@ -33,6 +33,26 @@ namespace MS.DFe.PDF.Extensoes
             return chave;
         }
 
+        public static string NormalizarChaveCTe(this string valor)
+        {
+            var chave = valor?.NormalizarCnpjCpf();
+            if (string.IsNullOrEmpty(chave))
+                return chave;
+            if (chave.StartsWith("CTE") && chave.Length > 3)
+                chave = chave.Substring(3);
+            return chave;
+        }
+
+        public static string NormalizarChaveMDFe(this string valor)
+        {
+            var chave = valor?.NormalizarCnpjCpf();
+            if (string.IsNullOrEmpty(chave))
+                return chave;
+            if (chave.StartsWith("MDFE") && chave.Length > 4)
+                chave = chave.Substring(4);
+            return chave;
+        }
+
         public static string FormataCNPJCPF(this string valor)
         {
             var _valor = valor?.NormalizarCnpjCpf() ?? string.Empty;
