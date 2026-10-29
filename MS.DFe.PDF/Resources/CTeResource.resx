@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TITULO" xml:space="preserve"><value>DACTE</value></data>
+  <data name="SUBTITULO" xml:space="preserve"><value>Documento Auxiliar do Conhecimento de Transporte Eletrônico</value></data>
+  <data name="MODELO" xml:space="preserve"><value>MODELO</value></data>
+  <data name="SERIE" xml:space="preserve"><value>SÉRIE</value></data>
+  <data name="NUMERO" xml:space="preserve"><value>Nº</value></data>
+  <data name="FOLHA" xml:space="preserve"><value>FOLHA</value></data>
+  <data name="DATA_HORA_EMISSAO" xml:space="preserve"><value>DATA E HORA DE EMISSÃO</value></data>
+  <data name="MODAL" xml:space="preserve"><value>MODAL</value></data>
+  <data name="CHAVE_ACESSO" xml:space="preserve"><value>CHAVE DE ACESSO</value></data>
+  <data name="PROTOCOLO" xml:space="preserve"><value>PROTOCOLO DE AUTORIZAÇÃO DE USO</value></data>
+  <data name="SEM_PROTOCOLO" xml:space="preserve"><value>CTe sem autorização de uso da SEFAZ</value></data>
+  <data name="CONSULTA" xml:space="preserve"><value>Consulta de autenticidade no portal nacional do CT-e</value></data>
+  <data name="URL_CTE" xml:space="preserve"><value>http://www.cte.fazenda.gov.br/portal</value></data>
+  <data name="TIPO_CTE" xml:space="preserve"><value>TIPO DO CT-E</value></data>
+  <data name="TIPO_SERVICO" xml:space="preserve"><value>TIPO DO SERVIÇO</value></data>
+  <data name="TOMADOR" xml:space="preserve"><value>TOMADOR DO SERVIÇO</value></data>
+  <data name="FORMA_PAGAMENTO" xml:space="preserve"><value>FORMA DE PAGAMENTO</value></data>
+  <data name="CFOP_NATUREZA" xml:space="preserve"><value>CFOP - NATUREZA DA OPERAÇÃO</value></data>
+  <data name="ORIGEM_PRESTACAO" xml:space="preserve"><value>ORIGEM DA PRESTAÇÃO</value></data>
+  <data name="DESTINO_PRESTACAO" xml:space="preserve"><value>DESTINO DA PRESTAÇÃO</value></data>
+  <data name="REMETENTE" xml:space="preserve"><value>REMETENTE</value></data>
+  <data name="DESTINATARIO" xml:space="preserve"><value>DESTINATÁRIO</value></data>
+  <data name="EXPEDIDOR" xml:space="preserve"><value>EXPEDIDOR</value></data>
+  <data name="RECEBEDOR" xml:space="preserve"><value>RECEBEDOR</value></data>
+  <data name="ENDERECO" xml:space="preserve"><value>ENDEREÇO</value></data>
+  <data name="MUNICIPIO" xml:space="preserve"><value>MUNICÍPIO</value></data>
+  <data name="CEP" xml:space="preserve"><value>CEP</value></data>
+  <data name="CNPJ_CPF" xml:space="preserve"><value>CNPJ/CPF</value></data>
+  <data name="IE" xml:space="preserve"><value>INSCRIÇÃO ESTADUAL</value></data>
+  <data name="PAIS" xml:space="preserve"><value>PAÍS</value></data>
+  <data name="FONE" xml:space="preserve"><value>FONE</value></data>
+  <data name="CANHOTO_TEXTO" xml:space="preserve"><value>DECLARO QUE RECEBI OS VOLUMES DESTE CONHECIMENTO EM PERFEITO ESTADO PELO QUE DOU POR CUMPRIDO O PRESENTE CONTRATO DE TRANSPORTE</value></data>
+  <data name="NOME" xml:space="preserve"><value>NOME</value></data>
+  <data name="RG" xml:space="preserve"><value>RG</value></data>
+  <data name="ASSINATURA" xml:space="preserve"><value>ASSINATURA / CARIMBO</value></data>
+  <data name="CHEGADA" xml:space="preserve"><value>CHEGADA DATA/HORA</value></data>
+  <data name="SAIDA" xml:space="preserve"><value>SAÍDA DATA/HORA</value></data>
+  <data name="PRODUTO_PREDOMINANTE" xml:space="preserve"><value>PRODUTO PREDOMINANTE</value></data>
+  <data name="OUTRAS_CARACTERISTICAS" xml:space="preserve"><value>OUTRAS CARACTERÍSTICAS DA CARGA</value></data>
+  <data name="VALOR_TOTAL_MERCADORIA" xml:space="preserve"><value>VALOR TOTAL DA MERCADORIA</value></data>
+  <data name="CUBAGEM" xml:space="preserve"><value>CUBAGEM (M3)</value></data>
+  <data name="PESO_KG" xml:space="preserve"><value>PESO (KG)</value></data>
+  <data name="PESO_TON" xml:space="preserve"><value>PESO (TON)</value></data>
+  <data name="VOLUMES" xml:space="preserve"><value>VOLUMES (Unid)</value></data>
+  <data name="LITROS" xml:space="preserve"><value>LITROS</value></data>
+  <data name="MMBTU" xml:space="preserve"><value>MMBTU</value></data>
+  <data name="RESPONSAVEL_SEGURO" xml:space="preserve"><value>RESPONSÁVEL</value></data>
+  <data name="SEGURADORA" xml:space="preserve"><value>NOME DA SEGURADORA</value></data>
+  <data name="APOLICE" xml:space="preserve"><value>NÚMERO DA APÓLICE</value></data>
+  <data name="AVERBACAO" xml:space="preserve"><value>NÚMERO DA AVERBAÇÃO</value></data>
+  <data name="COMPONENTES_VALOR" xml:space="preserve"><value>COMPONENTES DO VALOR DA PRESTAÇÃO DE SERVIÇO</value></data>
+  <data name="VALOR_TOTAL_SERVICO" xml:space="preserve"><value>VALOR TOTAL DO SERVIÇO</value></data>
+  <data name="VALOR_RECEBER" xml:space="preserve"><value>VALOR A RECEBER</value></data>
+  <data name="INFORMACOES_IMPOSTO" xml:space="preserve"><value>INFORMAÇÕES RELATIVAS AO IMPOSTO</value></data>
+  <data name="SITUACAO_TRIBUTARIA" xml:space="preserve"><value>SITUAÇÃO TRIBUTÁRIA</value></data>
+  <data name="BASE_CALCULO" xml:space="preserve"><value>BASE DE CÁLCULO</value></data>
+  <data name="ALIQ_ICMS" xml:space="preserve"><value>ALÍQ. ICMS</value></data>
+  <data name="VALOR_ICMS" xml:space="preserve"><value>VALOR DO ICMS</value></data>
+  <data name="RED_BC" xml:space="preserve"><value>% RED. BC CALC</value></data>
+  <data name="DOCUMENTOS_ORIGINARIOS" xml:space="preserve"><value>DOCUMENTOS ORIGINÁRIOS</value></data>
+  <data name="OBSERVACOES" xml:space="preserve"><value>OBSERVAÇÕES</value></data>
+  <data name="MODAL_RODOVIARIO" xml:space="preserve"><value>DADOS ESPECÍFICOS DO MODAL RODOVIÁRIO - CARGA FRACIONADA</value></data>
+  <data name="RNTRC" xml:space="preserve"><value>RNTRC DA EMPRESA</value></data>
+  <data name="CIOT" xml:space="preserve"><value>CIOT</value></data>
+  <data name="LOTACAO" xml:space="preserve"><value>LOTAÇÃO</value></data>
+  <data name="DATA_PREVISTA" xml:space="preserve"><value>DATA PREVISTA DE ENTREGA</value></data>
+  <data name="LEGENDA_RODO" xml:space="preserve"><value>ESTE CONHECIMENTO DE TRANSPORTE ATENDE À LEGISLAÇÃO DE TRANSPORTE RODOVIÁRIO EM VIGOR</value></data>
+  <data name="USO_EXCLUSIVO" xml:space="preserve"><value>USO EXCLUSIVO DO EMISSOR DO CT-E</value></data>
+  <data name="RESERVADO_FISCO" xml:space="preserve"><value>RESERVADO AO FISCO</value></data>
+  <data name="CHAVE_ORIGINAL" xml:space="preserve"><value>Chave original:</value></data>
+  <data name="PRE_VISUALIZACAO" xml:space="preserve"><value>PRÉ-VISUALIZAÇÃO</value></data>
+  <data name="HOMOLOGACAO" xml:space="preserve"><value>HOMOLOGAÇÃO</value></data>
+  <data name="DOCUMENTO_CANCELADO" xml:space="preserve"><value>DOCUMENTO CANCELADO</value></data>
+  <data name="SIM" xml:space="preserve"><value>SIM</value></data>
+  <data name="NAO" xml:space="preserve"><value>NÃO</value></data>
+</root>

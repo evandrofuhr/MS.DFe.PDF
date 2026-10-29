@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TITULO" xml:space="preserve"><value>DAMDFE</value></data>
+  <data name="SUBTITULO" xml:space="preserve"><value>Documento Auxiliar de Manifesto de Documentos Fiscais</value></data>
+  <data name="MODELO" xml:space="preserve"><value>MODELO</value></data>
+  <data name="SERIE" xml:space="preserve"><value>SÉRIE</value></data>
+  <data name="NUMERO" xml:space="preserve"><value>NÚMERO</value></data>
+  <data name="FOLHA" xml:space="preserve"><value>FOLHA</value></data>
+  <data name="DATA_HORA_EMISSAO" xml:space="preserve"><value>DATA E HORA DE EMISSÃO</value></data>
+  <data name="UF_CARGA" xml:space="preserve"><value>UF CARGA</value></data>
+  <data name="UF_DESCARGA" xml:space="preserve"><value>UF DESCAR.</value></data>
+  <data name="MODAL_RODOVIARIO" xml:space="preserve"><value>Modelo Rodoviário de Carga</value></data>
+  <data name="QTD_CTE" xml:space="preserve"><value>Qtd CT-e</value></data>
+  <data name="QTD_NFE" xml:space="preserve"><value>Qtd NF-e</value></data>
+  <data name="QTD_MDFE" xml:space="preserve"><value>Qtd MDF-e</value></data>
+  <data name="PESO_TOTAL" xml:space="preserve"><value>Peso total (Kg)</value></data>
+  <data name="VALOR_TOTAL_CARGA" xml:space="preserve"><value>Valor Total da Carga</value></data>
+  <data name="CONTROLE_FISCO" xml:space="preserve"><value>CONTROLE DO FISCO</value></data>
+  <data name="CHAVE_ACESSO" xml:space="preserve"><value>CHAVE DE ACESSO</value></data>
+  <data name="PROTOCOLO" xml:space="preserve"><value>Protocolo de Autorização de Uso</value></data>
+  <data name="CONSULTE_EM" xml:space="preserve"><value>Consulte em</value></data>
+  <data name="URL_CONSULTA" xml:space="preserve"><value>https://dfe-portal.sefazvirtual.rs.gov.br/MDFe/consulta</value></data>
+  <data name="RNTRC" xml:space="preserve"><value>RNTRC</value></data>
+  <data name="CNPJ" xml:space="preserve"><value>CNPJ</value></data>
+  <data name="IE" xml:space="preserve"><value>IE</value></data>
+  <data name="VEICULO" xml:space="preserve"><value>VEÍCULO</value></data>
+  <data name="PLACA" xml:space="preserve"><value>PLACA</value></data>
+  <data name="CONDUTOR" xml:space="preserve"><value>CONDUTOR</value></data>
+  <data name="CPF" xml:space="preserve"><value>CPF</value></data>
+  <data name="NOME" xml:space="preserve"><value>NOME</value></data>
+  <data name="VALE_PEDAGIO" xml:space="preserve"><value>VALE PEDÁGIO</value></data>
+  <data name="RESP_CPF_CNPJ" xml:space="preserve"><value>RESP. CPF/CNPJ</value></data>
+  <data name="FORNECEDOR_CNPJ" xml:space="preserve"><value>FORNECEDOR CNPJ</value></data>
+  <data name="N_COMPROVANTE" xml:space="preserve"><value>N. COMPROVANTE</value></data>
+  <data name="CONTRATANTES" xml:space="preserve"><value>CONTRATANTE(S)</value></data>
+  <data name="SEGURO" xml:space="preserve"><value>SEGURO</value></data>
+  <data name="RESPONSAVEL" xml:space="preserve"><value>RESPONSÁVEL</value></data>
+  <data name="SEGURADORA" xml:space="preserve"><value>SEGURADORA</value></data>
+  <data name="APOLICE" xml:space="preserve"><value>APÓLICE</value></data>
+  <data name="COMPOSICAO_CARGA" xml:space="preserve"><value>INFORMAÇÕES DA COMPOSIÇÃO DA CARGA</value></data>
+  <data name="MUNICIPIO" xml:space="preserve"><value>MUNICÍPIO</value></data>
+  <data name="NFE" xml:space="preserve"><value>NF-e</value></data>
+  <data name="CTE" xml:space="preserve"><value>CT-e</value></data>
+  <data name="MDFE" xml:space="preserve"><value>MDF-e</value></data>
+  <data name="OBSERVACOES" xml:space="preserve"><value>OBSERVAÇÕES</value></data>
+  <data name="PRE_VISUALIZACAO" xml:space="preserve"><value>PRÉ-VISUALIZAÇÃO</value></data>
+  <data name="HOMOLOGACAO" xml:space="preserve"><value>HOMOLOGAÇÃO</value></data>
+  <data name="DOCUMENTO_CANCELADO" xml:space="preserve"><value>DOCUMENTO CANCELADO</value></data>
+  <data name="DOCUMENTO_ENCERRADO" xml:space="preserve"><value>DOCUMENTO ENCERRADO</value></data>
+  <data name="EMITENTE" xml:space="preserve"><value>1 - EMITENTE</value></data>
+  <data name="CONTRATANTE" xml:space="preserve"><value>2 - CONTRATANTE</value></data>
+</root>
