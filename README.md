@@ -26,6 +26,8 @@ Marcas d'água automáticas para **pré-visualização** (sem protocolo) e **hom
 
 A licença Community do QuestPDF é configurada pela própria biblioteca.
 
+DANFE / DACTE / DAMDFE usam a família `"Times New Roman"`. Em Linux/Docker a fonte do SO costuma faltar; a biblioteca embute **Liberation Serif** (OFL) e a registra com esse nome em runtime (`FontesDFe`), evitando `DocumentLayoutException` em containers.
+
 ## Instalação
 
 Clone o repositório e referencie o projeto, ou gere o pacote NuGet localmente:
