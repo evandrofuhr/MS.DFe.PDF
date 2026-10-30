@@ -3,6 +3,7 @@ using DFe.Utils;
 using MS.DFe.PDF.Componentes.NF_e;
 using MS.DFe.PDF.Componentes.NF_e.Paisagem;
 using MS.DFe.PDF.Componentes.NF_e.Retrato;
+using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using NFe.Classes;
 using NFe.Classes.Protocolo;
@@ -108,11 +109,13 @@ namespace MS.DFe.PDF
 
         public void Compose(IDocumentContainer container)
         {
+            FontesDFe.GarantirTimesNewRoman();
+
             container.Page(page =>
             {
                 page.Size(PageSizes.A4.Landscape());
                 page.Margin(3, Unit.Millimetre);
-                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily("Times New Roman"));
+                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily(FontesDFe.TimesNewRoman));
                 page.PageColor(Colors.White);
 
                 page.Background().Element(backgroundContainer =>

@@ -4,7 +4,7 @@
 	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageId>MS.DFe.PDF</PackageId>
-	  <Version>1.1.2</Version>
+	  <Version>1.1.3</Version>
 	  <Authors>MicroSales</Authors>
 	  <Company>MicroSales</Company>
 	  <IsPackable>true</IsPackable>
@@ -16,6 +16,14 @@
     <Compile Remove="Elementos\**" />
     <EmbeddedResource Remove="Elementos\**" />
     <None Remove="Elementos\**" />
+  </ItemGroup>
+
+  <!-- Liberation Serif (OFL) registrada como "Times New Roman" em Linux/Docker -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\LiberationSerif-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\LiberationSerif-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\LiberationSerif-Italic.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\LiberationSerif-BoldItalic.ttf" />
   </ItemGroup>
 
   <ItemGroup>

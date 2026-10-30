@@ -4,6 +4,7 @@ using MDFe.Classes.Informacoes;
 using MDFe.Classes.Retorno;
 using MDFe.Classes.Retorno.MDFeRetRecepcao;
 using MS.DFe.PDF.Componentes.MDF_e;
+using MS.DFe.PDF.Helpers;
 using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
@@ -88,6 +89,8 @@ namespace MS.DFe.PDF
 
         public void Compose(IDocumentContainer container)
         {
+            FontesDFe.GarantirTimesNewRoman();
+
             var inf = _mdfe.InfMDFe;
             var temProtocolo = !string.IsNullOrEmpty(_protocolo?.InfProt?.NProt);
 
@@ -95,7 +98,7 @@ namespace MS.DFe.PDF
             {
                 page.Size(PageSizes.A4);
                 page.Margin(3, Unit.Millimetre);
-                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily("Times New Roman"));
+                page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily(FontesDFe.TimesNewRoman));
                 page.PageColor(Colors.White);
 
                 page.Background().Element(backgroundContainer =>
