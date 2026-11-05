@@ -1,11 +1,8 @@
 using MDFe.Classes.Informacoes;
 using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Helpers;
-using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MS.DFe.PDF.Componentes.MDF_e
 {
@@ -20,67 +17,50 @@ namespace MS.DFe.PDF.Componentes.MDF_e
 
         public void Compose(IContainer container)
         {
-            container.Border(ConstantsHelper.BORDA).Column(column =>
-            {
-                column.Item().Padding(ConstantsHelper.PADDING).Text(MDFeResource.COMPOSICAO_CARGA).Bold().FontSize(6);
+            var municipios = _inf.InfDoc?.InfMunDescarga;
+            if (municipios == null || municipios.Count == 0)
+                return;
 
-                var municipios = _inf.InfDoc?.InfMunDescarga;
-                if (municipios == null || municipios.Count == 0)
-                {
-                    column.Item().Padding(ConstantsHelper.PADDING).Text(string.Empty).FontSize(7);
-                    return;
-                }
+            container.PaddingTop(8).Column(column =>
+            {
+                column.Item().Text("Documentos vinculados").Bold().FontSize(11);
 
                 foreach (var mun in municipios)
                 {
-                    column.Item().Padding(ConstantsHelper.PADDING)
-                        .Text($"{MDFeResource.MUNICIPIO}: {mun.XMunDescarga} - {mun.CMunDescarga}")
-                        .Bold().FontSize(7);
+                    var documentos = Documentos(mun);
+                    if (documentos.Count == 0)
+                        continue;
 
-                    var chaves = new List<string>();
-                    if (mun.InfNFe != null)
-                    {
-                        foreach (var nfe in mun.InfNFe)
-                            chaves.Add($"{MDFeResource.NFE}  {(nfe.ChNFe ?? string.Empty).NormalizarChaveNFe().FormataChaveNFe()}");
-                    }
-                    if (mun.InfCTe != null)
-                    {
-                        foreach (var cte in mun.InfCTe)
-                            chaves.Add($"{MDFeResource.CTE}  {(cte.ChCTe ?? string.Empty).NormalizarChaveCTe().FormataChaveNFe()}");
-                    }
-                    if (mun.InfMdFeTransps != null)
-                    {
-                        foreach (var mdfe in mun.InfMdFeTransps)
-                            chaves.Add($"{MDFeResource.MDFE}  {(mdfe.ChMDFe ?? string.Empty).NormalizarChaveMDFe().FormataChaveNFe()}");
-                    }
+                    var municipio = string.IsNullOrWhiteSpace(mun.XMunDescarga) ? mun.CMunDescarga : mun.XMunDescarga;
+                    if (!string.IsNullOrWhiteSpace(mun.CMunDescarga))
+                        municipio = $"{municipio} - {mun.CMunDescarga}";
 
-                    if (chaves.Count == 0) continue;
-
-                    var metade = (chaves.Count + 1) / 2;
-                    column.Item().Padding(ConstantsHelper.PADDING).Row(row =>
-                    {
-                        row.RelativeItem().Column(col =>
-                        {
-                            for (var i = 0; i < metade && i < chaves.Count; i++)
-                                col.Item().Text(chaves[i]).FontSize(6);
-                        });
-                        row.RelativeItem().Column(col =>
-                        {
-                            for (var i = metade; i < chaves.Count; i++)
-                                col.Item().Text(chaves[i]).FontSize(6);
-                        });
-                    });
-                }
-
-                if (!string.IsNullOrEmpty(_inf.InfAdic?.InfCpl))
-                {
-                    column.Item().Padding(ConstantsHelper.PADDING).Column(c =>
-                    {
-                        c.Item().Text(MDFeResource.OBSERVACOES).Bold().FontSize(6);
-                        c.Item().Text(_inf.InfAdic.InfCpl).FontSize(7);
-                    });
+                    column.Item().PaddingTop(3).Text(municipio).Bold().FontSize(8);
+                    foreach (var documento in documentos)
+                        column.Item().Text(documento).FontSize(8);
                 }
             });
+        }
+
+        private static List<string> Documentos(MDFeInfMunDescarga mun)
+        {
+            var documentos = new List<string>();
+            if (mun.InfCTe != null)
+            {
+                foreach (var cte in mun.InfCTe)
+                    documentos.Add($"CT-e  {(cte.ChCTe ?? string.Empty).NormalizarChaveCTe().FormataChaveNFe()}");
+            }
+            if (mun.InfNFe != null)
+            {
+                foreach (var nfe in mun.InfNFe)
+                    documentos.Add($"NF-e  {(nfe.ChNFe ?? string.Empty).NormalizarChaveNFe().FormataChaveNFe()}");
+            }
+            if (mun.InfMdFeTransps != null)
+            {
+                foreach (var mdfe in mun.InfMdFeTransps)
+                    documentos.Add($"MDF-e  {(mdfe.ChMDFe ?? string.Empty).NormalizarChaveMDFe().FormataChaveNFe()}");
+            }
+            return documentos;
         }
     }
 }

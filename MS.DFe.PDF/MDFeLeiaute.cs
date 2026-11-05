@@ -97,7 +97,7 @@ namespace MS.DFe.PDF
             container.Page(page =>
             {
                 page.Size(PageSizes.A4);
-                page.Margin(3, Unit.Millimetre);
+                page.Margin(8, Unit.Millimetre);
                 page.DefaultTextStyle(TextStyle.Default.FontSize(9f).FontFamily(FontesDFe.TimesNewRoman));
                 page.PageColor(Colors.White);
 
@@ -117,11 +117,12 @@ namespace MS.DFe.PDF
 
                 page.Content().Column(column =>
                 {
+                    column.Spacing(0);
                     column.Item().Component(new Cabecalho(_mdfe, _protocolo, _logo));
-                    column.Item().Component(new IdentificacaoResumo(inf));
                     column.Item().Component(new VeiculoCondutor(inf));
                     column.Item().Component(new ValePedagioSeguro(inf));
                     column.Item().Component(new ComposicaoCarga(inf));
+                    column.Item().ExtendVertical().Component(new Observacoes(inf));
                 });
             });
         }
