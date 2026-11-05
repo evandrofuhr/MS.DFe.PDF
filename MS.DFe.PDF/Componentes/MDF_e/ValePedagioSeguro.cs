@@ -1,12 +1,8 @@
-using MDFe.Classes.Flags;
 using MDFe.Classes.Informacoes;
 using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Helpers;
-using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 
 namespace MS.DFe.PDF.Componentes.MDF_e
 {
@@ -22,87 +18,49 @@ namespace MS.DFe.PDF.Componentes.MDF_e
         public void Compose(IContainer container)
         {
             var rodo = _inf.InfModal?.Modal as MDFeRodo;
-            var resp = new StringBuilder();
-            var forn = new StringBuilder();
-            var comp = new StringBuilder();
+            var disps = rodo?.infANTT?.valePed?.Disp ?? rodo?.ValePed?.Disp;
 
-            void AppendDisp(System.Collections.Generic.IEnumerable<MDFeDisp> disps)
+            var responsaveis = new List<string>();
+            var fornecedores = new List<string>();
+            var comprovantes = new List<string>();
+
+            if (disps != null)
             {
-                if (disps == null) return;
-                foreach (var d in disps)
+                foreach (var disp in disps)
                 {
-                    var responsavel = !string.IsNullOrEmpty(d.CPFPg) ? d.CPFPg : d.CNPJPg;
-                    resp.AppendLine((responsavel ?? string.Empty).FormataCNPJCPF());
-                    forn.AppendLine((d.CNPJForn ?? string.Empty).FormataCNPJCPF());
-                    comp.AppendLine(d.NCompra ?? string.Empty);
+                    var responsavel = !string.IsNullOrEmpty(disp.CPFPg) ? disp.CPFPg : disp.CNPJPg;
+                    responsaveis.Add((responsavel ?? string.Empty).FormataCNPJCPF());
+                    fornecedores.Add((disp.CNPJForn ?? string.Empty).FormataCNPJCPF());
+                    comprovantes.Add(disp.NCompra ?? string.Empty);
                 }
             }
 
-            AppendDisp(rodo?.ValePed?.Disp);
-            if (rodo?.infANTT?.valePed?.Disp != null)
+            container.PaddingTop(8).Column(column =>
             {
-                resp.Clear();
-                forn.Clear();
-                comp.Clear();
-                AppendDisp(rodo.infANTT.valePed.Disp);
-            }
-
-            var contratantes = string.Empty;
-            if (rodo?.infANTT?.infContratante != null)
-            {
-                var ultimo = rodo.infANTT.infContratante.LastOrDefault();
-                if (ultimo != null)
-                    contratantes = (!string.IsNullOrEmpty(ultimo.CNPJ) ? ultimo.CNPJ : ultimo.CPF ?? string.Empty).FormataCNPJCPF();
-            }
-
-            var segurosResp = new StringBuilder();
-            var segurosSeg = new StringBuilder();
-            var segurosApol = new StringBuilder();
-            if (_inf.Seg != null)
-            {
-                foreach (var seg in _inf.Seg)
+                column.Item().Text("Vale Pedágio").Bold().FontSize(11);
+                column.Item().PaddingTop(3).Row(row =>
                 {
-                    var r = seg.InfResp?.RespSeg == MDFeRespSeg.EmitenteDoMDFe
-                        ? MDFeResource.EMITENTE
-                        : MDFeResource.CONTRATANTE;
-                    segurosResp.AppendLine(r);
-                    var xSeg = seg.InfSeg?.XSeg ?? string.Empty;
-                    if (xSeg.Length > 30) xSeg = xSeg.Substring(0, 30);
-                    segurosSeg.AppendLine(xSeg);
-                    var apol = seg.NApol ?? string.Empty;
-                    if (apol.Length > 20) apol = apol.Substring(0, 20);
-                    segurosApol.AppendLine(apol);
+                    row.RelativeItem().Text("Responsável CNPJ").FontSize(8);
+                    row.RelativeItem().Text("Fornecedor CNPJ").FontSize(8);
+                    row.RelativeItem().Text("Nº Comprovante").FontSize(8);
+                });
+
+                if (responsaveis.Count == 0)
+                {
+                    column.Item().PaddingTop(1).Text(" ").FontSize(8);
+                    return;
                 }
-            }
 
-            container.Column(column =>
-            {
-                column.Item().Border(ConstantsHelper.BORDA).Column(c =>
+                for (var i = 0; i < responsaveis.Count; i++)
                 {
-                    c.Item().Padding(ConstantsHelper.PADDING).Text(MDFeResource.VALE_PEDAGIO).Bold().FontSize(6);
-                    c.Item().Row(row =>
+                    var indice = i;
+                    column.Item().PaddingTop(1).Row(row =>
                     {
-                        row.RelativeItem().PadraoInformacao(MDFeResource.RESP_CPF_CNPJ, resp.ToString().Trim());
-                        row.RelativeItem().PadraoInformacao(MDFeResource.FORNECEDOR_CNPJ, forn.ToString().Trim());
-                        row.RelativeItem().PadraoInformacao(MDFeResource.N_COMPROVANTE, comp.ToString().Trim());
+                        row.RelativeItem().Text(responsaveis[indice]).FontSize(8);
+                        row.RelativeItem().Text(fornecedores[indice]).FontSize(8);
+                        row.RelativeItem().Text(comprovantes[indice]).FontSize(8);
                     });
-                });
-
-                column.Item().Row(row =>
-                {
-                    row.RelativeItem().PadraoInformacao(MDFeResource.CONTRATANTES, contratantes);
-                });
-
-                column.Item().Border(ConstantsHelper.BORDA).Column(c =>
-                {
-                    c.Item().Padding(ConstantsHelper.PADDING).Text(MDFeResource.SEGURO).Bold().FontSize(6);
-                    c.Item().Row(row =>
-                    {
-                        row.RelativeItem().PadraoInformacao(MDFeResource.RESPONSAVEL, segurosResp.ToString().Trim());
-                        row.RelativeItem().PadraoInformacao(MDFeResource.SEGURADORA, segurosSeg.ToString().Trim());
-                        row.RelativeItem().PadraoInformacao(MDFeResource.APOLICE, segurosApol.ToString().Trim());
-                    });
-                });
+                }
             });
         }
     }

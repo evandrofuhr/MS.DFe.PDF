@@ -1,11 +1,8 @@
 using MDFe.Classes.Informacoes;
 using MS.DFe.PDF.Extensoes;
-using MS.DFe.PDF.Helpers;
-using MS.DFe.PDF.Resources;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 
 namespace MS.DFe.PDF.Componentes.MDF_e
 {
@@ -21,66 +18,89 @@ namespace MS.DFe.PDF.Componentes.MDF_e
         public void Compose(IContainer container)
         {
             var rodo = _inf.InfModal?.Modal as MDFeRodo;
-            if (rodo == null) return;
+            if (rodo == null)
+                return;
 
-            var placas = new StringBuilder();
-            var rntrcs = new StringBuilder();
-            var cpfs = new StringBuilder();
-            var nomes = new StringBuilder();
+            var rntrcAntt = rodo.infANTT?.RNTRC ?? rodo.RNTRC ?? string.Empty;
+            var placas = new List<string>();
+            var rntrcs = new List<string>();
+            var cpfs = new List<string>();
+            var nomes = new List<string>();
 
             var tracao = rodo.VeicTracao;
             if (tracao != null)
             {
-                placas.AppendLine(tracao.Placa ?? string.Empty);
-                var rntrc = tracao.Prop?.RNTRC;
-                if (string.IsNullOrEmpty(rntrc))
-                    rntrc = rodo.infANTT?.RNTRC ?? rodo.RNTRC;
-                rntrcs.AppendLine(rntrc ?? string.Empty);
+                placas.Add(tracao.Placa ?? string.Empty);
+                rntrcs.Add(string.IsNullOrEmpty(tracao.Prop?.RNTRC) ? rntrcAntt : tracao.Prop.RNTRC);
 
                 if (tracao.Condutor != null)
                 {
-                    foreach (var c in tracao.Condutor)
+                    foreach (var condutor in tracao.Condutor)
                     {
-                        cpfs.AppendLine((c.CPF ?? string.Empty).FormataCNPJCPF());
-                        nomes.AppendLine(c.XNome ?? string.Empty);
+                        cpfs.Add((condutor.CPF ?? string.Empty).FormataCNPJCPF());
+                        nomes.Add(condutor.XNome ?? string.Empty);
                     }
                 }
             }
 
             if (rodo.VeicReboque != null)
             {
-                foreach (var reb in rodo.VeicReboque)
+                foreach (var reboque in rodo.VeicReboque)
                 {
-                    placas.AppendLine(reb.Placa ?? string.Empty);
-                    var rntrc = reb.Prop?.RNTRC;
-                    if (string.IsNullOrEmpty(rntrc))
-                        rntrc = rodo.RNTRC;
-                    rntrcs.AppendLine(rntrc ?? string.Empty);
+                    placas.Add(reboque.Placa ?? string.Empty);
+                    rntrcs.Add(string.IsNullOrEmpty(reboque.Prop?.RNTRC) ? rntrcAntt : reboque.Prop.RNTRC);
                 }
             }
 
-            container.Border(ConstantsHelper.BORDA).Column(column =>
+            if (placas.Count == 0)
             {
-                column.Item().Row(row =>
+                placas.Add(string.Empty);
+                rntrcs.Add(string.Empty);
+            }
+            if (cpfs.Count == 0)
+            {
+                cpfs.Add(string.Empty);
+                nomes.Add(string.Empty);
+            }
+
+            container.PaddingTop(10).Row(row =>
+            {
+                row.RelativeItem().PaddingRight(8).Column(col =>
                 {
-                    row.RelativeItem().BorderRight(ConstantsHelper.BORDA).Padding(ConstantsHelper.PADDING).Column(col =>
+                    col.Item().Text("Veículo").Bold().FontSize(11);
+                    col.Item().PaddingTop(3).Row(r =>
                     {
-                        col.Item().Text(MDFeResource.VEICULO).Bold().FontSize(6);
-                        col.Item().Row(r =>
-                        {
-                            r.RelativeItem().PadraoInformacao(MDFeResource.PLACA, placas.ToString().Trim());
-                            r.RelativeItem().PadraoInformacao(MDFeResource.RNTRC, rntrcs.ToString().Trim());
-                        });
+                        r.RelativeItem().Text("Placa").FontSize(8);
+                        r.RelativeItem().Text("RNTRC").FontSize(8);
                     });
-                    row.RelativeItem().Padding(ConstantsHelper.PADDING).Column(col =>
+                    for (var i = 0; i < placas.Count; i++)
                     {
-                        col.Item().Text(MDFeResource.CONDUTOR).Bold().FontSize(6);
-                        col.Item().Row(r =>
+                        var indice = i;
+                        col.Item().PaddingTop(1).Row(r =>
                         {
-                            r.RelativeItem().PadraoInformacao(MDFeResource.CPF, cpfs.ToString().Trim());
-                            r.RelativeItem().PadraoInformacao(MDFeResource.NOME, nomes.ToString().Trim());
+                            r.RelativeItem().Text(placas[indice]).Bold().FontSize(8);
+                            r.RelativeItem().Text(rntrcs[indice]).Bold().FontSize(8);
                         });
+                    }
+                });
+
+                row.RelativeItem().Column(col =>
+                {
+                    col.Item().Text("Condutor").Bold().FontSize(11);
+                    col.Item().PaddingTop(3).Row(r =>
+                    {
+                        r.RelativeItem(1.1f).Text("CPF").FontSize(8);
+                        r.RelativeItem(2.2f).Text("Nome").FontSize(8);
                     });
+                    for (var i = 0; i < cpfs.Count; i++)
+                    {
+                        var indice = i;
+                        col.Item().PaddingTop(1).Row(r =>
+                        {
+                            r.RelativeItem(1.1f).Text(cpfs[indice]).FontSize(8);
+                            r.RelativeItem(2.2f).Text(nomes[indice]).FontSize(8);
+                        });
+                    }
                 });
             });
         }
