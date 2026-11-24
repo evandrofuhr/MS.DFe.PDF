@@ -29,6 +29,8 @@ namespace MS.DFe.PDF
         private readonly byte[] _logo;
         private byte[] _logoSoftwareHouse;
 
+        public bool Cancelado { get; set; }
+
         public NFeLeiautePaisagem(NFe.Classes.NFe nfe, protNFe protocolo, byte[] logo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
@@ -102,6 +104,11 @@ namespace MS.DFe.PDF
             container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(80).TranslateX(-80).Text(NFeResource.HOMOLOGACAO).FontSize(70).Bold().FontColor(Colors.Grey.Lighten1);
         }
 
+        private void ComposeCancelWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(50).TranslateX(-45).Text(NFeResource.CANCELADA).FontSize(70).Bold().FontColor(Colors.Grey.Lighten1);
+        }
+
         private static void ReservarCanhoto(RowDescriptor row)
         {
             row.ConstantItem(CanhotoPaisagem.Largura).ShowIf(ctx => ctx.PageNumber == 1);
@@ -120,7 +127,9 @@ namespace MS.DFe.PDF
 
                 page.Background().Element(backgroundContainer =>
                 {
-                    if (_protocolo == null)
+                    if (Cancelado)
+                        ComposeCancelWaterMark(backgroundContainer);
+                    else if (_protocolo == null)
                         ComposeWaterMark(backgroundContainer);
                     else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
                         ComposeHomWaterMark(backgroundContainer);

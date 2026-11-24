@@ -18,6 +18,8 @@ namespace MS.DFe.PDF
         private readonly NFe.Classes.NFe _nfe;
         private readonly protNFe _protocolo;
 
+        public bool Cancelado { get; set; }
+
         public NFCeLeiaute(NFe.Classes.NFe nfe, protNFe protocolo)
         {
             QuestPDF.Settings.License = LicenseType.Community;
@@ -60,6 +62,10 @@ namespace MS.DFe.PDF
             container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-30).TranslateX(45).Text(NFeResource.HOMOLOGACAO).FontSize(30).Bold().FontColor(Colors.Grey.Lighten1);
         }
 
+        private void ComposeCancelWaterMark(IContainer container)
+        {
+            container.AlignCenter().AlignMiddle().Rotate(-45).TranslateY(-15).TranslateX(25).Text(NFeResource.CANCELADA).FontSize(30).Bold().FontColor(Colors.Grey.Lighten1);
+        }
 
         public void Compose(IDocumentContainer container)
         {
@@ -75,7 +81,9 @@ namespace MS.DFe.PDF
 
                         page.Background().Element(backgroundContainer =>
                         {
-                            if (_nfe.infNFe.ide.tpAmb == 0 || _nfe.Signature?.KeyInfo == null)
+                            if (Cancelado)
+                                ComposeCancelWaterMark(backgroundContainer);
+                            else if (_nfe.infNFe.ide.tpAmb == 0 || _nfe.Signature?.KeyInfo == null)
                                 ComposeWaterMark(backgroundContainer);
                             else if (_nfe.infNFe.ide.tpAmb == TipoAmbiente.Homologacao)
                                 ComposeHomWaterMark(backgroundContainer);

@@ -410,6 +410,15 @@ namespace MS.DFe.PDF.Resources {
                 return ResourceManager.GetString("HOMOLOGACAO", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CANCELADA.
+        /// </summary>
+        internal static string CANCELADA {
+            get {
+                return ResourceManager.GetString("CANCELADA", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to HORA ENTRADA / SAÍDA.
