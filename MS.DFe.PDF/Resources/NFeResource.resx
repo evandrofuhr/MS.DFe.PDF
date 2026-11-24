@@ -405,6 +405,9 @@
   <data name="HOMOLOGACAO" xml:space="preserve">
     <value>HOMOLOGAÇÃO</value>
   </data>
+  <data name="CANCELADA" xml:space="preserve">
+    <value>CANCELADA</value>
+  </data>
   <data name="CANHOTO2" xml:space="preserve">
     <value>Emissão: {0} Valor Total: R$ {1} Destinatário: {2}</value>
   </data>
